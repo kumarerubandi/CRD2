@@ -1,0 +1,77 @@
+{
+  "resourceType": "Library",
+  "id": "urn:hl7:davinci:crd:library-ambulatory-transport-prepopulate",
+  "version": "0.0.1",
+  "title": "Ambulatory Transport Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+      }
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "urn:hl7:davinci:crd:medicare_fee_for_service:AmbulatoryTransportPrepopulation.json"
+    }
+  ],
+  "claimEndpoint":"http://stdrfp.mettles.com:8080/drfp/fhir/Claim/$submit",
+  "dataRequirement": [ {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSetString": "A0426"
+        }
+      ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSetString": "A0428"
+        }
+      ]
+    },
+	{
+         "type":"Practitioner",
+         "codeFilter":[
+            {
+               "path":"_id",
+               "valueSetString":"4526007"
+            }
+         ]
+      },
+      {
+         "type":"Condition",
+         "codeFilter":[
+            {
+               "path":"clinical-status",
+         	"valueSetString":"active"	
+            }
+         ]
+      },
+		      {
+         "type":"Practitioner"
+		      },
+{
+      "type": "SupplyRequest",
+       "codeFilter": [
+        {
+          "path": "requester",
+          "valueSetString": "Patient.id"
+        }
+      ]
+    }]
+}

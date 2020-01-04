@@ -1,0 +1,136 @@
+{
+    "resourceType": "Library",
+    "id": "urn:hl7:davinci:crd:united_health_care:library-catheterization-prepopulate",
+    "version": "0.0.1",
+    "title": "Catheterization",
+    "status": "draft",
+    "claimEndpoint": "http://cdex.mettles.com/payerfhir/hapi-fhir-jpaserver/fhir/Claim/$submit",
+    "type": {
+        "coding": [
+            {
+                "code": "logic-library"
+            }
+        ]
+    },
+    "relatedArtifact": [
+        {
+            "type": "depends-on",
+            "resource": {
+                "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+            }
+        }
+    ],
+    "content": [
+        {
+            "contentType": "application/elm+json",
+            "url": "urn:hl7:davinci:crd:united_health_care:CatheterizationPrepopulation.json"
+        }
+    ],
+    "dataRequirement": [
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93452"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93453"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93454"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93455"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93456"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93457"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93458"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93459"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93460"
+                }
+            ]
+        },
+        {
+            "type": "Procedure",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "93461"
+                }
+            ]
+        },
+        {
+            "type": "Condition",
+            "codeFilter": [
+                {
+                    "path": "code",
+                    "valueSetString": "I25.10,R07.9,M17.0,M79.603,R68.84,R06.02"
+                }
+            ]
+        },
+        {
+            "type": "Coverage"
+        },
+        {
+            "type": "Practitioner"
+        }
+    ]
+}

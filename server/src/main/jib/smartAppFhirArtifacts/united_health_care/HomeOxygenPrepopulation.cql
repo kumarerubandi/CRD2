@@ -1,4 +1,4 @@
-library OxygenTherapy version '0.0.2'
+library OxygenTherapy version '1.0.0'
 using FHIR version '3.0.0'
 include FHIRHelpers version '3.0.0' called FHIRHelpers
 
@@ -139,13 +139,33 @@ define function GetMiddleInitials(name FHIR.HumanName):
 
 define Today: Today()
 
-// basic patient stuff
-define PatientName: singleton from (Patient.name name where name.use.value = 'official')
-define PatientLastName: "PatientName".family.value
-define PatientMiddleInitial: GetMiddleInitials("PatientName")
-define PatientFirstName: "PatientName".given[0].value
-define PatientGender: Patient.gender.value
-define PatientDateOfBirth: Patient.birthDate.value
+// Beneficiary info
+define BeneficiaryNameObject: 
+	singleton from (Patient.name name where name.use.value = 'official')
+
+define BeneficiaryName: 
+	PatientFirstName +' '+PatientMiddleInitial + ' '+ PatientLastName
+	//PatientFirstName + ' '+ PatientLastName
+
+define PatientLastName: "BeneficiaryNameObject".family.value
+
+define PatientMiddleInitial: 
+	if (Length("BeneficiaryNameObject".given)>1) then GetMiddleInitials("BeneficiaryNameObject")
+	else ''
+
+	
+define PatientFirstName: "BeneficiaryNameObject".given[0].value
+
+define BeneficiaryGender: Patient.gender.value
+
+define BeneficiaryDateOfBirth: Patient.birthDate.value
+
+define BeneficiaryIdentificationNumber:
+	(singleton from (
+  	Patient.identifier identifier
+   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
+
+
 
 define PatientCoverageResource: singleton from (
   [Coverage] coverage
@@ -162,75 +182,65 @@ define RelevantDiagnoses: {
   if exists(Confirmed(ActiveOrRecurring([Condition: "Pulmonary_hypertension_Codes"]))) then 'Pulmonary Hypertension' else 'null',
   if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia_Codes"]))) then 'Hypoxemia' else 'null'
 } except { 'null' } // except 'null' is a workaround since I don't see how to remove actual nulls
-
 define ArterialOxygenSaturation: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months)), '%'))
 define ArterialPartialPressureOfOxygen: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months)), 'mm[Hg]'))
 define ArterialOxygenSaturationExercise: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
-
 define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization_Codes"])))
-
 define HematocritThatIsGreaterThanThreshold: HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
 define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
-
-
-
 // device request info
 define DeviceRequestHcpcsCoding: singleton from (
   ((cast device_request.code as CodeableConcept).coding) coding
-    where coding.system.value = 'https://bluebutton.cms.gov/resources/codesystem/hcpcs')
-
+    where coding.system.value = 'https://hcpcs.codes/')
 define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
 define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding".code.value in { 'E0433', 'E0434', 'E0444', 'EO431', 'K0738', 'E0443', 'E1392' }
 define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding".code.value in { 'E0439', 'E0442', 'E0424', 'E0441', 'E1390', 'E1391' }
-
-
 // ordering provider info
-define OrderingProvider: singleton from (
+define Practitioner: singleton from (
   [Practitioner] practitioner
     where ('Practitioner/' + practitioner.id) = device_request.performer.reference.value)
-define OrderingProviderName: singleton from ("OrderingProvider".name name where name.use.value = 'official')
-define OrderingProviderLastName: "OrderingProviderName".family.value
-define OrderingProviderMiddleInitial: GetMiddleInitials("OrderingProviderName")
-define OrderingProviderFirstName: "OrderingProviderName".given[0].value
-define OrderingProviderNPI: (singleton from (
-  "OrderingProvider".identifier identifier
-    where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value
-
-
-
-
-
-
-
-
-
-
+define PractitionerNameObject: 
+	singleton from ("Practitioner".name)
+	
+define PractitionerName: 
+	//PractitionerFirstName + ' '+ PractitionerMiddleInitial + ' '+ PractitionerLastName
+	PractitionerFirstName + ' '+ PractitionerLastName
+define PractitionerLastName: "PractitionerNameObject".family.value
+define PractitionerMiddleInitial: GetMiddleInitials("PractitionerNameObject")
+define PractitionerFirstName: "PractitionerNameObject".given[0].value
+define PractitionerNPI: 
+	if exists("Practitioner".identifier) then ((singleton from (
+  		"Practitioner".identifier identifier
+    		where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value) 
+    	else 
+	'1935467921'
+    
+define PractitionerPTAN:
+	(singleton from (
+  		"Practitioner".identifier identifier
+    		where identifier.type.coding[0].system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203' and identifier.type.coding[0].code.value = 'PRN')).value.value
+define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  
+define PractitionerAddress: 
+	"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with stu3 version of helper library
 define function ActiveOrRecurring(CondList List<Condition>):
   CondList C where C.clinicalStatus.value in {'active', 'relapse'}
-
 define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
   ObsList O
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast O.effective as dateTime).value in LookBackInterval
       or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
       or O.issued in LookBackInterval
-
 define function NullSafeToInterval(Pd FHIR.Period):
   if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
 define function Verified(ObsList List<Observation>):
   ObsList O where O.status.value in {'final', 'amended'}
-
 define function WithUnit(ObsList List<Observation>, Unit String):
   ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
-
 define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.value = 'confirmed'
-
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then
     System.Quantity {
@@ -238,7 +248,5 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
       unit: Coalesce(Qty.unit.value, Qty.code.value)
     }
   else null
-
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-

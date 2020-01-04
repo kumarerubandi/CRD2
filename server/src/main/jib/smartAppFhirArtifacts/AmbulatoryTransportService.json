@@ -1,0 +1,935 @@
+{
+   "resourceType":"Questionnaire",
+   "id":"urn:hl7:davinci:crd:ambulance-transport-questionnaire",
+   "meta":{
+      "profile":[
+         "http://hl7.org/fhir/StructureDefinition/cqif-questionnaire"
+      ]
+   },
+   "title":"Repetitive, Scheduled Non-Emergent Ambulance Transport",
+   "status":"draft",
+   "subjectType":[
+      "Patient"
+   ],
+   "date":"2019-08-30",
+   "publisher":"Mettle Solutions",
+   "extension":[
+      {
+         "url":"http://hl7.org/fhir/StructureDefinition/cqif-library",
+         "valueReference":{
+            "reference":"urn:hl7:davinci:crd:library-ambulatory-transport-prepopulate"
+         }
+      }
+   ],
+   "contained":[
+      {
+         "resourceType":"ValueSet",
+         "id":"gender",
+         "name":"Gender",
+         "status":"draft",
+         "description":"Gender",
+         "compose":{
+            "include":[
+               {
+                  "concept":[
+                     {
+                        "code":"male",
+                        "display":"Male"
+                     },
+                     {
+                        "code":"female",
+                        "display":"Female"
+                     },
+                     {
+                        "code":"other",
+                        "display":"Other"
+                     }
+                  ]
+               }
+            ]
+         }
+      },
+      {
+         "resourceType":"ValueSet",
+         "id":"states",
+         "name":"States",
+         "status":"draft",
+         "description":"States",
+         "compose":{
+            "include":[
+               {
+                  "concept":[
+                     {
+                        "code":"AK",
+                        "display":"Alaska"
+                     },
+                     {
+                        "code":"AL",
+                        "display":"Alabama"
+                     },
+                     {
+                        "code":"AR",
+                        "display":"Arkansas"
+                     },
+                     {
+                        "code":"AS",
+                        "display":"American Samoa"
+                     },
+                     {
+                        "code":"AZ",
+                        "display":"Arizona"
+                     },
+                     {
+                        "code":"CA",
+                        "display":"California"
+                     },
+                     {
+                        "code":"CO",
+                        "display":"Colorado"
+                     },
+                     {
+                        "code":"CT",
+                        "display":"Connecticut"
+                     },
+                     {
+                        "code":"DC",
+                        "display":"District of Columbia"
+                     },
+                     {
+                        "code":"DE",
+                        "display":"Delaware"
+                     },
+                     {
+                        "code":"FL",
+                        "display":"Florida"
+                     },
+                     {
+                        "code":"FM",
+                        "display":"Federated States of Micronesia"
+                     },
+                     {
+                        "code":"GA",
+                        "display":"Georgia"
+                     },
+                     {
+                        "code":"GU",
+                        "display":"Guam"
+                     },
+                     {
+                        "code":"HI",
+                        "display":"Hawaii"
+                     },
+                     {
+                        "code":"IA",
+                        "display":"Iowa"
+                     },
+                     {
+                        "code":"ID",
+                        "display":"Idaho"
+                     },
+                     {
+                        "code":"IL",
+                        "display":"Illinois"
+                     },
+                     {
+                        "code":"IN",
+                        "display":"Indiana"
+                     },
+                     {
+                        "code":"KS",
+                        "display":"Kansas"
+                     },
+                     {
+                        "code":"KY",
+                        "display":"Kentucky"
+                     },
+                     {
+                        "code":"LA",
+                        "display":"Louisiana"
+                     },
+                     {
+                        "code":"MA",
+                        "display":"Massachusetts"
+                     },
+                     {
+                        "code":"MD",
+                        "display":"Maryland"
+                     },
+                     {
+                        "code":"ME",
+                        "display":"Maine"
+                     },
+                     {
+                        "code":"MH",
+                        "display":"Marshall Islands"
+                     },
+                     {
+                        "code":"MI",
+                        "display":"Michigan"
+                     },
+                     {
+                        "code":"MN",
+                        "display":"Minnesota"
+                     },
+                     {
+                        "code":"MO",
+                        "display":"Missouri"
+                     },
+                     {
+                        "code":"MP",
+                        "display":"Northern Mariana Islands"
+                     },
+                     {
+                        "code":"MS",
+                        "display":"Mississippi"
+                     },
+                     {
+                        "code":"MT",
+                        "display":"Montana"
+                     },
+                     {
+                        "code":"NC",
+                        "display":"North Carolina"
+                     },
+                     {
+                        "code":"ND",
+                        "display":"North Dakota"
+                     },
+                     {
+                        "code":"NE",
+                        "display":"Nebraska"
+                     },
+                     {
+                        "code":"NH",
+                        "display":"New Hampshire"
+                     },
+                     {
+                        "code":"NJ",
+                        "display":"New Jersey"
+                     },
+                     {
+                        "code":"NM",
+                        "display":"New Mexico"
+                     },
+                     {
+                        "code":"NV",
+                        "display":"Nevada"
+                     },
+                     {
+                        "code":"NY",
+                        "display":"New York"
+                     },
+                     {
+                        "code":"OH",
+                        "display":"Ohio"
+                     },
+                     {
+                        "code":"OK",
+                        "display":"Oklahoma"
+                     },
+                     {
+                        "code":"OR",
+                        "display":"Oregon"
+                     },
+                     {
+                        "code":"PA",
+                        "display":"Pennsylvania"
+                     },
+                     {
+                        "code":"PR",
+                        "display":"Puerto Rico"
+                     },
+                     {
+                        "code":"PW",
+                        "display":"Palau"
+                     },
+                     {
+                        "code":"RI",
+                        "display":"Rhode Island"
+                     },
+                     {
+                        "code":"SC",
+                        "display":"South Carolina"
+                     },
+                     {
+                        "code":"SD",
+                        "display":"South Dakota"
+                     },
+                     {
+                        "code":"TN",
+                        "display":"Tennessee"
+                     },
+                     {
+                        "code":"TX",
+                        "display":"Texas"
+                     },
+                     {
+                        "code":"UM",
+                        "display":"U.S. Minor Outlying Islands"
+                     },
+                     {
+                        "code":"UT",
+                        "display":"Utah"
+                     },
+                     {
+                        "code":"VA",
+                        "display":"Virginia"
+                     },
+                     {
+                        "code":"VI",
+                        "display":"Virgin Islands of the U.S."
+                     },
+                     {
+                        "code":"VT",
+                        "display":"Vermont"
+                     },
+                     {
+                        "code":"WA",
+                        "display":"Washington"
+                     },
+                     {
+                        "code":"WI",
+                        "display":"Wisconsin"
+                     },
+                     {
+                        "code":"WV",
+                        "display":"West Virginia"
+                     },
+                     {
+                        "code":"WY",
+                        "display":"Wyoming"
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   ],
+   "item":[
+      {
+         "linkId":"1",
+         "text":"Beneficiary Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"1.1",
+               "text":"Beneficiary Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryName"
+                  }
+               ]
+            },
+            {
+               "linkId":"1.2",
+               "text":"Beneficiary Date Of Birth",
+               "type":"date",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryDateOfBirth"
+                  }
+               ]
+            },
+            {
+               "linkId":"1.3",
+               "text":"Beneficiary Gender",
+               "type":"choice",
+               "required":true,
+               "options":{
+                  "reference":"#gender"
+               },
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryGender"
+                  }
+               ]
+            },
+            {
+               "linkId":"1.4",
+               "text":"Beneficiary Medicare Number",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryMedicareNumber"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"2",
+         "text":"Certifying Physician/Practitioner Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"2.1",
+               "text":"Physician/Practitioner Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerName"
+                  }
+               ]
+            },
+            {
+               "linkId":"2.2",
+               "text":"Physician/Practitioner NPI",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerNPI"
+                  }
+               ]
+            },
+            {
+               "linkId":"2.3",
+               "text":"Physician/Practitioner PTAN",
+               "type":"string",
+               "required":false,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerPTAN"
+                  }
+               ]
+            },
+            {
+               "linkId":"2.4",
+               "text":"Physician/Practitioner Address",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerAddress"
+                  }
+               ]
+            },
+            {
+               "linkId":"2.5",
+               "text":"Physician/Practitioner Telephone",
+               "type":"string",
+               "required":false,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerTelephone"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"3",
+         "text":"Ambulance Supplier Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"3.1",
+               "text":"Ambulance Supplier Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"AmbulanceSupplierName"
+                  }
+               ]
+            },
+            {
+               "linkId":"3.2",
+               "text":"Ambulance Supplier NPI",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"AmbulanceSupplierNPI"
+                  }
+               ]
+            },
+            {
+               "linkId":"3.4",
+               "text":"Ambulance Supplier PTAN",
+               "type":"string",
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"AmbulanceSupplierPTAN"
+                  }
+               ]
+            },
+            {
+               "linkId":"3.5",
+               "text":"Ambulance Supplier Address",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"AmbulanceSupplierAddress"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"4",
+         "text":"Requestor Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"4.1",
+               "text":"Contact Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"RequestorName"
+                  }
+               ]
+            },
+            {
+               "linkId":"4.2",
+               "text":"Telephone Number",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"RequestorTelephone"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"5",
+         "text":"Other Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"5.1",
+               "text":"Number of transports requested in a 60-day period",
+               "type":"integer",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"NumofTransports"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.2",
+               "text":"Submission Date",
+               "type":"date",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"SubmissionDate"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.3",
+               "text":"Start Date",
+               "type":"date",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"StartDate"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.4",
+               "text":"Type of request",
+               "type":"open-choice",
+               "required":true,
+               "option":[
+                  {
+                     "valueCoding":{
+                        "code":"Initial"
+                     },
+			"initialSelected":true
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Resubmission review"
+                     }
+                  }
+               ],
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"Typeofrequest"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.5",
+               "text":"Is the request expedited?",
+               "type":"boolean",
+               "required":true
+            },
+            {
+               "linkId":"5.6",
+               "text":"Reason for the request to be expedited",
+               "type":"string",
+               "required":true,
+               "enableWhen":[
+                  {
+                     "question":"5.6",
+                     "answerBoolean":true
+                  }
+               ],
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"ReasonExpeditedRequest"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.7",
+               "text":"State where the ambulance is garaged",
+               "type":"open-choice",
+               "required":true,
+               "options":{
+                  "reference":"#states"
+               },
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"state"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.8",
+               "text":"Transport from: ",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"TransportFrom"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.9",
+               "text":"Transport to: ",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"TransportTo"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"6",
+         "text":"Coverage Requirements",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"6.1",
+               "text":"Is the beneficiary suffering from a medical condition such that other means of transportation are contraindicated? If yes, a documented proof needs to be attached",
+               "type":"boolean",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"TransportContraindicated"
+                  }
+               ]
+            },
+            {
+               "linkId":"6.2",
+               "text":"Is the beneficiary’s medical condition, regardless of bed confinement, is such that transportation by ambulance is medically required?",
+               "type":"boolean",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"MedicallyRequired"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"7",
+         "text":"Physician Certification Statement",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"7.1",
+               "text":"Round trip",
+               "type":"boolean",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"RoundTrip"
+                  }
+               ]
+            },
+            {
+               "linkId":"7.2",
+               "text":"Purpose of transport [service(s) that cannot be provided in the current setting]",
+               "type":"open-choice",
+               "required":true,
+               "repeats":true,
+               "option":[
+                  {
+                     "valueCoding":{
+                        "code":"Dialysis"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Wound care"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Radiation therapy"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Chemotherapy"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"O&P services"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Imaging"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Bed confined (Unable to ambulate, Unable to get out of bed without assistance, Unable to safely sit in a chair or wheelchair)"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Unable to maintain erect sitting position in a chair for time needed to transport, due to moderate muscular weakness and de-conditioning"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Risk of falling off wheelchair or stretcher while in motion (not related to obesity)"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Non-healed fractures requiring ambulance"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Contractures that impair mobility and result in bed confinement"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Incapacitating Osteoarthritis"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Severe muscular weakness and de-conditioned state precludes any significant physical activity"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Orthopedic device required in transit"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Amputation(s)"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"CVA with sequelae (late effect of CVA) that impair mobility and result in be confinement"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"DVT requires elevation of lower extremity"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Spinal Cord Injury – Paralysis"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Progressive demyelinating disease"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Moderate to severe pain on movement"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Unable to sit in chair or wheelchair due to Grade II or greater decubitus ulcers on buttocks"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Chronic wounds requiring immobilization"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Morbid obesity requires additional personnel/equipment to handle"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Third party attendant required to regulate or adjust oxygen en route"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Special handling en route – isolation"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"IV medications/fluids required during transport"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Restraints (physical or chemical) anticipated or used during transport"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Danger to self or others"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Confused, combative, lethargic, comatose"
+                     }
+                  }
+               ],
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"RelevantDiagnoses"
+                  }
+               ]
+            },
+            {
+               "linkId":"7.3",
+               "text":"Other reason(s) that non-emergency ground transport by ambulance is required",
+               "type":"string",
+               "required":false
+            }
+         ]
+      },
+      {
+         "linkId":"8",
+         "text":"Additional Documentation Required",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"8.1",
+               "text":"Physician Certification Statement",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"LP74233-5",
+                        "display":"Physician certification statement"
+                     },
+                     {
+                        "system":"http://loinc.org",
+                        "code":"52016-3",
+                        "display":"Ambulance transport, Physician certification for transport statement (narrative)"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"8.2",
+               "text":"Documentation from the medical record to support the medical necessity of repetitive, scheduled non-emergent ambulance transport",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"11503-0",
+                        "display":"Medical records"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"8.3",
+               "text":"Information on the origin and destination of the transports",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"52000-7",
+                        "display":"Ambulance transport, Origination site latitude"
+                     },
+                     {
+                        "system":"http://loinc.org",
+                        "code":"15512-7",
+                        "display":"Ambulance transport, Destination site information Set"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"8.4",
+               "text":"Any other relevant document as deemed necessary by the MAC to process the prior authorization",
+               "type":"attachment",
+               "required":false
+            }
+         ]
+      }
+   ]
+}

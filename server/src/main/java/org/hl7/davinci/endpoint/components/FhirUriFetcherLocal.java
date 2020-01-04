@@ -14,31 +14,39 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("localDb")
 public class FhirUriFetcherLocal implements FhirUriFetcher {
-  private static Logger logger = Logger.getLogger(Application.class.getName());
 
+    private static Logger logger = Logger.getLogger(Application.class.getName());
 
-  YamlConfig config;
+    YamlConfig config;
 
-  @Autowired
-  public FhirUriFetcherLocal(YamlConfig yamlConfig) {
-    config = yamlConfig;
-  }
-
-  public Resource fetch(String fhirUri){
-    if (!fhirUri.startsWith("urn:hl7:davinci:crd:")){
-      //TODO: eventually this should support other fhir uri/url, it could just fetch them in json format and return them
-      return null;
+    @Autowired
+    public FhirUriFetcherLocal(YamlConfig yamlConfig) {
+        config = yamlConfig;
     }
-    fhirUri = fhirUri.replace("urn:hl7:davinci:crd:","");
-    if (!fhirUri.endsWith(".json")) {
-      fhirUri = fhirUri + ".json";
-    }
-    File file = Paths.get(config.getLocalDbFhirArtifacts(),fhirUri).toFile();
-    if (!file.exists()){
-      return null;
-    }
-    return new FileSystemResource(file);
-  }
 
+    public Resource fetch(String fhirUri) {
+        if (!fhirUri.startsWith("urn:hl7:davinci:crd:")) {
+            //TODO: eventually this should support other fhir uri/url, it could just fetch them in json format and return them
+            return null;
+        }
+        String path = config.getLocalDbFhirArtifacts();
+        fhirUri = fhirUri.replace("urn:hl7:davinci:crd:", "");
+        if (fhirUri.contains(":")) {
+            String[] arrOfStr = fhirUri.split(":");
+// for (int i=0; i < arrOfStr.length; i++){
+// System.out.println("loop---------------"+arrOfStr[i]);
+// }
+            fhirUri = arrOfStr[1];
+            path = path + "/" + arrOfStr[0];
+        }
+        if (!fhirUri.endsWith(".json")) {
+            fhirUri = fhirUri + ".json";
+        }
+        File file = Paths.get(path, fhirUri).toFile();
+        if (!file.exists()) {
+            return null;
+        }
+        return new FileSystemResource(file);
+    }
 
 }

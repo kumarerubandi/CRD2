@@ -36,9 +36,19 @@ public class YamlConfig {
   private String localDbRules;
 
   private String localDbFhirArtifacts;
+  
+  private String cdsServer;
 
   public String getLocalDbFhirArtifacts() {
     return localDbFhirArtifacts;
+  }
+  
+  public String getCdsServer() {
+      return cdsServer;
+  }
+  
+  public void setCdsServer(String cdsServer) {
+      this.cdsServer = cdsServer;
   }
 
   public void setLocalDbFhirArtifacts(String localDbFhirArtifacts) {
@@ -77,6 +87,8 @@ public class YamlConfig {
   public boolean isAppendParamsToSmartLaunchUrl() {
     return appendParamsToSmartLaunchUrl;
   }
+  
+  
 
   public YamlConfig setAppendParamsToSmartLaunchUrl(boolean appendParamsToSmartLaunchUrl) {
     this.appendParamsToSmartLaunchUrl = appendParamsToSmartLaunchUrl;

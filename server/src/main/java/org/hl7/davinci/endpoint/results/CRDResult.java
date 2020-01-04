@@ -99,7 +99,7 @@ public class CRDResult {
                if (org != null) {
                    String oid = org.getId();
                    oid = oid.substring(13);
-                   newAppContext.put("payerName", oid);
+                   newAppContext.put("payerName", "united_health_care");
                }
                newAppContext.put("prior_auth",cdsResult.get("prior_auth"));
 	       newAppContext.put("template","urn:hl7:davinci:crd:"+cdsResult.get("template"));

@@ -102,8 +102,8 @@ public class CardBuilder {
 
 
     card.setLinks(Arrays.asList(link));
-    card.setSummary(cqlResults.getSummary());
-    card.setDetail(cqlResults.getDetails());
+    card.setSummary("");
+    card.setDetail("");
     return card;
   }
 
@@ -116,7 +116,7 @@ public class CardBuilder {
    */
   public static Card transform(CqlResultsForCard cqlResults, Link smartAppLaunchLink) {
     Card card = transform(cqlResults);
-    List<Link> links = new ArrayList<Link>(card.getLinks());
+    List<Link> links = new ArrayList<Link>();
     links.add(smartAppLaunchLink);
     card.setLinks(links);
     return card;

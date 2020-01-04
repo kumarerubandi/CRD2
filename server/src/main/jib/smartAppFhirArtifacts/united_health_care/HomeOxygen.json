@@ -11,13 +11,13 @@
   "subjectType": [
     "Patient"
   ],
-  "date": "2019-03-11",
-  "publisher": "Da Vinci DTR",
+  "date": "2019-12-23",
+  "publisher": "Mettle Solutions",
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/cqif-library",
       "valueReference": {
-        "reference": "urn:hl7:davinci:crd:library-oxygen-therapy-prepopulate"
+        "reference": "urn:hl7:davinci:crd:united_health_care:library-home-oxygen-prepopulate"
       }
     }
   ],
@@ -52,154 +52,103 @@
   ],
   "item": [
     {
-      "linkId": "1",
-      "text": "Patient Information",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "1.1",
-          "text": "Last Name but Different This Time",
-          "type": "string",
-          "required": true,
-          "extension": [
+         "linkId":"1",
+         "text":"Beneficiary Information",
+         "type":"group",
+         "item":[
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "PatientLastName"
-            }
-          ]
-        },
-        {
-          "linkId": "1.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
+               "linkId":"1.1",
+               "text":"Beneficiary’s Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryName"
+                  }
+               ]
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "PatientFirstName"
-            }
-          ]
-        },
-        {
-          "linkId": "1.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true,
-          "extension": [
+               "linkId":"1.2",
+               "text":"Beneficiary’s Date Of Birth",
+               "type":"date",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryDateOfBirth"
+                  }
+               ]
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "PatientMiddleInitial"
+               "linkId":"1.3",
+               "text":"Beneficiary’s Identification Number",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryIdentificationNumber"
+                  }
+               ]
             }
-          ]
-        },
-        {
-          "linkId": "1.4",
-          "text": "Date Of Birth",
-          "type": "date",
-          "required": true,
-          "extension": [
+         ]
+      },
+      {
+         "linkId":"2",
+         "text":"Certifying Physician/Practitioner Information",
+         "type":"group",
+         "item":[
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "PatientDateOfBirth"
-            }
-          ]
-        },
-        {
-          "linkId": "1.5",
-          "text": "Gender",
-          "type": "choice",
-          "required": true,
-          "options": {
-            "reference": "#gender"
-          },
-          "extension": [
+               "linkId":"2.1",
+               "text":"Physician/Practitioner’s Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerName"
+                  }
+               ]
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "PatientGender"
-            }
-          ]
-        },
-        {
-          "linkId": "1.6",
-          "text": "Medicare ID",
-          "type": "string",
-          "required": true,
-          "extension": [
+               "linkId":"2.2",
+               "text":"Physician/Practitioner’s NPI",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerNPI"
+                  }
+               ]
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "PatientMedicareId"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "linkId": "2",
-      "text": "Provider who is performing face-to-face evaluation",
-      "type": "group",
-      "item": [
-        {
-          "linkId": "2.1",
-          "text": "Last Name",
-          "type": "string",
-          "required": true,
-          "extension": [
+               "linkId":"2.3",
+               "text":"Physician/Practitioner PTAN",
+               "type":"string",
+               "required":false,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerPTAN"
+                  }
+               ]
+            },
             {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "OrderingProviderLastName"
+               "linkId":"2.4",
+               "text":"Physician/Practitioner’s Address",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerAddress"
+                  }
+               ]
             }
-          ]
-        },
-        {
-          "linkId": "2.2",
-          "text": "First Name",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "OrderingProviderFirstName"
-            }
-          ]
-        },
-        {
-          "linkId": "2.3",
-          "text": "Middle Initial",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "OrderingProviderMiddleInitial"
-            }
-          ]
-        },
-        {
-          "linkId": "2.4",
-          "text": "NPI",
-          "type": "string",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "OrderingProviderNPI"
-            }
-          ]
-        },
-        {
-          "linkId": "2.5",
-          "text": "Date of Face-To-Face Evaluation",
-          "type": "date",
-          "required": true,
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-              "valueString": "Today"
-            }
-          ]
-        }
-      ]
-    },
+         ]
+      },
     {
       "linkId": "3",
       "text": "Coverage Requirements",
@@ -268,7 +217,7 @@
         {
           "linkId": "3.2",
           "text": "Arterial oxygen saturation (Patient on room air while at rest and awake when tested)",
-          "type": "quantity",
+          "type": "string",
           "required": false,
           "extension": [
             {
@@ -280,7 +229,7 @@
         {
           "linkId": "3.3",
           "text": "Arterial Partial Pressure of Oxygen (PO2) (Patient on room air while at rest and awake when tested)",
-          "type": "quantity",
+          "type": "string",
           "required": false,
           "extension": [
             {
@@ -292,7 +241,7 @@
         {
           "linkId": "3.4",
           "text": "Arterial oxygen saturation (Patient tested during exercise)",
-          "type": "quantity",
+          "type": "string",
           "required": false,
           "extension": [
             {
@@ -304,7 +253,7 @@
         {
           "linkId": "3.5",
           "text": "Arterial Partial Pressure of Oxygen (PO2) (Patient tested during exercise)",
-          "type": "quantity",
+          "type": "string",
           "required": false
         },
         {
@@ -385,7 +334,7 @@
         {
           "linkId": "3.11",
           "text": "Recent hematocrit result",
-          "type": "quantity",
+          "type": "string",
           "required": false,
           "enableWhen": [
             {
@@ -447,7 +396,7 @@
         {
           "linkId": "4.4b",
           "text": "Since > 4 LPM prescribed, enter arterial oxygen saturation or PO2 while patient was on 4 LPM in stable state.",
-          "type": "quantity",
+          "type": "string",
           "required": true,
           "enableWhen": [
             {
@@ -651,65 +600,10 @@
               }
             }
           ]
-        },
-        {
-          "linkId": "5.6",
-          "text": "Reason for Revision or change in equipment",
-          "type": "open-choice",
-          "required": true,
-          "enableWhen": [
-            {
-              "question": "5.4",
-              "answerCoding": {
-                "code": "Revision or change in equipment"
-              }
-            }
-          ],
-          "option": [
-            {
-              "valueCoding": {
-                "code": "New Physician order"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Beneficiary requested upgrade with signed ABN"
-              }
-            }
-          ]
-        },
-        {
-          "linkId": "5.7",
-          "text": "Reason for Replacement",
-          "type": "open-choice",
-          "required": true,
-          "enableWhen": [
-            {
-              "question": "5.4",
-              "answerCoding": {
-                "code": "Replacement"
-              }
-            }
-          ],
-          "option": [
-            {
-              "valueCoding": {
-                "code": "Lost or stolen"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "End of lifetime"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "Repair exceeds 60% of cost"
-              }
-            }
-          ]
         }
       ]
     }
   ]
 }
+
+

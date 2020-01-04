@@ -1,0 +1,327 @@
+{
+   "resourceType":"Questionnaire",
+   "id":"urn:hl7:davinci:crd:bariatric-surgery-questionnaire",
+   "meta":{
+      "profile":[
+         "http://hl7.org/fhir/StructureDefinition/cqif-questionnaire"
+      ]
+   },
+   "title":"Bariatric Surgery",
+   "status":"draft",
+   "subjectType":[
+      "Patient"
+   ],
+   "date":"2019-12-03",
+   "publisher":"Mettle Solutions",
+   "extension":[
+      {
+         "url":"http://hl7.org/fhir/StructureDefinition/cqif-library",
+         "valueReference":{
+            "reference":"urn:hl7:davinci:crd:united_health_care:library-bariatric-surgery-prepopulate"
+         }
+      }
+   ],
+   "contained":[
+      {
+         "resourceType":"ValueSet",
+         "id":"gender",
+         "name":"Gender",
+         "status":"draft",
+         "description":"Gender",
+         "compose":{
+            "include":[
+               {
+                  "concept":[
+                     {
+                        "code":"male",
+                        "display":"Male"
+                     },
+                     {
+                        "code":"female",
+                        "display":"Female"
+                     },
+                     {
+                        "code":"other",
+                        "display":"Other"
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   ],
+   "item":[
+      {
+         "linkId":"1",
+         "text":"Beneficiary Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"1.1",
+               "text":"Beneficiary’s Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryName"
+                  }
+               ]
+            },
+            {
+               "linkId":"1.2",
+               "text":"Beneficiary’s Date Of Birth",
+               "type":"date",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryDateOfBirth"
+                  }
+               ]
+            },
+            {
+               "linkId":"1.3",
+               "text":"Beneficiary’s Identification Number",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"BeneficiaryMedicareNumber"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"2",
+         "text":"Certifying Physician/Practitioner Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"2.1",
+               "text":"Physician/Practitioner’s Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerName"
+                  }
+               ]
+            },
+            {
+               "linkId":"2.2",
+               "text":"Physician/Practitioner’s NPI",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerNPI"
+                  }
+               ]
+            },
+            {
+               "linkId":"2.3",
+               "text":"Physician/Practitioner PTAN",
+               "type":"string",
+               "required":false,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PractitionerPTAN"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"3",
+         "text":"Additional Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"3.1",
+               "text":"Body Mass Index(kg/m2)",
+               "type":"integer",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"39156-5",
+                        "display":"BMI"
+                     }
+                  ]
+               },
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"PatientBMI"
+                  }
+               ]
+            },
+            {
+               "linkId":"3.2",
+               "text":"Co-morbidities",
+               "type":"open-choice",
+               "required":true,
+		"repeats":true,
+               "option":[
+                  {
+                     "valueCoding":{
+                        "code":"Cardiac disease"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Respiratory disease"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Diabetes"
+                     }
+                  },
+                  {
+                     "valueCoding":{
+                        "code":"Hypertension"
+                     }
+                  }
+               ],
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"Co-morbidities"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "linkId":"4",
+         "text":"Additional Documentation Required",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"4.1",
+               "text":"Physician certification statement (LP74233-5,LP74233-5)",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"LP74233-5",
+                        "display":"Physician certification statement"
+                     },
+                     {
+                        "system":"http://loinc.org",
+                        "code":"11505-5",
+                        "display":"Physician procedure note"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"4.2",
+               "text":"Targeted history and physical note (34138-8)",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"34138-8",
+                        "display":"Targeted history and physical note"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"4.3",
+               "text":"Psychology Initial evaluation note (18738-5)",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"18738-5",
+                        "display":"Psychology Initial evaluation note"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"4.4",
+               "text":"Bariatric surgery Progress note (85515-5)",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"85515-5",
+                        "display":"Bariatric surgery Progress note"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"4.5",
+               "text":"Nutrition and dietetics Progress note (78481-9)",
+               "type":"attachment",
+               "required":true,
+               "code":{
+                  "coding":[
+                     {
+                        "system":"http://loinc.org",
+                        "code":"78481-9",
+                        "display":"Nutrition and dietetics Progress note"
+                     }
+                  ]
+               }
+            },
+            {
+               "linkId":"4.6",
+               "text":"Any other relevant document as deemed necessary by the MAC to process the prior authorization",
+               "type":"attachment",
+               "required":false
+            }
+         ]
+      },
+      {
+         "linkId":"5",
+         "text":"Submitter Information",
+         "type":"group",
+         "item":[
+            {
+               "linkId":"5.1",
+               "text":"Contact Name",
+               "type":"string",
+               "required":true,
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"SubmitterName"
+                  }
+               ]
+            },
+            {
+               "linkId":"5.2",
+               "text":"Telephone Number",
+               "type":"string",
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"SubmitterTelephone"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

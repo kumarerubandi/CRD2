@@ -1,0 +1,78 @@
+{
+  "resourceType": "Library",
+  "id": "urn:hl7:davinci:crd:library-ambulatory-transport-prepopulate",
+  "version": "0.0.1",
+  "title": "Ambulatory Transport Prepopulation",
+  "status": "draft",
+  "type": {
+    "coding": [
+      {
+        "code": "logic-library"
+      }
+    ]
+  },
+  "relatedArtifact": [
+    {
+      "type": "depends-on",
+      "resource": {
+        "reference": "urn:hl7:davinci:crd:library-fhir-helpers"
+      }
+    }
+  ],
+  "content": [
+    {
+      "contentType": "application/elm+json",
+      "url": "urn:hl7:davinci:crd:AmbulatoryTransportPrepopulation.json"
+    }
+  ],
+  "dataRequirement": [ {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSetString": "A0426"
+        }
+      ]
+    },
+    {
+      "type": "Procedure",
+      "codeFilter": [
+        {
+          "path": "code",
+          "valueSetString": "A0428"
+        }
+      ]
+    }, {
+      "type": "Practitioner"
+    },
+	{
+      "type": "Practitioner",
+      "codeFilter": [
+        {
+          "path": "identifier",
+          "valueSetString": "1932102951"
+        }
+      ]
+    },
+    {
+      "type": "Organization"
+    },
+	{
+      "type": "Condition"
+    },
+	{
+      "type": "Location"
+    },
+	{
+      "type": "Observation"
+    },
+{
+      "type": "SupplyRequest",
+       "codeFilter": [
+        {
+          "path": "requester",
+          "valueSetString": "Patient.id"
+        }
+      ]
+    }]
+}

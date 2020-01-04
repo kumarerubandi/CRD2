@@ -1,0 +1,3304 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "startLine": 3,
+                "startChar": 1,
+                "endLine": 3,
+                "endChar": 54,
+                "message": "Could not load source for library FHIRHelpers, version 3.0.0.",
+                "errorType": "include",
+                "errorSeverity": "error",
+                "targetIncludeLibraryId": "FHIRHelpers",
+                "targetIncludeLibraryVersionId": "3.0.0",
+                "type": "CqlToElmError"
+            }
+        ],
+        "identifier": {
+            "id": "HomeHealthService"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "Measurement Period",
+                    "accessLevel": "Public",
+                    "parameterTypeSpecifier": {
+                        "type": "IntervalTypeSpecifier",
+                        "pointType": {
+                            "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                            "type": "NamedTypeSpecifier"
+                        }
+                    }
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ICD-10-CM",
+                    "id": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "HCPCS",
+                    "id": "https://hcpcs.codes/",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMED-CT",
+                    "id": "http://snomed.info/sct",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "CPT",
+                    "id": "https://www.aapc.com/resources/medical-coding/cpt.aspx",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "NUCCPT",
+                    "id": "https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/NUCCPT/sourcerepresentation.html",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "Z74.0",
+                    "id": "Z74.0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "Z74.01",
+                    "id": "Z74.01",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "Z74.8",
+                    "id": "Z74.8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "Z99.8",
+                    "id": "Z99.8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "305524001",
+                    "id": "305524001",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "99377",
+                    "id": "99377",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                },
+                {
+                    "name": "99354",
+                    "id": "99354",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                },
+                {
+                    "name": "99355",
+                    "id": "99355",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                },
+                {
+                    "name": "99356",
+                    "id": "99356",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                },
+                {
+                    "name": "99357",
+                    "id": "99357",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "CPT"
+                    }
+                },
+                {
+                    "name": "364SH0200X",
+                    "id": "364SH0200X",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "NUCCPT"
+                    }
+                },
+                {
+                    "name": "385781007",
+                    "id": "385781007",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "G0151",
+                    "id": "G0151",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "45397-7",
+                    "id": "45397-7",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "45952-9",
+                    "id": "45952-9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "46456-0",
+                    "id": "46456-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "65833-6",
+                    "id": "65833-6",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "G0152",
+                    "id": "G0152",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0153",
+                    "id": "G0153",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0155",
+                    "id": "G0155",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0156",
+                    "id": "G0156",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0157",
+                    "id": "G0157",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0158",
+                    "id": "G0158",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0159",
+                    "id": "G0159",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0160",
+                    "id": "G0160",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0161",
+                    "id": "G0161",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0162",
+                    "id": "G0162",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0299",
+                    "id": "G0299",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0300",
+                    "id": "G0300",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0493",
+                    "id": "G0493",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0494",
+                    "id": "G0494",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0495",
+                    "id": "G0495",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                },
+                {
+                    "name": "G0496",
+                    "id": "G0496",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "HCPCS"
+                    }
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "F2FEncounterCodes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "99354",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "99355",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "99356",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "99357",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "HomeHealthCareCodes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "385781007",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0151",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0152",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0153",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0155",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0156",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0157",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0158",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0159",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0160",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0161",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0162",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0299",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0300",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0493",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0494",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0495",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "G0496",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "HomeHealthCare",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "procedure",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Procedure",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "In",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "code",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Indexer",
+                                                "operand": [
+                                                    {
+                                                        "path": "coding",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "code",
+                                                            "scope": "procedure",
+                                                            "type": "Property"
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "0",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "HomeHealthCareCodes",
+                                        "type": "ExpressionRef"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Today",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Today"
+                    }
+                },
+                {
+                    "name": "Practitioner",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "practitioner",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Practitioner",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Practitioner/",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "id",
+                                                    "scope": "practitioner",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "reference",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "actor",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "path": "performer",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "HomeHealthCare",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Agency",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "agency",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Organization",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Organization/",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "id",
+                                                    "scope": "agency",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "reference",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "onBehalfOf",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "path": "performer",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "HomeHealthCare",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Episode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "e",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}EpisodeOfCare",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "And",
+                                "operand": [
+                                    {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "reference",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "patient",
+                                                        "scope": "e",
+                                                        "type": "Property"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "Patient/",
+                                                        "type": "Literal"
+                                                    },
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "id",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "Patient",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "code",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "type": "Indexer",
+                                                        "operand": [
+                                                            {
+                                                                "path": "coding",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "type",
+                                                                            "scope": "e",
+                                                                            "type": "Property"
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                "value": "0",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "hacc",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "FHIRQueries",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=385781007",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0151",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0152",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0153",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0155",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0156",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0157",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0158",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0159",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0160",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0161",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0162",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0299",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0300",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0493",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0494",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0495",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "Procedure?code=G0496",
+                                "type": "Literal"
+                            },
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "Practitioner/",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "id",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Practitioner",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "Organization/",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "id",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Agency",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "EpisodeOfCare/",
+                                        "type": "Literal"
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "id",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Episode",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "BeneficiaryNameObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "name",
+                                    "expression": {
+                                        "path": "name",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Patient",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "use",
+                                            "scope": "name",
+                                            "type": "Property"
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "official",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PatientFirstName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "type": "Indexer",
+                            "operand": [
+                                {
+                                    "path": "given",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "BeneficiaryNameObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GetMiddleInitials",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Substring",
+                        "stringToSub": {
+                            "type": "Combine",
+                            "source": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "given",
+                                        "expression": {
+                                            "path": "given",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "name",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "return": {
+                                    "expression": {
+                                        "type": "Substring",
+                                        "stringToSub": {
+                                            "path": "value",
+                                            "scope": "given",
+                                            "type": "Property"
+                                        },
+                                        "startIndex": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "0",
+                                            "type": "Literal"
+                                        },
+                                        "length": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                }
+                            },
+                            "separator": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": ", ",
+                                "type": "Literal"
+                            }
+                        },
+                        "startIndex": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "3",
+                            "type": "Literal"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "name",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}HumanName",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "PatientMiddleInitial",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Greater",
+                                "operand": [
+                                    {
+                                        "type": "Length",
+                                        "operand": {
+                                            "path": "given",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "BeneficiaryNameObject",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        },
+                        "then": {
+                            "name": "GetMiddleInitials",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "BeneficiaryNameObject",
+                                    "type": "ExpressionRef"
+                                }
+                            ]
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "PatientLastName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "family",
+                            "type": "Property",
+                            "source": {
+                                "name": "BeneficiaryNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "BeneficiaryName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "name": "PatientFirstName",
+                                                        "type": "ExpressionRef"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": " ",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "PatientMiddleInitial",
+                                                "type": "ExpressionRef"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": " ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "PatientLastName",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "BeneficiaryGender",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "gender",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "BeneficiaryDateOfBirth",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "birthDate",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "BeneficiaryMedicareNumber",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "scope": "identifier",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org/fhir/sid/us-medicare",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerNameObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "path": "name",
+                            "type": "Property",
+                            "source": {
+                                "name": "Practitioner",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerFirstName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "type": "Indexer",
+                            "operand": [
+                                {
+                                    "path": "given",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "PractitionerNameObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerLastName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "family",
+                            "type": "Property",
+                            "source": {
+                                "name": "PractitionerNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "name": "PractitionerFirstName",
+                                        "type": "ExpressionRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": " ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "PractitionerLastName",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PractitionerMiddleInitial",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "GetMiddleInitials",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "name": "PractitionerNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PractitionerNPI",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Practitioner",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "scope": "identifier",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org/fhir/sid/us-npi",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerPTAN",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Practitioner",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "system",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "type": "Indexer",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "coding",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "type",
+                                                                            "scope": "identifier",
+                                                                            "type": "Property"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                        "value": "0",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "code",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "type": "Indexer",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "coding",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "type",
+                                                                            "scope": "identifier",
+                                                                            "type": "Property"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                        "value": "0",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "PRN",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerAddressObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "address",
+                                    "expression": {
+                                        "path": "address",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Practitioner",
+                                            "type": "ExpressionRef"
+                                        }
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "use",
+                                            "scope": "address",
+                                            "type": "Property"
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "home",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerAddress",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "type": "Concatenate",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Concatenate",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "value",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "line",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "name": "PractitionerAddressObject",
+                                                                                        "type": "ExpressionRef"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                        "value": ", ",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "path": "value",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "city",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "name": "PractitionerAddressObject",
+                                                                        "type": "ExpressionRef"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": ", ",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "state",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "PractitionerAddressObject",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": ", ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "postalCode",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "PractitionerAddressObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "AgencyName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "name",
+                            "type": "Property",
+                            "source": {
+                                "name": "Agency",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "AgencyNPI",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Agency",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "scope": "identifier",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org/fhir/sid/us-npi",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "AgencyPTAN",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Agency",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "system",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "type": "Indexer",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "coding",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "type",
+                                                                            "scope": "identifier",
+                                                                            "type": "Property"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                        "value": "0",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "code",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "type": "Indexer",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "coding",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "type",
+                                                                            "scope": "identifier",
+                                                                            "type": "Property"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                        "value": "0",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "PRN",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "CMSCertificationNumber",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Agency",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "system",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "type": "Indexer",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "coding",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "type",
+                                                                            "scope": "identifier",
+                                                                            "type": "Property"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                        "value": "0",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "code",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "type": "Indexer",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "coding",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "type",
+                                                                            "scope": "identifier",
+                                                                            "type": "Property"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                        "value": "0",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "AC",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "AgencyAddressObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "path": "address",
+                            "type": "Property",
+                            "source": {
+                                "name": "Agency",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "AgencyAddress",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "type": "Concatenate",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Concatenate",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "value",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "line",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "name": "AgencyAddressObject",
+                                                                                        "type": "ExpressionRef"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                        "value": ", ",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "path": "value",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "city",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "name": "AgencyAddressObject",
+                                                                        "type": "ExpressionRef"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": ", ",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "state",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "AgencyAddressObject",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": ", ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "postalCode",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "AgencyAddressObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SubmissionDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "Today",
+                        "type": "ExpressionRef"
+                    }
+                },
+                {
+                    "name": "StartDateEpisode",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "start",
+                            "type": "Property",
+                            "source": {
+                                "path": "period",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Episode",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "EndDate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "end",
+                            "type": "Property",
+                            "source": {
+                                "path": "period",
+                                "type": "Property",
+                                "source": {
+                                    "name": "Episode",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "state",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "state",
+                            "type": "Property",
+                            "source": {
+                                "type": "Indexer",
+                                "operand": [
+                                    {
+                                        "path": "address",
+                                        "type": "Property",
+                                        "source": {
+                                            "name": "Patient",
+                                            "type": "ExpressionRef"
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "0",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "StartDateService",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "start",
+                            "type": "Property",
+                            "source": {
+                                "path": "performed",
+                                "type": "Property",
+                                "source": {
+                                    "name": "HomeHealthCare",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "InabilityToLeaveHome",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "And",
+                                "operand": [
+                                    {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "And",
+                                                "operand": [
+                                                    {
+                                                        "type": "Exists",
+                                                        "operand": {
+                                                            "type": "Query",
+                                                            "source": [
+                                                                {
+                                                                    "alias": "A",
+                                                                    "expression": {
+                                                                        "dataType": "{http://hl7.org/fhir}Observation",
+                                                                        "type": "Retrieve"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "relationship": [],
+                                                            "where": {
+                                                                "type": "And",
+                                                                "operand": [
+                                                                    {
+                                                                        "type": "Equal",
+                                                                        "operand": [
+                                                                            {
+                                                                                "path": "value",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "path": "code",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "type": "Indexer",
+                                                                                        "operand": [
+                                                                                            {
+                                                                                                "path": "coding",
+                                                                                                "type": "Property",
+                                                                                                "source": {
+                                                                                                    "path": "code",
+                                                                                                    "scope": "A",
+                                                                                                    "type": "Property"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                                "value": "0",
+                                                                                                "type": "Literal"
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                                "value": "Z74.0",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "Equal",
+                                                                        "operand": [
+                                                                            {
+                                                                                "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                                "type": "As",
+                                                                                "operand": {
+                                                                                    "path": "value",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "value",
+                                                                                        "scope": "A",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                                "value": "true",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "Exists",
+                                                        "operand": {
+                                                            "type": "Query",
+                                                            "source": [
+                                                                {
+                                                                    "alias": "B",
+                                                                    "expression": {
+                                                                        "dataType": "{http://hl7.org/fhir}Observation",
+                                                                        "type": "Retrieve"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "relationship": [],
+                                                            "where": {
+                                                                "type": "And",
+                                                                "operand": [
+                                                                    {
+                                                                        "type": "Equal",
+                                                                        "operand": [
+                                                                            {
+                                                                                "path": "value",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "path": "code",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "type": "Indexer",
+                                                                                        "operand": [
+                                                                                            {
+                                                                                                "path": "coding",
+                                                                                                "type": "Property",
+                                                                                                "source": {
+                                                                                                    "path": "code",
+                                                                                                    "scope": "B",
+                                                                                                    "type": "Property"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                                "value": "0",
+                                                                                                "type": "Literal"
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                                "value": "Z74.01",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "Equal",
+                                                                        "operand": [
+                                                                            {
+                                                                                "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                                "type": "As",
+                                                                                "operand": {
+                                                                                    "path": "value",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "value",
+                                                                                        "scope": "B",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                                "value": "true",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "Exists",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "C",
+                                                            "expression": {
+                                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                                "type": "Retrieve"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "And",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Equal",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "value",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "path": "code",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "type": "Indexer",
+                                                                                "operand": [
+                                                                                    {
+                                                                                        "path": "coding",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "path": "code",
+                                                                                            "scope": "C",
+                                                                                            "type": "Property"
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                        "value": "0",
+                                                                                        "type": "Literal"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                        "value": "Z74.8",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "Equal",
+                                                                "operand": [
+                                                                    {
+                                                                        "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                        "type": "As",
+                                                                        "operand": {
+                                                                            "path": "value",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "value",
+                                                                                "scope": "C",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                        "value": "true",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "D",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Observation",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "And",
+                                                "operand": [
+                                                    {
+                                                        "type": "Equal",
+                                                        "operand": [
+                                                            {
+                                                                "path": "value",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "code",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "type": "Indexer",
+                                                                        "operand": [
+                                                                            {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "path": "code",
+                                                                                    "scope": "D",
+                                                                                    "type": "Property"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                "value": "0",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                "value": "Z99.8",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Equal",
+                                                        "operand": [
+                                                            {
+                                                                "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                "type": "As",
+                                                                "operand": {
+                                                                    "path": "value",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "value",
+                                                                        "scope": "D",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                "value": "true",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "false",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "UnderCare",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "And",
+                                "operand": [
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "E",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Observation",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "And",
+                                                "operand": [
+                                                    {
+                                                        "type": "Equal",
+                                                        "operand": [
+                                                            {
+                                                                "path": "value",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "code",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "type": "Indexer",
+                                                                        "operand": [
+                                                                            {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "path": "code",
+                                                                                    "scope": "E",
+                                                                                    "type": "Property"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                "value": "0",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                "value": "99377",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Equal",
+                                                        "operand": [
+                                                            {
+                                                                "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                "type": "As",
+                                                                "operand": {
+                                                                    "path": "value",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "value",
+                                                                        "scope": "E",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                "value": "true",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "F",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Observation",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "And",
+                                                "operand": [
+                                                    {
+                                                        "type": "Equal",
+                                                        "operand": [
+                                                            {
+                                                                "path": "value",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "code",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "type": "Indexer",
+                                                                        "operand": [
+                                                                            {
+                                                                                "path": "coding",
+                                                                                "type": "Property",
+                                                                                "source": {
+                                                                                    "path": "code",
+                                                                                    "scope": "F",
+                                                                                    "type": "Property"
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                "value": "0",
+                                                                                "type": "Literal"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                "value": "305524001",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "Equal",
+                                                        "operand": [
+                                                            {
+                                                                "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                "type": "As",
+                                                                "operand": {
+                                                                    "path": "value",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "value",
+                                                                        "scope": "F",
+                                                                        "type": "Property"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                                                "value": "true",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "false",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "EncounterObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "G",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Encounter",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "In",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "code",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Indexer",
+                                                "operand": [
+                                                    {
+                                                        "path": "coding",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "type": "Indexer",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "type",
+                                                                    "scope": "G",
+                                                                    "type": "Property"
+                                                                },
+                                                                {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                    "value": "0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "0",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "F2FEncounterCodes",
+                                        "type": "ExpressionRef"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "EncounterPerformed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "ToList",
+                                    "operand": {
+                                        "name": "EncounterObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "true",
+                            "type": "Literal"
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "value": "false",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "Encounterdate",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "start",
+                            "type": "Property",
+                            "source": {
+                                "path": "period",
+                                "type": "Property",
+                                "source": {
+                                    "name": "EncounterObject",
+                                    "type": "ExpressionRef"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PreClaimReview",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "Pre-Claim Review",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "Requestor",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "p",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Practitioner",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "And",
+                                "operand": [
+                                    {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "type": "Indexer",
+                                                        "operand": [
+                                                            {
+                                                                "path": "identifier",
+                                                                "scope": "p",
+                                                                "type": "Property"
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                "value": "0",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "1932102951",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "type": "Indexer",
+                                                        "operand": [
+                                                            {
+                                                                "path": "identifier",
+                                                                "scope": "p",
+                                                                "type": "Property"
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                "value": "0",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org.fhir/sid/us-npi",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "RequestorNameObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "path": "name",
+                            "type": "Property",
+                            "source": {
+                                "name": "Requestor",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "RequestorFirstName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "type": "Indexer",
+                            "operand": [
+                                {
+                                    "path": "given",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "RequestorNameObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "RequestorLastName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "family",
+                            "type": "Property",
+                            "source": {
+                                "name": "RequestorNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "SubmitterName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "name": "RequestorFirstName",
+                                        "type": "ExpressionRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": " ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "RequestorLastName",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "RequestorMiddleInitial",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "GetMiddleInitials",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "name": "RequestorNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SubmitterTelephone",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "tele",
+                                            "expression": {
+                                                "path": "telecom",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Requestor",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "And",
+                                        "operand": [
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "system",
+                                                            "scope": "tele",
+                                                            "type": "Property"
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "phone",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "Equal",
+                                                "operand": [
+                                                    {
+                                                        "path": "value",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "path": "use",
+                                                            "scope": "tele",
+                                                            "type": "Property"
+                                                        }
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": "work",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "GetProcedure",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "P",
+                                "expression": {
+                                    "name": "ProcedureList",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "code",
+                                        "type": "Property",
+                                        "source": {
+                                            "type": "Indexer",
+                                            "operand": [
+                                                {
+                                                    "path": "coding",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "path": "code",
+                                                        "scope": "P",
+                                                        "type": "Property"
+                                                    }
+                                                },
+                                                {
+                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                    "value": "0",
+                                                    "type": "Literal"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "ProcedureCode",
+                                    "type": "OperandRef"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "ProcedureList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Procedure",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "ProcedureCode",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

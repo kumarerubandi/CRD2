@@ -1,0 +1,840 @@
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:60)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :resources:compileJava UP-TO-DATE
+> Task :resources:processResources NO-SOURCE
+> Task :resources:classes UP-TO-DATE
+> Task :resources:jar UP-TO-DATE
+> Task :operations:compileJava UP-TO-DATE
+> Task :operations:processResources NO-SOURCE
+> Task :operations:classes UP-TO-DATE
+> Task :operations:jar UP-TO-DATE
+> Task :server:compileJava UP-TO-DATE
+> Task :server:processResources UP-TO-DATE
+> Task :server:classes UP-TO-DATE
+
+> Task :server:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.1.RELEASE)
+
+2020-01-03 19:47:14.378  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Starting Application on ip-172-31-7-224 with PID 2447 (/home/ubuntu/CRD/server/build/classes/java/main started by ubuntu in /home/ubuntu/CRD/server)
+2020-01-03 19:47:14.381  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : The following profiles are active: localDb
+2020-01-03 19:47:15.578  INFO 2447 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-01-03 19:47:15.675  INFO 2447 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88ms. Found 3 repository interfaces.
+2020-01-03 19:47:16.329  INFO 2447 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a1a78e9c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-03 19:47:16.359  INFO 2447 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$2127dbce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-03 19:47:16.790  INFO 2447 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-01-03 19:47:16.817  INFO 2447 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-03 19:47:16.818  INFO 2447 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2020-01-03 19:47:16.829  INFO 2447 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2020-01-03 19:47:16.970  INFO 2447 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-03 19:47:16.970  INFO 2447 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2544 ms
+2020-01-03 19:47:17.673  INFO 2447 --- [           main] ca.uhn.fhir.util.VersionUtil             : HAPI FHIR version 4.0.3 - Rev 343eaa8d68
+2020-01-03 19:47:17.903  INFO 2447 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-03 19:47:18.052  INFO 2447 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-03 19:47:18.129  INFO 2447 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-01-03 19:47:18.222  INFO 2447 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2020-01-03 19:47:18.224  INFO 2447 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-01-03 19:47:18.416  INFO 2447 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-03 19:47:18.611  INFO 2447 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-01-03 19:47:18.676  INFO 2447 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000421: Disabling contextual LOB creation as hibernate.jdbc.lob.non_contextual_creation is true
+2020-01-03 19:47:19.053  INFO 2447 --- [           main] org.hibernate.search.engine.Version      : HSEARCH000034: Hibernate Search 5.11.1.Final
+2020-01-03 19:47:19.716  INFO 2447 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@22361e23'
+2020-01-03 19:47:19.814  INFO 2447 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-03 19:47:20.391  INFO 2447 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-01-03 19:47:20.527  INFO 2447 --- [           main] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+2020-01-03 19:47:20.587  INFO 2447 --- [           main] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [DSTU3]
+2020-01-03 19:47:21.011  INFO 2447 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 91af545d-b871-4d6c-8a0f-4ef14f4fd3d0
+
+2020-01-03 19:47:21.173  INFO 2447 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@397dfbe8, org.springframework.security.web.context.SecurityContextPersistenceFilter@20960b51, org.springframework.security.web.header.HeaderWriterFilter@535be281, org.springframework.web.filter.CorsFilter@783f5f71, org.springframework.security.web.authentication.logout.LogoutFilter@6f27730b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a947424, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14d298d6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3791af, org.springframework.security.web.session.SessionManagementFilter@535a6697, org.springframework.security.web.access.ExceptionTranslationFilter@7682bf66]
+2020-01-03 19:47:21.463  INFO 2447 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-03 19:47:21.532  WARN 2447 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-03 19:47:21.784  INFO 2447 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-03 19:47:22.333  INFO 2447 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-03 19:47:22.533  INFO 2447 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-01-03 19:47:22.536  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Started Application in 8.643 seconds (JVM running for 9.085)
+2020-01-03 19:47:22.638  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, K0738
+2020-01-03 19:47:22.642  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0442
+2020-01-03 19:47:22.646  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0470
+2020-01-03 19:47:22.649  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0601
+2020-01-03 19:47:22.651  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0130
+2020-01-03 19:47:22.654  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0433
+2020-01-03 19:47:22.657  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E1391
+2020-01-03 19:47:22.662  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0444
+2020-01-03 19:47:22.665  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0431
+2020-01-03 19:47:22.668  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0424
+2020-01-03 19:47:22.671  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E1392
+2020-01-03 19:47:22.674  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E1390
+2020-01-03 19:47:22.676  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, A5500
+2020-01-03 19:47:22.678  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0110
+2020-01-03 19:47:22.681  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0443
+2020-01-03 19:47:22.684  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0434
+2020-01-03 19:47:22.687  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0250
+2020-01-03 19:47:22.690  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0441
+2020-01-03 19:47:22.693  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0424
+2020-01-03 19:47:22.695  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0439
+2020-01-03 19:47:22.697  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, rxnorm, 209431
+2020-01-03 19:47:22.700  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, rxnorm, 860195
+2020-01-03 19:47:22.702  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 94649
+2020-01-03 19:47:22.705  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 95259
+2020-01-03 19:47:22.707  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 82947
+2020-01-03 19:47:22.709  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 97542
+2020-01-03 19:47:22.711  INFO 2447 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 94660
+2020-01-03 19:48:22.061  INFO 2447 --- [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-03 19:48:22.061  INFO 2447 --- [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-03 19:48:22.079  INFO 2447 --- [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 18 ms
+2020-01-03 19:48:23.816  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:48:23.817  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:48:23.817  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:48:23.829  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:48:23.830  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:48:23.830  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:48:23.858  INFO 2447 --- [nio-8090-exec-3] ca.uhn.fhir.util.XmlUtil                 : FHIR XML procesing will use StAX implementation 'Woodstox XML-processor' version '4.4.1'
+2020-01-03 19:48:23.916  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 19:48:23.916  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 19:48:23.916  WARN 2447 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:48:23.977  INFO 2447 --- [nio-8090-exec-3] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 19:48:23.981  INFO 2447 --- [nio-8090-exec-3] o.h.d.e.c.s.crd.r4.OrderSelectService    : Error occured in getRequirementForService:null
+java.lang.NullPointerException
+	at org.hl7.davinci.r4.Utilities.getPayors(Utilities.java:182)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirementForService(OrderSelectService.java:88)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:76)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:48)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.CdsService.handleRequest(CdsService.java:132)
+	at org.hl7.davinci.endpoint.controllers.r4.CdsHooksController.handleOrderSelect(CdsHooksController.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-03 19:52:34.529  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:52:34.529  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:52:34.530  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:52:34.533  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:52:34.533  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:52:34.533  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:52:34.539  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 19:52:34.539  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 19:52:34.539  WARN 2447 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:52:34.541  INFO 2447 --- [nio-8090-exec-2] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 19:52:34.541  INFO 2447 --- [nio-8090-exec-2] o.h.d.e.c.s.crd.r4.OrderSelectService    : Error occured in getRequirementForService:null
+java.lang.NullPointerException
+	at org.hl7.davinci.r4.Utilities.getPayors(Utilities.java:182)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirementForService(OrderSelectService.java:88)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:76)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:48)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.CdsService.handleRequest(CdsService.java:132)
+	at org.hl7.davinci.endpoint.controllers.r4.CdsHooksController.handleOrderSelect(CdsHooksController.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-03 19:53:14.492  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:53:14.492  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:53:14.493  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:53:14.495  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:53:14.495  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:53:14.496  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:53:14.500  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 19:53:14.500  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 19:53:14.500  WARN 2447 --- [nio-8090-exec-6] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:53:14.502  INFO 2447 --- [nio-8090-exec-6] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 19:53:14.502  INFO 2447 --- [nio-8090-exec-6] o.h.d.e.c.s.crd.r4.OrderSelectService    : Error occured in getRequirementForService:null
+java.lang.NullPointerException
+	at org.hl7.davinci.r4.Utilities.getPayors(Utilities.java:182)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirementForService(OrderSelectService.java:88)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:76)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:48)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.CdsService.handleRequest(CdsService.java:132)
+	at org.hl7.davinci.endpoint.controllers.r4.CdsHooksController.handleOrderSelect(CdsHooksController.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-03 19:55:51.307  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:55:51.307  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:55:51.307  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:55:51.309  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:55:51.309  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:55:51.309  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:55:51.312  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 19:55:51.313  WARN 2447 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:55:51.314  INFO 2447 --- [nio-8090-exec-8] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 19:55:51.314  INFO 2447 --- [nio-8090-exec-8] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The bundle is {"resourceType":"Bundle","entry":[{"resource":{"resourceType":"Organization","id":"united_health_care","name":"united_health_care"}},{"resource":{"resourceType":"ServiceRequest","identifier":[{"value":"XA5UsnLT"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}},{"resource":{"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}}]}
+Trying to connect to http://localhost:4200/getCqlData
+2020-01-03 19:55:51.489  INFO 2447 --- [nio-8090-exec-8] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"ServiceRequest","identifier":[{"value":"XA5UsnLT"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}
+2020-01-03 19:55:51.598  INFO 2447 --- [nio-8090-exec-8] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}
+2020-01-03 19:57:56.001  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:57:56.001  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:57:56.001  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:57:56.003  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:57:56.004  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 19:57:56.004  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 19:57:56.006  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 19:57:56.006  WARN 2447 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 19:57:56.007  INFO 2447 --- [io-8090-exec-10] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 19:57:56.008  INFO 2447 --- [io-8090-exec-10] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The bundle is {"resourceType":"Bundle","entry":[{"resource":{"resourceType":"Organization","id":"united_health_care","name":"united_health_care"}},{"resource":{"resourceType":"ServiceRequest","identifier":[{"value":"PDLymT3M"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}},{"resource":{"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}}]}
+Trying to connect to http://localhost:4200/getCqlData
+2020-01-03 19:57:56.129  INFO 2447 --- [io-8090-exec-10] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"ServiceRequest","identifier":[{"value":"PDLymT3M"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}
+2020-01-03 19:57:56.229  INFO 2447 --- [io-8090-exec-10] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}
+2020-01-03 19:58:05.120  INFO 2447 --- [nio-8090-exec-1] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:W3N4VL2T8FN2
+2020-01-03 19:58:05.914  INFO 2447 --- [nio-8090-exec-3] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:united_health_care:StressEchoCardiography
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:60)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:40)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :resources:compileJava UP-TO-DATE
+> Task :resources:processResources NO-SOURCE
+> Task :resources:classes UP-TO-DATE
+> Task :resources:jar UP-TO-DATE
+> Task :operations:compileJava UP-TO-DATE
+> Task :operations:processResources NO-SOURCE
+> Task :operations:classes UP-TO-DATE
+> Task :operations:jar UP-TO-DATE
+> Task :server:compileJava
+> Task :server:processResources UP-TO-DATE
+> Task :server:classes
+
+> Task :server:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.1.RELEASE)
+
+2020-01-03 20:09:15.188  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Starting Application on ip-172-31-7-224 with PID 3287 (/home/ubuntu/CRD/server/build/classes/java/main started by ubuntu in /home/ubuntu/CRD/server)
+2020-01-03 20:09:15.191  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : The following profiles are active: localDb
+2020-01-03 20:09:16.448  INFO 3287 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-01-03 20:09:16.545  INFO 3287 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88ms. Found 3 repository interfaces.
+2020-01-03 20:09:17.192  INFO 3287 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$14ce497f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-03 20:09:17.221  INFO 3287 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$944e96b1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-03 20:09:17.635  INFO 3287 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-01-03 20:09:17.664  INFO 3287 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-03 20:09:17.664  INFO 3287 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2020-01-03 20:09:17.675  INFO 3287 --- [           main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2020-01-03 20:09:17.814  INFO 3287 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-03 20:09:17.814  INFO 3287 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2580 ms
+2020-01-03 20:09:18.503  INFO 3287 --- [           main] ca.uhn.fhir.util.VersionUtil             : HAPI FHIR version 4.0.3 - Rev 343eaa8d68
+2020-01-03 20:09:18.734  INFO 3287 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-03 20:09:18.880  INFO 3287 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-03 20:09:18.951  INFO 3287 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-01-03 20:09:19.047  INFO 3287 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2020-01-03 20:09:19.049  INFO 3287 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-01-03 20:09:19.247  INFO 3287 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-03 20:09:19.483  INFO 3287 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-01-03 20:09:19.551  INFO 3287 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000421: Disabling contextual LOB creation as hibernate.jdbc.lob.non_contextual_creation is true
+2020-01-03 20:09:19.891  INFO 3287 --- [           main] org.hibernate.search.engine.Version      : HSEARCH000034: Hibernate Search 5.11.1.Final
+2020-01-03 20:09:20.582  INFO 3287 --- [           main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@6cd66f6a'
+2020-01-03 20:09:20.682  INFO 3287 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-03 20:09:21.231  INFO 3287 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-01-03 20:09:21.370  INFO 3287 --- [           main] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+2020-01-03 20:09:21.431  INFO 3287 --- [           main] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [DSTU3]
+2020-01-03 20:09:21.849  INFO 3287 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: cf0724eb-042d-418b-a4d5-4ffea0584b3d
+
+2020-01-03 20:09:22.021  INFO 3287 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@183a508b, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ba36c83, org.springframework.security.web.header.HeaderWriterFilter@31b91435, org.springframework.web.filter.CorsFilter@5aeebccc, org.springframework.security.web.authentication.logout.LogoutFilter@6f0ae0ee, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@239d9cb7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@62e99458, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14293540, org.springframework.security.web.session.SessionManagementFilter@10830d50, org.springframework.security.web.access.ExceptionTranslationFilter@33089426]
+2020-01-03 20:09:22.290  INFO 3287 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-03 20:09:22.358  WARN 3287 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-03 20:09:22.607  INFO 3287 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-01-03 20:09:23.162  INFO 3287 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-03 20:09:23.361  INFO 3287 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-01-03 20:09:23.363  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Started Application in 8.667 seconds (JVM running for 9.072)
+2020-01-03 20:09:23.461  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, K0738
+2020-01-03 20:09:23.465  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0442
+2020-01-03 20:09:23.469  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0470
+2020-01-03 20:09:23.472  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0601
+2020-01-03 20:09:23.474  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0130
+2020-01-03 20:09:23.477  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0433
+2020-01-03 20:09:23.480  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E1391
+2020-01-03 20:09:23.483  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0444
+2020-01-03 20:09:23.486  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0431
+2020-01-03 20:09:23.489  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0424
+2020-01-03 20:09:23.492  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E1392
+2020-01-03 20:09:23.495  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E1390
+2020-01-03 20:09:23.497  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, A5500
+2020-01-03 20:09:23.499  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0110
+2020-01-03 20:09:23.502  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0443
+2020-01-03 20:09:23.506  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0434
+2020-01-03 20:09:23.509  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0250
+2020-01-03 20:09:23.512  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0441
+2020-01-03 20:09:23.514  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0424
+2020-01-03 20:09:23.517  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, hcpcs, E0439
+2020-01-03 20:09:23.519  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, rxnorm, 209431
+2020-01-03 20:09:23.522  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, rxnorm, 860195
+2020-01-03 20:09:23.524  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 94649
+2020-01-03 20:09:23.527  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 95259
+2020-01-03 20:09:23.529  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 82947
+2020-01-03 20:09:23.531  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 97542
+2020-01-03 20:09:23.533  INFO 3287 --- [           main] org.hl7.davinci.endpoint.Application     : Added rule cms, cpt, 94660
+2020-01-03 20:09:48.318  INFO 3287 --- [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-03 20:09:48.318  INFO 3287 --- [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-03 20:09:48.336  INFO 3287 --- [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2020-01-03 20:09:48.395  INFO 3287 --- [nio-8090-exec-1] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:W3N4VL2T8FN2
+2020-01-03 20:09:49.231  INFO 3287 --- [nio-8090-exec-3] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:united_health_care:StressEchoCardiography
+2020-01-03 20:09:49.918  INFO 3287 --- [nio-8090-exec-2] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:united_health_care:library-stress-echo-cardiography-prepopulate
+2020-01-03 20:09:50.280  INFO 3287 --- [nio-8090-exec-4] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:library-fhir-helpers
+2020-01-03 20:09:50.293  INFO 3287 --- [nio-8090-exec-5] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:united_health_care:StressEchoCardiographyPrepopulation.json
+2020-01-03 20:09:50.670  INFO 3287 --- [nio-8090-exec-6] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:FHIRHelpers.json
+2020-01-03 20:16:17.986  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 20:16:17.986  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 20:16:17.987  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 20:16:17.997  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 20:16:17.998  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 20:16:17.998  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 20:16:17.999  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:16:17.999  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:16:18.000  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:16:18.000  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:16:18.004  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 20:16:18.004  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 20:16:18.060  INFO 3287 --- [nio-8090-exec-9] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:16:18.064  INFO 3287 --- [nio-8090-exec-9] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The bundle is {"resourceType":"Bundle","entry":[{"resource":{"resourceType":"Organization","id":"united_health_care","name":"united_health_care"}},{"resource":{"resourceType":"ServiceRequest","identifier":[{"value":"FsdtrWhC"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}}]}
+Trying to connect to http://localhost:4200/getCqlData
+java.lang.NullPointerException
+	at org.hl7.davinci.endpoint.results.CRDResult.setResources(CRDResult.java:49)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.CdsService.getResult(CdsService.java:290)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.checkPriorServiceAuthRequirements(OrderSelectService.java:122)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirementForService(OrderSelectService.java:92)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:76)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.r4.OrderSelectService.getRequirements(OrderSelectService.java:48)
+	at org.hl7.davinci.endpoint.cdshooks.services.crd.CdsService.handleRequest(CdsService.java:132)
+	at org.hl7.davinci.endpoint.controllers.r4.CdsHooksController.handleOrderSelect(CdsHooksController.java:81)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-01-03 20:17:07.367  INFO 3287 --- [io-8090-exec-10] org.hl7.davinci.endpoint.Application     : download: GET /fetchFhirUri/urn:hl7:davinci:crd:NFFA2EC256M8
+2020-01-03 20:19:05.364  WARN 3287 --- [nio-8090-exec-1] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:19:05.364  WARN 3287 --- [nio-8090-exec-1] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:19:05.368  WARN 3287 --- [nio-8090-exec-1] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:19:05.368  WARN 3287 --- [nio-8090-exec-1] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:19:05.377  INFO 3287 --- [nio-8090-exec-1] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:21:45.544  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:21:45.544  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:21:45.548  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:21:45.548  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:21:45.553  INFO 3287 --- [nio-8090-exec-3] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:22:17.597  WARN 3287 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:22:17.597  WARN 3287 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:22:17.599  WARN 3287 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:22:17.600  WARN 3287 --- [nio-8090-exec-2] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:22:17.603  INFO 3287 --- [nio-8090-exec-2] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:25:08.500  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:08.501  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:08.502  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:08.503  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:08.506  INFO 3287 --- [nio-8090-exec-4] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:25:22.339  WARN 3287 --- [nio-8090-exec-5] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:22.339  WARN 3287 --- [nio-8090-exec-5] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:22.341  WARN 3287 --- [nio-8090-exec-5] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:22.341  WARN 3287 --- [nio-8090-exec-5] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:25:22.344  INFO 3287 --- [nio-8090-exec-5] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:26:50.986  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 20:26:50.986  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 20:26:50.987  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 20:26:50.989  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 20:26:50.989  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 20:26:50.989  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 20:26:51.019  INFO 3287 --- [nio-8090-exec-7] ca.uhn.fhir.util.XmlUtil                 : FHIR XML procesing will use StAX implementation 'Woodstox XML-processor' version '4.4.1'
+2020-01-03 20:26:51.075  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 20:26:51.075  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 20:26:51.077  INFO 3287 --- [nio-8090-exec-7] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:26:51.077  INFO 3287 --- [nio-8090-exec-7] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The bundle is {"resourceType":"Bundle","entry":[{"resource":{"resourceType":"Organization","id":"united_health_care","name":"united_health_care"}},{"resource":{"resourceType":"ServiceRequest","identifier":[{"value":"5s0M9M1W"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}},{"resource":{"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}}]}
+Trying to connect to http://localhost:4200/getCqlData
+2020-01-03 20:26:51.204  INFO 3287 --- [nio-8090-exec-7] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"ServiceRequest","identifier":[{"value":"5s0M9M1W"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}
+2020-01-03 20:26:51.305  INFO 3287 --- [nio-8090-exec-7] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}
+2020-01-03 20:27:00.727  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:27:00.727  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:27:00.729  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:27:00.729  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 20:27:00.731  INFO 3287 --- [nio-8090-exec-8] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 20:55:20.211  INFO 3287 --- [nio-8090-exec-9] o.h.d.e.c.r4.CdsHooksController          : r4/serviceDiscovery
+2020-01-03 21:05:24.293  WARN 3287 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 21:05:24.294  WARN 3287 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 21:05:24.294  WARN 3287 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 21:05:24.295  WARN 3287 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 21:05:24.295  WARN 3287 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 21:05:24.296  WARN 3287 --- [io-8090-exec-10] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 21:05:24.298  INFO 3287 --- [io-8090-exec-10] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 21:05:24.298  INFO 3287 --- [io-8090-exec-10] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The bundle is {"resourceType":"Bundle","entry":[{"resource":{"resourceType":"Organization","id":"53391eed-5624-46c2-8fbd-4f711fef2c3c"}},{"resource":{"resourceType":"ServiceRequest","id":"a7ccf7f1-26b1-4bf0-ab4f-921e552840b9","status":"draft","category":[{"coding":[{"system":"http://loinc.org","code":"93350"}]}],"code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/e3uD6HlZwY69BYkprsNDh2Du7KroLDCIzX8uiCuKkahM3"},"performer":[{"reference":"PractitionerRole/53391ee"}],"insurance":[{"reference":"Coverage/53391eed-5624"}]}},{"resource":{"resourceType":"Patient","id":"e3uD6HlZwY69BYkprsNDh2Du7KroLDCIzX8uiCuKkahM3","extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"http://hl7.org/fhir/us/core/ValueSet/omb-race-category","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category","code":"2135-2","display":"Hispanic or Latino"}},{"url":"text","valueString":"Hispanic or Latino"}]}],"identifier":[{"use":"usual","type":{"text":"CEID"},"value":"RS1-488-9759"},{"use":"usual","type":{"text":"EPI"},"system":"urn:oid:1.2.840.114350.1.13.71.3.7.5.737384.0","value":"Z1572032"},{"use":"usual","type":{"text":"EXTERNAL"},"value":"Z25636435"},{"use":"usual","type":{"text":"FHIR"},"value":"TeCeTPUGNAGQ85wD-ck3ipJ9.G2PNgQf5WqNJHc0I2NQB"},{"use":"usual","type":{"text":"FHIR STU3"},"value":"e3uD6HlZwY69BYkprsNDh2Du7KroLDCIzX8uiCuKkahM3"},{"use":"usual","type":{"text":"INTERNAL"},"value":"Z25636435"},{"use":"usual","type":{"text":"MBI"},"system":"urn:oid:1.2.840.114350.1.13.71.3.7.5.737384.75","value":"3989801111"},{"use":"usual","type":{"text":"RushMRN"},"system":"urn:oid:1.2.840.114350","value":"8000059"},{"use":"usual","type":{"text":"WPRINTERNAL"},"value":"495449"},{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/rendered-value","valueString":"xxx-xx-9856"}],"use":"usual","system":"urn:oid:2.16.840.1.113883.4.1"}],"active":true,"name":[{"use":"usual","text":"Katie Louise Storyboard","family":"Storyboard","given":["Katie","Louise"]}],"telecom":[{"system":"phone","value":"555-685-9854","use":"home"},{"system":"phone","value":"219-313-8177","use":"mobile"},{"system":"email","value":"Kate@me.com"}],"gender":"female","birthDate":"1991-09-04","deceasedBoolean":false,"address":[{"use":"home","type":"both","line":["321 Main Street"],"city":"St. John","district":"LAKE","state":"IN","postalCode":"46373","country":"USA"}],"maritalStatus":{"text":"Single"},"communication":[{"language":{"coding":[{"system":"http://hl7.org/fhir/ValueSet/languages","code":"it","display":"Italian"}],"text":"Italian"},"preferred":true}],"generalPractitioner":[{"reference":"https://epicproxy-test.rush.edu/FHIR-TST/api/FHIR/STU3/Practitioner/euRUPRYqo7DsSPnNx8WQxxg3","display":"Michael Anthony Hanak, MD"}],"managingOrganization":{"reference":"https://epicproxy-test.rush.edu/FHIR-TST/api/FHIR/STU3/Organization/esyfRsbBlu993QhFE8uLJAw3","display":"RUSH UNIVERSITY MEDICAL CENTER"}}}]}
+Trying to connect to http://localhost:4200/getCqlData
+2020-01-03 21:05:24.415  INFO 3287 --- [io-8090-exec-10] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"ServiceRequest","id":"a7ccf7f1-26b1-4bf0-ab4f-921e552840b9","status":"draft","category":[{"coding":[{"system":"http://loinc.org","code":"93350"}]}],"code":{"coding":[{"system":"http://loinc.org","code":"93350"}]},"subject":{"reference":"Patient/e3uD6HlZwY69BYkprsNDh2Du7KroLDCIzX8uiCuKkahM3"},"performer":[{"reference":"PractitionerRole/53391ee"}],"insurance":[{"reference":"Coverage/53391eed-5624"}]}
+2020-01-03 21:05:24.514  INFO 3287 --- [io-8090-exec-10] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"Patient","id":"e3uD6HlZwY69BYkprsNDh2Du7KroLDCIzX8uiCuKkahM3","extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"http://hl7.org/fhir/us/core/ValueSet/omb-race-category","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category","code":"2135-2","display":"Hispanic or Latino"}},{"url":"text","valueString":"Hispanic or Latino"}]}],"identifier":[{"use":"usual","type":{"text":"CEID"},"value":"RS1-488-9759"},{"use":"usual","type":{"text":"EPI"},"system":"urn:oid:1.2.840.114350.1.13.71.3.7.5.737384.0","value":"Z1572032"},{"use":"usual","type":{"text":"EXTERNAL"},"value":"Z25636435"},{"use":"usual","type":{"text":"FHIR"},"value":"TeCeTPUGNAGQ85wD-ck3ipJ9.G2PNgQf5WqNJHc0I2NQB"},{"use":"usual","type":{"text":"FHIR STU3"},"value":"e3uD6HlZwY69BYkprsNDh2Du7KroLDCIzX8uiCuKkahM3"},{"use":"usual","type":{"text":"INTERNAL"},"value":"Z25636435"},{"use":"usual","type":{"text":"MBI"},"system":"urn:oid:1.2.840.114350.1.13.71.3.7.5.737384.75","value":"3989801111"},{"use":"usual","type":{"text":"RushMRN"},"system":"urn:oid:1.2.840.114350","value":"8000059"},{"use":"usual","type":{"text":"WPRINTERNAL"},"value":"495449"},{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/rendered-value","valueString":"xxx-xx-9856"}],"use":"usual","system":"urn:oid:2.16.840.1.113883.4.1"}],"active":true,"name":[{"use":"usual","text":"Katie Louise Storyboard","family":"Storyboard","given":["Katie","Louise"]}],"telecom":[{"system":"phone","value":"555-685-9854","use":"home"},{"system":"phone","value":"219-313-8177","use":"mobile"},{"system":"email","value":"Kate@me.com"}],"gender":"female","birthDate":"1991-09-04","deceasedBoolean":false,"address":[{"use":"home","type":"both","line":["321 Main Street"],"city":"St. John","district":"LAKE","state":"IN","postalCode":"46373","country":"USA"}],"maritalStatus":{"text":"Single"},"communication":[{"language":{"coding":[{"system":"http://hl7.org/fhir/ValueSet/languages","code":"it","display":"Italian"}],"text":"Italian"},"preferred":true}],"generalPractitioner":[{"reference":"https://epicproxy-test.rush.edu/FHIR-TST/api/FHIR/STU3/Practitioner/euRUPRYqo7DsSPnNx8WQxxg3","display":"Michael Anthony Hanak, MD"}],"managingOrganization":{"reference":"https://epicproxy-test.rush.edu/FHIR-TST/api/FHIR/STU3/Organization/esyfRsbBlu993QhFE8uLJAw3","display":"RUSH UNIVERSITY MEDICAL CENTER"}}
+2020-01-03 21:11:17.442  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 21:11:17.442  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 21:11:17.444  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 21:11:17.446  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 21:11:17.446  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'quantity' found while parsing
+2020-01-03 21:11:17.446  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Found incorrect type for element performer - Expected ARRAY and found OBJECT
+2020-01-03 21:11:17.449  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'system' found while parsing
+2020-01-03 21:11:17.449  WARN 3287 --- [nio-8090-exec-3] ca.uhn.fhir.parser.LenientErrorHandler   : Unknown element 'code' found while parsing
+2020-01-03 21:11:17.450  INFO 3287 --- [nio-8090-exec-3] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 21:11:17.450  INFO 3287 --- [nio-8090-exec-3] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The bundle is {"resourceType":"Bundle","entry":[{"resource":{"resourceType":"Organization","id":"united_health_care","name":"united_health_care"}},{"resource":{"resourceType":"ServiceRequest","identifier":[{"value":"w8bxtxeL"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93351"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}},{"resource":{"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}}]}
+Trying to connect to http://localhost:4200/getCqlData
+2020-01-03 21:11:17.603  INFO 3287 --- [nio-8090-exec-3] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"ServiceRequest","identifier":[{"value":"w8bxtxeL"}],"status":"draft","intent":"order","code":{"coding":[{"system":"http://loinc.org","code":"93351"}]},"subject":{"reference":"Patient/1068"},"authoredOn":"2013-05-08T09:33:27+07:00","performer":[{"reference":"PractitionerRole/practitioner1"}],"insurance":[{"reference":"Coverage/coverage1"}]}
+2020-01-03 21:11:17.687  INFO 3287 --- [nio-8090-exec-3] ca.uhn.fhir.context.FhirContext          : Creating new FHIR context for FHIR version [R4]
+The resource is {"resourceType":"Patient","id":"1068","meta":{"versionId":"4","lastUpdated":"2019-12-30T10:46:18.065+00:00"},"text":{"status":"generated","div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.4.0-404-ge7ce2295\n .   Person seed: -5491028707056506467  Population seed: 0</div>"},"extension":[{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-race","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2106-3","display":"White"}},{"url":"text","valueString":"White"}]},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity","extension":[{"url":"ombCategory","valueCoding":{"system":"urn:oid:2.16.840.1.113883.6.238","code":"2186-5","display":"Not Hispanic or Latino"}},{"url":"text","valueString":"Not Hispanic or Latino"}]},{"url":"http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName","valueString":"Afton574 Jones311"},{"url":"http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex","valueCode":"F"},{"url":"http://hl7.org/fhir/StructureDefinition/patient-birthPlace","valueAddress":{"city":"Beverly","state":"Massachusetts","country":"US"}},{"url":"http://synthetichealth.github.io/synthea/disability-adjusted-life-years","valueDecimal":0.03217243087753218},{"url":"http://synthetichealth.github.io/synthea/quality-adjusted-life-years","valueDecimal":18.967827569122466}],"identifier":[{"system":"https://github.com/synthetichealth/synthea","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"MR","display":"Medical Record Number"}],"text":"Medical Record Number"},"system":"http://hospital.smarthealthit.org","value":"86662c9c-fcc8-41a6-a2e8-61270bf8a3b0"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"SS","display":"Social Security Number"}],"text":"Social Security Number"},"system":"http://hl7.org/fhir/sid/us-ssn","value":"999-29-3856"},{"type":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v2-0203","code":"DL","display":"Driver's License"}],"text":"Driver's License"},"system":"urn:oid:2.16.840.1.113883.4.3.25","value":"S99918634"}],"name":[{"use":"official","family":"Wang","given":["Lara"],"prefix":["Ms."]}],"telecom":[{"system":"phone","value":"555-357-2003","use":"home"}],"gender":"female","birthDate":"1954-11-14","address":[{"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/geolocation","extension":[{"url":"latitude","valueDecimal":41.959324167910715},{"url":"longitude","valueDecimal":-70.61769176097235}]}],"line":["721 Von Mews Unit 51"],"city":"Plymouth","state":"Massachusetts","postalCode":"02360","country":"US"}],"maritalStatus":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/v3-MaritalStatus","code":"S","display":"Never Married"}],"text":"Never Married"},"multipleBirthBoolean":false,"communication":[{"language":{"coding":[{"system":"urn:ietf:bcp:47","code":"en-US","display":"English"}],"text":"English"}}],"generalPractitioner":[{"reference":"Practitioner/1070"}],"managingOrganization":{"reference":"Organization/488"}}
+2020-01-03 21:50:44.629  WARN 3287 --- [nio-8090-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-01-03 22:10:49.201  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:10:49.201  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:10:49.202  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:10:49.202  WARN 3287 --- [nio-8090-exec-4] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:10:49.204  INFO 3287 --- [nio-8090-exec-4] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 22:23:30.548  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:23:30.548  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:23:30.549  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:23:30.549  WARN 3287 --- [nio-8090-exec-7] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:23:30.551  INFO 3287 --- [nio-8090-exec-7] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 22:37:05.217  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:37:05.218  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:37:05.219  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:37:05.219  WARN 3287 --- [nio-8090-exec-8] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:37:05.232  INFO 3287 --- [nio-8090-exec-8] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
+2020-01-03 22:44:58.647  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:44:58.647  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:44:58.648  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:44:58.648  WARN 3287 --- [nio-8090-exec-9] ca.uhn.fhir.parser.LenientErrorHandler   : Invalid attribute value "": Attribute values must not be empty ("")
+2020-01-03 22:44:58.651  INFO 3287 --- [nio-8090-exec-9] o.h.d.e.c.r4.CdsHooksController          : r4/handleOrderSelect
+begin execution
+Getting requirements for 
