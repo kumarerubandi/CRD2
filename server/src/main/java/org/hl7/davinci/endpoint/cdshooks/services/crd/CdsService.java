@@ -128,14 +128,21 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {
 
     public CdsResponse handleRequest(@Valid @RequestBody requestTypeT request, URL applicationBaseUrl) {
         CdsResponse response = new CdsResponse();
+
         System.out.println("begin execution");
         List<CRDResult> res = getRequirements(request);
         for (Iterator<CRDResult> iterator = res.iterator(); iterator.hasNext();) {
             CRDResult next = iterator.next();
             CardBuilder.CqlResultsForCard results = new CardBuilder.CqlResultsForCard();
-            Link smartAppLink = smartLinkBuilder(next.getAppContext());
-            response.addCard(CardBuilder.transform(results, smartAppLink));
-            next.dumpAppContext();
+            if (next.getErrors().isEmpty()) {
+
+                Link smartAppLink = smartLinkBuilder(next);
+                response.addCard(CardBuilder.transform(results, smartAppLink));
+                next.dumpAppContext();
+            } else {
+                Link smartAppLink = smartLinkBuilder(next);
+                response.addCard(CardBuilder.transform(results, smartAppLink));
+            }
 
         }
 
@@ -203,59 +210,35 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {
 
     return link;
   }*/
-    private Link smartLinkBuilder(String appContext) {
-        URI configLaunchUri = myConfig.getLaunchUrl();
-        String launchUrl = "";
-        if (myConfig.getLaunchUrl().isAbsolute()) {
-            launchUrl = myConfig.getLaunchUrl().toString();
-        }
-        /*
-    else {
-      try {
-        launchUrl = new URL(applicationBaseUrl.getProtocol(), applicationBaseUrl.getHost(),
-            applicationBaseUrl.getPort(), applicationBaseUrl.getFile() + configLaunchUri.toString(),
-            null).toString();
-      } catch (MalformedURLException e) {
-        String msg = "Error creating smart launch URL";
-        logger.error(msg);
-        throw new RuntimeException(msg);
-      }
-    }
-
-    if (fhirBase != null && fhirBase.endsWith("/")) {
-      fhirBase = fhirBase.substring(0, fhirBase.length() - 1);
-    }
-    if (patientId != null && patientId.startsWith("Patient/")) {
-      patientId = patientId.substring(8,patientId.length());
-    }
-
-    // PARAMS:
-    // template is the uri of the questionnaire
-    // request is the ID of the device request or medrec (not the full URI like the IG says, since it should be taken from fhirBase
-    HashMap<String,String> appContextMap = new HashMap<>();
-    appContextMap.put("template", questionnaireUri);
-    appContextMap.put("request", reqResourceId);
-    //String filepath = "../../getfile/" + criteria.getQueryString();
-    String filepath = "";
-    String appContext = "template=" + questionnaireUri + "&request=" + reqResourceId + "&filepath=";
-    if (myConfig.getIncludeFilepathInAppContext()) {
-      appContext = appContext + filepath;
-    } else {
-      appContext = appContext + "_";
-    }
-    
-      launchUrl = launchUrl;
-    
-         */
-
+    private Link smartLinkBuilder(CRDResult result) {
         Link link = new Link();
-        link.setType("smart");
-        link.setLabel("SMART App");
-        link.setUrl(launchUrl);
 
-        link.setAppContext(appContext);
+        if (result.getErrors().isEmpty()) {
+            String appContext = result.getAppContext();
+            URI configLaunchUri = myConfig.getLaunchUrl();
+            String launchUrl = "";
+            if (myConfig.getLaunchUrl().isAbsolute()) {
+                launchUrl = myConfig.getLaunchUrl().toString();
+            }
+            link.setType("smart");
+            link.setLabel("SMART App");
+            link.setUrl(launchUrl);
 
+            link.setAppContext(appContext);
+        } else {
+            link.setType("Error");
+            String error = "";
+            ArrayList<String> errors = result.getErrors();
+            for (Iterator<String> iterator = errors.iterator(); iterator.hasNext();) {
+                String next = iterator.next();
+                error = error + next + ", ";
+                
+            }
+            link.setLabel(error);
+
+        }
         return link;
+
     }
 
     // Implement this in child class
@@ -290,6 +273,7 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {
             result.setResources(b);
             result.setCdsResult(cqlResObj);
         } catch (Exception e) {
+            result.addError("An unexpected error occured with the connection to the backend cds service");
             e.printStackTrace();
         }
 

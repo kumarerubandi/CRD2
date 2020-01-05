@@ -8,6 +8,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -30,10 +31,13 @@ public class CRDResult {
     private DeviceRequest de;
     private Patient pt;
     private Organization org;
+    private ArrayList<String> errors;
     
     
     public CRDResult() {
         appContext = getSaltString();
+        errors = new ArrayList();
+        
     }
     
     public String getAppContext() {
@@ -137,6 +141,14 @@ public class CRDResult {
             e.printStackTrace();
         }
         return new JSONObject();
+    }
+    
+    public void addError(String error) {
+        errors.add(error);
+    }
+    
+    public ArrayList<String> getErrors() {
+        return errors;
     }
     
     

@@ -44,83 +44,114 @@ import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @Component("r4_OrderSelectService")
 public class OrderSelectService extends CdsService<OrderSelectRequest> {
 
-  public static final String ID = "order-select-crd";
-  public static final String TITLE = "order-review Coverage Requirements Discovery";
-  public static final Hook HOOK = Hook.ORDER_SELECT;
-  public static final String DESCRIPTION =
-      "Get information regarding the coverage requirements for durable medical equipment";
-  public static final List<PrefetchTemplateElement> PREFETCH_ELEMENTS = Arrays.asList(
-      CrdPrefetchTemplateElements.DEVICE_REQUEST_BUNDLE,
-      CrdPrefetchTemplateElements.SUPPLY_REQUEST_BUNDLE,
-      CrdPrefetchTemplateElements.NUTRITION_ORDER_BUNDLE,
-      CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE,
-      CrdPrefetchTemplateElements.SERVICE_REQUEST_BUNDLE);
-  public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();
-  static final Logger logger = LoggerFactory.getLogger(OrderSelectService.class);
-  
-  public OrderSelectService() { super(ID, HOOK, TITLE, DESCRIPTION, PREFETCH_ELEMENTS, FHIRCOMPONENTS); }
+    public static final String ID = "order-select-crd";
+    public static final String TITLE = "order-review Coverage Requirements Discovery";
+    public static final Hook HOOK = Hook.ORDER_SELECT;
+    public static final String DESCRIPTION
+            = "Get information regarding the coverage requirements for durable medical equipment";
+    public static final List<PrefetchTemplateElement> PREFETCH_ELEMENTS = Arrays.asList(
+            CrdPrefetchTemplateElements.DEVICE_REQUEST_BUNDLE,
+            CrdPrefetchTemplateElements.SUPPLY_REQUEST_BUNDLE,
+            CrdPrefetchTemplateElements.NUTRITION_ORDER_BUNDLE,
+            CrdPrefetchTemplateElements.MEDICATION_REQUEST_BUNDLE,
+            CrdPrefetchTemplateElements.SERVICE_REQUEST_BUNDLE);
+    public static final FhirComponents FHIRCOMPONENTS = new FhirComponents();
+    static final Logger logger = LoggerFactory.getLogger(OrderSelectService.class);
 
-  
-  
-  public List<CRDResult> getRequirements(@Valid @RequestBody OrderSelectRequest request) {
-      List<CRDResult> results  = new ArrayList<>();
-      
-      List<ServiceRequest> serviceRequestList = extractServiceRequests(request);
-      System.out.println("Getting requirements for ");
-      for (Iterator<ServiceRequest> iterator = serviceRequestList.iterator(); iterator.hasNext();) {
-          ServiceRequest next = iterator.next();
-          results.add(getRequirementForService(next));
-          
-      }
-      return results;
-      
-  }
-  
-  private CRDResult getRequirementForService(ServiceRequest serviceRequest) {
-      CRDResult result = new CRDResult();
-      try {
-      List<Coverage> coverages = serviceRequest.getInsurance().stream()
-          .map(reference -> (Coverage) reference.getResource()).collect(Collectors.toList());
-      List<Organization> payors = Utilities.getPayors(coverages);
-      for (Iterator<Organization> iterator = payors.iterator(); iterator.hasNext();) {
-              Organization next = iterator.next();
-              Patient patient = (Patient) serviceRequest.getSubject().getResource();
-              return checkPriorServiceAuthRequirements(serviceRequest,next,patient);
-              
-          }
-      
-      } catch(Exception e) {
-          logger.info("Error occured in getRequirementForService:" + e.getMessage());
-          e.printStackTrace();
-      }
-      
-      return result;
-  } 
-  private List<ServiceRequest> extractServiceRequests(OrderSelectRequest orderReviewRequest) {
-    Bundle serviceRequestBundle = orderReviewRequest.getPrefetch().getServiceRequestBundle();
-    List<ServiceRequest> serviceRequestList = Utilities
-        .getResourcesOfTypeFromBundle(ServiceRequest.class, serviceRequestBundle);
-    return serviceRequestList;
-  }
-  
-  public List<CoverageRequirementRuleResult> createCqlExecutionContexts(OrderSelectRequest request, CoverageRequirementRuleFinder ruleFinder)
-      throws RequestIncompleteException {
-      
-      List<CoverageRequirementRuleResult> list = new ArrayList();
-      return list;
-  }
-  
-  private CRDResult checkPriorServiceAuthRequirements(ServiceRequest ser, Organization payer, Patient patient) {
-      Bundle bundle = new Bundle();
-      bundle.addEntry().setResource(payer);
-      bundle.addEntry().setResource(ser);
-      bundle.addEntry().setResource(patient);
-      return getResult(bundle);
-      
-  }
+    public OrderSelectService() {
+        super(ID, HOOK, TITLE, DESCRIPTION, PREFETCH_ELEMENTS, FHIRCOMPONENTS);
+    }
+
+    public List<CRDResult> getRequirements(@Valid @RequestBody OrderSelectRequest request) {
+        List<CRDResult> results = new ArrayList<>();
+
+        List<ServiceRequest> serviceRequestList = extractServiceRequests(request);
+        System.out.println("Getting requirements for ");
+        for (Iterator<ServiceRequest> iterator = serviceRequestList.iterator(); iterator.hasNext();) {
+            ServiceRequest next = iterator.next();
+            results.add(getRequirementForService(next));
+
+        }
+        if (results.isEmpty()) {
+            CRDResult result = new CRDResult();
+            result.addError("Could not get any Service requests");
+        }
+
+        return results;
+
+    }
+
+    private CRDResult getRequirementForService(ServiceRequest serviceRequest) {
+        CRDResult result = new CRDResult();
+        try {
+            if (serviceRequest.getInsurance() == null) {
+                result.addError("Insurance/Coverage information not provided");
+                return result;
+            } else {
+                List<Coverage> coverages = serviceRequest.getInsurance().stream()
+                        .map(reference -> (Coverage) reference.getResource()).collect(Collectors.toList());
+                List<Organization> payors = Utilities.getPayors(coverages);
+                for (Iterator<Organization> iterator = payors.iterator(); iterator.hasNext();) {
+                    Organization next = iterator.next();
+                    Patient patient = (Patient) serviceRequest.getSubject().getResource();
+                    return checkPriorServiceAuthRequirements(serviceRequest, next, patient);
+
+                }
+            }
+
+        } catch (Exception e) {
+            result.addError("Unexpected Error occured");
+            logger.info("Error occured in getRequirementForService:" + e.getMessage());
+            e.printStackTrace();
+        }
+
+        result.addError("Could not fetch any payors from the coverage information provided");
+
+        return result;
+    }
+
+    private List<ServiceRequest> extractServiceRequests(OrderSelectRequest orderReviewRequest) {
+        Bundle serviceRequestBundle = orderReviewRequest.getPrefetch().getServiceRequestBundle();
+        List<ServiceRequest> serviceRequestList = Utilities
+                .getResourcesOfTypeFromBundle(ServiceRequest.class, serviceRequestBundle);
+        return serviceRequestList;
+    }
+
+    public List<CoverageRequirementRuleResult> createCqlExecutionContexts(OrderSelectRequest request, CoverageRequirementRuleFinder ruleFinder)
+            throws RequestIncompleteException {
+
+        List<CoverageRequirementRuleResult> list = new ArrayList();
+        return list;
+    }
+
+    private CRDResult checkPriorServiceAuthRequirements(ServiceRequest ser, Organization payer, Patient patient) {
+        CRDResult result = new CRDResult();
+
+        if (payer == null) {
+            result.addError("Payer information not complete");
+        }
+        if (ser == null) {
+            result.addError("Service request information not complete");
+        }
+        if (patient == null) {
+            result.addError("patient information not complete");
+        }
+
+        if (result.getErrors().isEmpty()) {
+
+            Bundle bundle = new Bundle();
+
+            bundle.addEntry().setResource(payer);
+            bundle.addEntry().setResource(ser);
+            bundle.addEntry().setResource(patient);
+            return getResult(bundle);
+        }
+        return result;
+    }
 
 }
+
+
