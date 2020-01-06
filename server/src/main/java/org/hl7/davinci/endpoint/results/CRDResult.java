@@ -13,7 +13,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.ClaimResponse;
 import org.hl7.fhir.r4.model.DeviceRequest;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Resource;
@@ -64,6 +66,10 @@ public class CRDResult {
             }
             
         }
+    }
+    
+    public Organization getOrganization() {
+        return org;
     }
     
     public void setCdsResult(JSONObject cdsResult) {
@@ -150,6 +156,8 @@ public class CRDResult {
     public ArrayList<String> getErrors() {
         return errors;
     }
+    
+    
     
     
     

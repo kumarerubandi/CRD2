@@ -33,6 +33,8 @@ import org.hl7.davinci.endpoint.rules.CoverageRequirementRuleResult;
 import org.hl7.davinci.r4.crdhook.orderreview.OrderReviewRequest;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.Organization;
 import org.json.JSONObject;
 import org.opencds.cqf.cql.execution.Context;
 import org.slf4j.Logger;
@@ -278,6 +280,22 @@ public abstract class CdsService<requestTypeT extends CdsRequest<?, ?>> {
         }
 
         return result;
+    }
+    
+    protected Identifier getPayerIdentifier(Organization payer) {
+        Identifier id = new Identifier();
+        id.setSystem("http://identifiers.mettles.com/payer");
+        id.setValue("unknown");
+        String name = payer.getName();
+        name = name.toLowerCase();
+        if ((name.indexOf("cms") >= 0 ) || (name.indexOf("medicare") >= 0)) {
+            id.setValue("medicare_fee_for_service");
+        } else if (name.indexOf("united") >= 0) {
+            id.setValue("united_health_care");
+        } else if (name.indexOf("cigna") >= 0) {
+            id.setValue("cigna");
+        } 
+        return id;
     }
 
 }

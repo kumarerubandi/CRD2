@@ -38,6 +38,7 @@ import org.opencds.cqf.cql.execution.Context;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Coverage;
 import org.hl7.fhir.r4.model.DeviceRequest;
+import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Organization;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.Resource;
@@ -141,6 +142,8 @@ public class OrderSelectService extends CdsService<OrderSelectRequest> {
         }
 
         if (result.getErrors().isEmpty()) {
+            Identifier payerIdentifier = getPayerIdentifier(payer);
+            payer.getIdentifier().add(payerIdentifier);
 
             Bundle bundle = new Bundle();
 
