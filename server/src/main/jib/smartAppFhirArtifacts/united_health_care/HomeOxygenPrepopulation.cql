@@ -1,13 +1,6 @@
-library OxygenTherapy version '1.0.0'
+library OxygenTherapy
 using FHIR version '3.0.0'
 include FHIRHelpers version '3.0.0' called FHIRHelpers
-
-
-// This cql and questionnaire combo can be considered a partial implementation of these forms:
-// https://www.cms.gov/Medicare/CMS-Forms/CMS-Forms/Downloads/CMS484.pdf
-// https://www.cms.gov/Research-Statistics-Data-and-Systems/Computer-Data-and-Systems/Electronic-Clinical-Templates/Downloads/Home-Oxygen-Therapy-Order-Template-Draft-20170905-R40.pdf
-// with guidance from https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/Home-Oxygen-Therapy-ICN908804.pdf
-
 
 codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "LOINC": 'http://loinc.org'
@@ -105,33 +98,30 @@ code "160685001": '160685001' from "SNOMED-CT"
 code "371632003": '371632003' from "SNOMED-CT"
 code "8510008": '8510008' from "SNOMED-CT"
 
-
-parameter device_request DeviceRequest
-
 // Relevant Diagnosis Code Lists
-define "COPD_Codes": { "J44", "J44.0", "J44.1", "J44.9" }
-define "Bronchiectasis_Codes": { "J47", "J47.0", "J47.1", "J47.9" }
-define "Diffuse_interstitial_lung_disease_Codes": { "J84", "J84.0", "J84.01", "J84.02", "J84.03",
-  "J84.09", "J84.1", "J84.10", "J84.11", "J84.111", "J84.112", "J84.113", "J84.114", "J84.115",
-  "J84.116", "J84.117", "J84.17", "J84.2", "J84.8", "J84.81", "J84.82", "J84.83", "J84.84",
-  "J84.841", "J84.842", "J84.843", "J84.848", "J84.89", "J84.9" }
-define "Cystic_fibrosis_Codes": { "E84", "E84.0", "E84.1", "E84.11", "E84.19", "E84.8", "E84.9" }
-define "Pulmonary_hypertension_Codes": { "I27.0", "I27.2" }
-define "Hypoxemia_Codes": { "R09.02" }
+define "COPD_Codes": { 'J44', 'J44.0', 'J44.1', 'J44.9' }
+define "Bronchiectasis_Codes": { 'J47', 'J47.0', 'J47.1', 'J47.9' }
+define "Diffuse_interstitial_lung_disease_Codes": { 'J84', 'J84.0', 'J84.01', 'J84.02', 'J84.03',
+  'J84.09', 'J84.1', 'J84.10', 'J84.11', 'J84.111', 'J84.112', 'J84.113', 'J84.114', 'J84.115',
+  'J84.116', 'J84.117', 'J84.17', 'J84.2', 'J84.8', 'J84.81', 'J84.82', 'J84.83', 'J84.84',
+  'J84.841', 'J84.842', 'J84.843', 'J84.848', 'J84.89', 'J84.9' }
+define "Cystic_fibrosis_Codes": { 'E84', 'E84.0', 'E84.1', 'E84.11', 'E84.19', 'E84.8', 'E84.9' }
+define "Pulmonary_hypertension_Codes": { 'I27.0', 'I27.2' }
+define "Hypoxemia_Codes": { 'R09.02' }
 
-// Observation code lists
-define "Arterial_oxygen_saturation_Codes": { "59408-5" }
-define "Arterial_partial_pressure_of_oxygen_Codes": { "2703-7" }
-define "Arterial_oxygen_saturation_during_exercise_Codes": { "89276-0" }
+define "Arterial_oxygen_saturation_Codes": { '59408-5' }
+define "Arterial_partial_pressure_of_oxygen_Codes": { '2703-7' }
+define "Arterial_oxygen_saturation_during_exercise_Codes": { '89276-0' }
 
-define "Hematocrit_lab_test_Codes": { "20570-8", "31100-1", "32354-3", "41654-5", "41655-2", "4544-3", "4545-0", "71829-6", "71830-4", "71832-0", "71833-8" }
+define "Hematocrit_lab_test_Codes": { '20570-8', '31100-1', '32354-3', '41654-5', '41655-2', '4544-3', '4545-0', '71829-6', '71830-4', '71832-0', '71833-8' }
 
 // Other codes
-define "Immobilization_Codes": { "102491009", "129857008", "129859006", "160685001", "371632003", "8510008" }
-
+define "Immobilization_Codes": { '102491009', '129857008', '129859006', '160685001', '371632003', '8510008' }
 
 context Patient
 
+define "DeviceRequestResource":
+	[DeviceRequest]
 
 define function GetMiddleInitials(name FHIR.HumanName):
   Substring(Combine((name.given given return Substring(given.value,0,1)),', '),3)
@@ -154,7 +144,8 @@ define PatientMiddleInitial:
 	else ''
 
 	
-define PatientFirstName: "BeneficiaryNameObject".given[0].value
+define PatientFirstName:
+	"BeneficiaryNameObject".given[0].value
 
 define BeneficiaryGender: Patient.gender.value
 
@@ -170,37 +161,66 @@ define BeneficiaryIdentificationNumber:
 define PatientCoverageResource: singleton from (
   [Coverage] coverage
     // pull coverage resource id from the device request insurance extension
-    where ('Coverage/' + coverage.id) = ((device_request.extension ext where ext.url = 'http://build.fhir.org/ig/HL7/davinci-crd/STU3/ext-insurance.html')[0].value.reference.value))
+    where ('Coverage/' + coverage.id) = (("DeviceRequestResource".extension ext where ext.url = 'http://build.fhir.org/ig/HL7/davinci-crd/STU3/ext-insurance.html')[0].value.reference.value))
 define PatientMedicareId: "PatientCoverageResource".subscriberId.value
 
 // coverage requirement info
 define RelevantDiagnoses: {
-  if exists(Confirmed(ActiveOrRecurring([Condition: "COPD_Codes"]))) then 'COPD' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Bronchiectasis_Codes"]))) then 'Bronchiectasis' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Diffuse_interstitial_lung_disease_Codes"]))) then 'Diffuse Interstitial Lung Disease' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Cystic_fibrosis_Codes"]))) then 'Cystic Fibrosis' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Pulmonary_hypertension_Codes"]))) then 'Pulmonary Hypertension' else 'null',
-  if exists(Confirmed(ActiveOrRecurring([Condition: "Hypoxemia_Codes"]))) then 'Hypoxemia' else 'null'
-} except { 'null' } // except 'null' is a workaround since I don't see how to remove actual nulls
-define ArterialOxygenSaturation: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_Codes"], 3 months)), '%'))
-define ArterialPartialPressureOfOxygen: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_partial_pressure_of_oxygen_Codes"], 3 months)), 'mm[Hg]'))
-define ArterialOxygenSaturationExercise: LowestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Arterial_oxygen_saturation_during_exercise_Codes"], 3 months)), '%'))
-define PatientMobile: not exists(Confirmed(ActiveOrRecurring([Condition: "Immobilization_Codes"])))
-define HematocritThatIsGreaterThanThreshold: HighestObservation(WithUnit(Verified(ObservationLookBack([Observation: "Hematocrit_lab_test_Codes"], 3 months)), '%'))
+  if exists([Condition] P
+		where P.code.coding[0].code in "COPD_Codes") then 'COPD' else 'null',
+  if exists([Condition]  P
+		where P.code.coding[0].code in "Bronchiectasis_Codes") then 'Bronchiectasis' else 'null',
+  if exists([Condition] P
+		where P.code.coding[0].code in  "Diffuse_interstitial_lung_disease_Codes") then 'Diffuse Interstitial Lung Disease' else 'null',
+  if exists([Condition] P
+		where P.code.coding[0].code in "Cystic_fibrosis_Codes") then 'Cystic Fibrosis' else 'null',
+  if exists([Condition] P
+		where P.code.coding[0].code in  "Pulmonary_hypertension_Codes") then 'Pulmonary Hypertension' else 'null',
+  if exists([Condition] P
+		where P.code.coding[0].code in  "Hypoxemia_Codes") then 'Hypoxemia' else 'null'
+}
+
+
+define ArterialOxygenSaturation: 
+	if exists([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_Codes").value).value else null
+	
+
+define ArterialPartialPressureOfOxygen: 
+	if exists([Observation] P where P.code.coding[0].code in  "Arterial_partial_pressure_of_oxygen_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Arterial_partial_pressure_of_oxygen_Codes").value).value else null
+	
+
+define ArterialOxygenSaturationExercise:
+	 if exists([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_during_exercise_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_during_exercise_Codes").value).value else null
+	
+
+define PatientMobile: not exists([Condition] P
+		where P.code.coding[0].code in "Immobilization_Codes")
+
+define HematocritThatIsGreaterThanThreshold: 
+	if exists([Observation] P where P.code.coding[0].code in  "Hematocrit_lab_test_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Hematocrit_lab_test_Codes").value).value else null
+	
+
 define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
+
 // device request info
-define DeviceRequestHcpcsCoding: singleton from (
-  ((cast device_request.code as CodeableConcept).coding) coding
-    where coding.system.value = 'https://hcpcs.codes/')
-define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
-define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding".code.value in { 'E0433', 'E0434', 'E0444', 'EO431', 'K0738', 'E0443', 'E1392' }
-define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding".code.value in { 'E0439', 'E0442', 'E0424', 'E0441', 'E1390', 'E1391' }
+
+//define DeviceRequestHcpcsCoding: singleton from (
+  //((cast "DeviceRequestResource".code as CodeableConcept).coding) coding
+    //where coding.system.value = 'https://hcpcs.codes/')
+
+//define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
+
+//define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding".code.value in { 'E0433', 'E0434', 'E0444', 'EO431', 'K0738', 'E0443', 'E1392' }
+
+//define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding".code.value in { 'E0439', 'E0442', 'E0424', 'E0441', 'E1390', 'E1391' }
+
 // ordering provider info
-define Practitioner: singleton from (
+define Practitioner: 
   [Practitioner] practitioner
-    where ('Practitioner/' + practitioner.id) = device_request.performer.reference.value)
+    where ('Practitioner/' + practitioner.id) = "DeviceRequestResource"[0].performer.reference.value
+
 define PractitionerNameObject: 
-	singleton from ("Practitioner".name)
+	singleton from ("Practitioner"[0].name)
 	
 define PractitionerName: 
 	//PractitionerFirstName + ' '+ PractitionerMiddleInitial + ' '+ PractitionerLastName
@@ -215,32 +235,38 @@ define PractitionerNPI:
     	else 
 	'1935467921'
     
-define PractitionerPTAN:
-	(singleton from (
-  		"Practitioner".identifier identifier
-    		where identifier.type.coding[0].system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203' and identifier.type.coding[0].code.value = 'PRN')).value.value
+
 define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  
 define PractitionerAddress: 
 	"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
+
+
 ////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with stu3 version of helper library
-define function ActiveOrRecurring(CondList List<Condition>):
-  CondList C where C.clinicalStatus.value in {'active', 'relapse'}
+define function ActiveOrRecurring(Cond Condition):
+  Cond C where C.clinicalStatus.value in {'active', 'relapse'}
+
 define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
   ObsList O
     let LookBackInterval: Interval[Now() - LookBack, Now()]
     where (cast O.effective as dateTime).value in LookBackInterval
       or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
       or O.issued in LookBackInterval
+
 define function NullSafeToInterval(Pd FHIR.Period):
   if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
+
 define function Verified(ObsList List<Observation>):
   ObsList O where O.status.value in {'final', 'amended'}
+
 define function WithUnit(ObsList List<Observation>, Unit String):
   ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
+
 define function HighestObservation(ObsList List<Observation>):
   Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
+
 define function Confirmed(CondList List<Condition>):
   CondList C where C.verificationStatus.value = 'confirmed'
+
 define function NullSafeToQuantity(Qty FHIR.Quantity):
   if Qty is not null then
     System.Quantity {
@@ -248,5 +274,6 @@ define function NullSafeToQuantity(Qty FHIR.Quantity):
       unit: Coalesce(Qty.unit.value, Qty.code.value)
     }
   else null
+
 define function LowestObservation(ObsList List<Observation>):
   Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))

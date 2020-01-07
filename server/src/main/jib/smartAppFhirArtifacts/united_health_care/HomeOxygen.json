@@ -125,18 +125,6 @@
             },
             {
                "linkId":"2.3",
-               "text":"Physician/Practitioner PTAN",
-               "type":"string",
-               "required":false,
-               "extension":[
-                  {
-                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-                     "valueString":"PractitionerPTAN"
-                  }
-               ]
-            },
-            {
-               "linkId":"2.4",
                "text":"Physician/Practitioner’s Address",
                "type":"string",
                "required":true,
@@ -164,7 +152,8 @@
             {
               "valueCoding": {
                 "code": "COPD"
-              }
+              },
+                  "initialSelected":true
             },
             {
               "valueCoding": {
@@ -178,12 +167,12 @@
             },
             {
               "valueCoding": {
-                "code": "Diffuse interstitial lung disease"
+                "code": "Diffuse Interstitial Lung Disease"
               }
             },
             {
               "valueCoding": {
-                "code": "Cystic fibrosis"
+                "code": "Cystic Fibrosis"
               }
             },
             {
@@ -198,7 +187,7 @@
             },
             {
               "valueCoding": {
-                "code": "Pulmonary hypertension"
+                "code": "Pulmonary Hypertension"
               }
             },
             {
@@ -216,7 +205,7 @@
         },
         {
           "linkId": "3.2",
-          "text": "Arterial oxygen saturation (Patient on room air while at rest and awake when tested)",
+          "text": "Arterial oxygen saturation (Patient on room air while at rest and awake when tested) (%)",
           "type": "string",
           "required": false,
           "extension": [
@@ -228,7 +217,7 @@
         },
         {
           "linkId": "3.3",
-          "text": "Arterial Partial Pressure of Oxygen (PO2) (Patient on room air while at rest and awake when tested)",
+          "text": "Arterial Partial Pressure of Oxygen (PO2) (Patient on room air while at rest and awake when tested) (mm[Hg])",
           "type": "string",
           "required": false,
           "extension": [
@@ -240,7 +229,7 @@
         },
         {
           "linkId": "3.4",
-          "text": "Arterial oxygen saturation (Patient tested during exercise)",
+          "text": "Arterial oxygen saturation (Patient tested during exercise)  (%)",
           "type": "string",
           "required": false,
           "extension": [
@@ -252,7 +241,7 @@
         },
         {
           "linkId": "3.5",
-          "text": "Arterial Partial Pressure of Oxygen (PO2) (Patient tested during exercise)",
+          "text": "Arterial Partial Pressure of Oxygen (PO2) (Patient tested during exercise) (mm[Hg])",
           "type": "string",
           "required": false
         },
@@ -333,7 +322,7 @@
         },
         {
           "linkId": "3.11",
-          "text": "Recent hematocrit result",
+          "text": "Recent hematocrit result (%)",
           "type": "string",
           "required": false,
           "enableWhen": [
