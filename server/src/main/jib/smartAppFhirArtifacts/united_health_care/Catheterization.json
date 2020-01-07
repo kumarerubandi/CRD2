@@ -88,7 +88,7 @@
                "extension": [
                   {
                      "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-                     "valueString": "BeneficiaryIdentificationNumber"
+                     "valueString": "BeneficiaryMedicareNumber"
                   }
                ]
             }
@@ -125,18 +125,6 @@
             },
             {
                "linkId": "2.3",
-               "text": "Physician/Practitioner PTAN",
-               "type": "string",
-               "required": false,
-               "extension": [
-                  {
-                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
-                     "valueString": "PractitionerPTAN"
-                  }
-               ]
-            },
-            {
-               "linkId": "2.4",
                "text": "Physician/Practitioner’s Address",
                "type": "string",
                "required": true,
@@ -276,7 +264,7 @@
                "linkId": "5.1",
                "text": "Is the chest pain substernal?",
                "type": "boolean",
-               "required": true,
+               "required": false,
                "extension": [
                   {
                      "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
@@ -288,7 +276,7 @@
                "linkId": "5.2",
                "text": "Is there arm pain?",
                "type": "boolean",
-               "required": true,
+               "required": false,
                "extension": [
                   {
                      "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
@@ -300,7 +288,7 @@
                "linkId": "5.3",
                "text": "Is there jaw pain?",
                "type": "boolean",
-               "required": true,
+               "required": false,
                "extension": [
                   {
                      "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
@@ -312,13 +300,13 @@
                "linkId": "5.4",
                "text": "Is the pain relieved with nitroglycerin or rest?",
                "type": "boolean",
-               "required": true
+               "required": false
             },
             {
                "linkId": "5.5",
                "text": "Is there shortness of breath?",
                "type": "boolean",
-               "required": true,
+               "required": false,
                "extension": [
                   {
                      "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
@@ -330,19 +318,37 @@
                "linkId": "5.6",
                "text": "Does the pain wake the patient from sleep?",
                "type": "boolean",
-               "required": false
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Patient waken due to pain"
+                  }
+               ]
             },
             {
                "linkId": "5.7",
-               "text": "Is the pain worse with inspiration?",
+               "text": "Is the pain worse with exertion?",
                "type": "boolean",
-               "required": false
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Pain with exertion"
+                  }
+               ]
             },
             {
                "linkId": "5.8",
                "text": "Does the pain occur at rest?",
                "type": "boolean",
-               "required": false
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Pain at Rest"
+                  }
+               ]
             },
             {
                "linkId": "5.9",

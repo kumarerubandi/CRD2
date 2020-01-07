@@ -235,7 +235,8 @@
              {
                "valueCoding": {
                  "code": "Suspected coronary artery disease and symptoms"
-               }
+               },
+                  "initialSelected":true
              },
              {
                "valueCoding": {
@@ -264,63 +265,11 @@
        },
        {
           "linkId":"4",
-          "text":"Additional Documentation Required",
-          "type":"group",
-          "item":[
-             {
-                "linkId":"4.1",
-                "text":"History and Physical Note[34117-2]",
-                "type":"attachment",
-                "required":true,
-                "code":{
-                   "coding":[
-                      {
-                         "system":"http://loinc.org",
-                         "code":"34117-2",
-                         "display":"History and Physical Note"
-                      }
-                   ]
-                }
-             },
-             {
-                "linkId":"4.2",
-                "text":"Physical Examination[29545-1]",
-                "type":"attachment",
-                "required":true,
-                "code":{
-                   "coding":[
-                      {
-                         "system":"http://loinc.org",
-                         "code":"29545-1",
-                         "display":"Physical Examination"
-                      }
-                   ]
-                }
-             },
-             {
-                "linkId":"4.3",
-                "text":"Relevant diagnostic tests/laboratory data[30954-2]",
-                "type":"attachment",
-                "required":true,
-                "code":{
-                   "coding":[
-                      {
-                         "system":"http://loinc.org",
-                         "code":"30954-2",
-                         "display":"Relevant diagnostic tests/laboratory data"
-                      }
-                   ]
-                }
-             }
-          ]
-       },
-       {
-          "linkId":"5",
           "text":"Submitter Information",
           "type":"group",
           "item":[
              {
-                "linkId":"5.1",
+                "linkId":"4.1",
                 "text":"Contact Name",
                 "type":"string",
                 "required":true,
@@ -332,7 +281,7 @@
                 ]
              },
              {
-                "linkId":"5.2",
+                "linkId":"4.2",
                 "text":"Telephone Number",
                 "type":"string",
                 "required":true,
@@ -346,74 +295,107 @@
           ]
        },
        {
-          "linkId":"6",
+          "linkId":"5",
           "text":"Additional Information",
           "type":"group",
           "item":[
-              {
-                "linkId":"6.1",
-                "text":"Is the chest pain substernal?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":true}]
-             },
-          {
-                "linkId":"6.2",
-                "text":"Is there arm pain?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":true}]
-             },
-              {
-                "linkId":"6.3",
-                "text":"Is there jaw pain?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":false}]
-             },
-              {
-                "linkId":"6.4",
-                "text":"Is the pain relieved with nitroglycerin or rest?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":false}]
-             },
-             {
-                "linkId":"6.5",
-                "text":"Is there shortness of breath?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":true}]
-             },
-             {
-                "linkId":"6.6",
-                "text":"Does the pain wake the patient from sleep?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":true}]
-             },
-             {
-                "linkId":"6.7",
-                "text":"Is the pain worse with inspiration?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":false}]
-             },
-             {
-                "linkId":"6.8",
-                "text":"Does the pain occur at rest?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":false}]
-             },
-             {
-                "linkId":"6.9",
-                "text":"Is the pain brought on by exercise or emotional upset?",
-                "type":"boolean",
-                "required":true,
-		"initial":[{"valueBoolean":true}]
-             }
-          ]
+            {
+               "linkId": "5.1",
+               "text": "Is the chest pain substernal?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Chest Pain"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.2",
+               "text": "Is there arm pain?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Arm Pain"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.3",
+               "text": "Is there jaw pain?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Jaw Pain"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.4",
+               "text": "Is the pain relieved with nitroglycerin or rest?",
+               "type": "boolean",
+               "required": false
+            },
+            {
+               "linkId": "5.5",
+               "text": "Is there shortness of breath?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Shortness of Breath"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.6",
+               "text": "Does the pain wake the patient from sleep?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Patient waken due to pain"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.7",
+               "text": "Is the pain worse with exertion?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Pain with exertion"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.8",
+               "text": "Does the pain occur at rest?",
+               "type": "boolean",
+               "required": false,
+               "extension": [
+                  {
+                     "url": "http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString": "Pain at Rest"
+                  }
+               ]
+            },
+            {
+               "linkId": "5.9",
+               "text": "Is the pain brought on by exercise or emotional upset?",
+               "type": "boolean",
+               "required": false
+            }
+         ]
        } 
     ]
  }

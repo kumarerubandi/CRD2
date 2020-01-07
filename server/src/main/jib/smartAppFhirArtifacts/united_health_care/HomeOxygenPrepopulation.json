@@ -1138,39 +1138,11 @@
                     "expression": {
                         "type": "SingletonFrom",
                         "operand": {
-                            "type": "Query",
-                            "source": [
-                                {
-                                    "alias": "name",
-                                    "expression": {
-                                        "path": "name",
-                                        "type": "Property",
-                                        "source": {
-                                            "name": "Patient",
-                                            "type": "ExpressionRef"
-                                        }
-                                    }
-                                }
-                            ],
-                            "relationship": [],
-                            "where": {
-                                "type": "Equal",
-                                "operand": [
-                                    {
-                                        "path": "value",
-                                        "type": "Property",
-                                        "source": {
-                                            "path": "use",
-                                            "scope": "name",
-                                            "type": "Property"
-                                        }
-                                    },
-                                    {
-                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                        "value": "official",
-                                        "type": "Literal"
-                                    }
-                                ]
+                            "path": "name",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
                             }
                         }
                     }
@@ -2851,95 +2823,36 @@
                     "context": "Patient",
                     "accessLevel": "Public",
                     "expression": {
-                        "type": "If",
-                        "condition": {
-                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
-                            "type": "As",
-                            "operand": {
-                                "type": "Exists",
-                                "operand": {
-                                    "type": "Flatten",
-                                    "operand": {
-                                        "type": "Query",
-                                        "source": [
-                                            {
-                                                "alias": "$this",
-                                                "expression": {
-                                                    "name": "Practitioner",
-                                                    "type": "ExpressionRef"
-                                                }
-                                            }
-                                        ],
-                                        "where": {
-                                            "type": "Not",
-                                            "operand": {
-                                                "type": "IsNull",
-                                                "operand": {
-                                                    "path": "identifier",
-                                                    "type": "Property",
-                                                    "source": {
-                                                        "name": "$this",
-                                                        "type": "AliasRef"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "return": {
-                                            "expression": {
-                                                "path": "identifier",
-                                                "type": "Property",
-                                                "source": {
-                                                    "name": "$this",
-                                                    "type": "AliasRef"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "then": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
                             "path": "value",
                             "type": "Property",
                             "source": {
-                                "path": "value",
-                                "type": "Property",
-                                "source": {
-                                    "type": "SingletonFrom",
-                                    "operand": {
-                                        "type": "Query",
-                                        "source": [
-                                            {
-                                                "alias": "identifier",
-                                                "expression": {
-                                                    "type": "Flatten",
-                                                    "operand": {
-                                                        "type": "Query",
-                                                        "source": [
-                                                            {
-                                                                "alias": "$this",
-                                                                "expression": {
-                                                                    "name": "Practitioner",
-                                                                    "type": "ExpressionRef"
-                                                                }
-                                                            }
-                                                        ],
-                                                        "where": {
-                                                            "type": "Not",
-                                                            "operand": {
-                                                                "type": "IsNull",
-                                                                "operand": {
-                                                                    "path": "identifier",
-                                                                    "type": "Property",
-                                                                    "source": {
-                                                                        "name": "$this",
-                                                                        "type": "AliasRef"
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        "return": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "type": "Flatten",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "$this",
                                                             "expression": {
+                                                                "name": "Practitioner",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "where": {
+                                                        "type": "Not",
+                                                        "operand": {
+                                                            "type": "IsNull",
+                                                            "operand": {
                                                                 "path": "identifier",
                                                                 "type": "Property",
                                                                 "source": {
@@ -2948,38 +2861,43 @@
                                                                 }
                                                             }
                                                         }
+                                                    },
+                                                    "return": {
+                                                        "expression": {
+                                                            "path": "identifier",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "$this",
+                                                                "type": "AliasRef"
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
-                                        ],
-                                        "relationship": [],
-                                        "where": {
-                                            "type": "Equal",
-                                            "operand": [
-                                                {
-                                                    "path": "value",
-                                                    "type": "Property",
-                                                    "source": {
-                                                        "path": "system",
-                                                        "scope": "identifier",
-                                                        "type": "Property"
-                                                    }
-                                                },
-                                                {
-                                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                                    "value": "http://hl7.org/fhir/sid/us-npi",
-                                                    "type": "Literal"
-                                                }
-                                            ]
                                         }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "scope": "identifier",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org.fhir/sid/us-npi",
+                                                "type": "Literal"
+                                            }
+                                        ]
                                     }
                                 }
                             }
-                        },
-                        "else": {
-                            "valueType": "{urn:hl7-org:elm-types:r1}String",
-                            "value": "1935467921",
-                            "type": "Literal"
                         }
                     }
                 },

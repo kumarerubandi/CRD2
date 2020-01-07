@@ -81,7 +81,7 @@ define StressEchocardiography:
 define Today: Today()
 // Beneficiary info
 define BeneficiaryNameObject: 
-	singleton from (Patient.name name where name.use.value = 'official')
+	singleton from (Patient.name)
 define BeneficiaryName: 
 	PatientFirstName +' '+PatientMiddleInitial + ' '+ PatientLastName
 	//PatientFirstName + ' '+ PatientLastName
@@ -96,7 +96,7 @@ define BeneficiaryDateOfBirth: Patient.birthDate.value
 define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'http://hospital.smarthealthit.org')).value.value
+   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
 // Practitioner info
 define Practitioner: 
 	singleton from (
@@ -113,10 +113,9 @@ define PractitionerLastName: "PractitionerNameObject".family.value
 define PractitionerMiddleInitial: GetMiddleInitials("PractitionerNameObject")
 define PractitionerFirstName: "PractitionerNameObject".given[0].value
 define PractitionerNPI: 
-	if exists("Practitioner".identifier) then ((singleton from (
+	(singleton from (
   		"Practitioner".identifier identifier
-    		where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value) 
-    	else ''
+    		where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
     
 define PractitionerPTAN:
 	(singleton from (
@@ -163,6 +162,13 @@ define "Shortness of Breath":
 		where P.code.coding[0].code = 'R06.02')  
 	then true
 	else false
+
+define "Patient waken due to pain": false
+
+define "Pain with exertion": false
+
+define "Pain at Rest": false
+
 //Requestor info
 define Requestor: 
 	singleton from (

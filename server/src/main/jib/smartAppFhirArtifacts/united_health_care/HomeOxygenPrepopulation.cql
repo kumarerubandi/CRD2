@@ -131,7 +131,7 @@ define Today: Today()
 
 // Beneficiary info
 define BeneficiaryNameObject: 
-	singleton from (Patient.name name where name.use.value = 'official')
+	singleton from (Patient.name)
 
 define BeneficiaryName: 
 	PatientFirstName +' '+PatientMiddleInitial + ' '+ PatientLastName
@@ -229,11 +229,9 @@ define PractitionerLastName: "PractitionerNameObject".family.value
 define PractitionerMiddleInitial: GetMiddleInitials("PractitionerNameObject")
 define PractitionerFirstName: "PractitionerNameObject".given[0].value
 define PractitionerNPI: 
-	if exists("Practitioner".identifier) then ((singleton from (
+	(singleton from (
   		"Practitioner".identifier identifier
-    		where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value) 
-    	else 
-	'1935467921'
+    		where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
     
 
 define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  

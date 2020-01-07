@@ -93,7 +93,7 @@ define "Catheterization":
 define Today: Today()
 // Beneficiary info
 define BeneficiaryNameObject: 
-	singleton from (Patient.name name where name.use.value = 'official')
+	singleton from (Patient.name)
 define BeneficiaryName: 
 	PatientFirstName +' '+PatientMiddleInitial + ' '+ PatientLastName
 	//PatientFirstName + ' '+ PatientLastName
@@ -105,10 +105,10 @@ define PatientMiddleInitial:
 define PatientFirstName: "BeneficiaryNameObject".given[0].value
 define BeneficiaryGender: Patient.gender.value
 define BeneficiaryDateOfBirth: Patient.birthDate.value
-define BeneficiaryIdentificationNumber:
+define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'https://github.com/synthetichealth/synthea')).value.value
+   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
 // Practitioner info
 define Practitioner: 
 	singleton from (
@@ -127,7 +127,7 @@ define PractitionerFirstName: "PractitionerNameObject".given[0].value
 define PractitionerNPI: 
 	(singleton from (
   		"Practitioner".identifier identifier
-    		where identifier.type.coding[0].system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203' and identifier.type.coding[0].code.value = 'NPI')).value.value
+    		where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
 define PractitionerPTAN:
 	(singleton from (
   		"Practitioner".identifier identifier
@@ -152,11 +152,11 @@ define "Electrocardiogram":
 	if exists([Procedure]P
 		where P.code.coding[0].code ='164847006' ) then 'Electrocardiogram'
 	else ''
-define StressEchocardiogram:
-	if exists([Procedure]P
-    		where P.code.coding[0].code in "StressEchocardiographyCodes")
-		then 'StressEchocardiography'
-	else ''
+define StressEchocardiogram: 'Stress Echocardiogram'
+	//if exists([Procedure]P
+    	//	where P.code.coding[0].code in "StressEchocardiographyCodes")
+	//	then 'StressEchocardiography'
+	//else ''
     		
 define "Abnormal": 'abnormal'
 //Other info
@@ -180,6 +180,14 @@ define "Shortness of Breath":
 		where P.code.coding[0].code = 'R06.02')
 		then true
 	else false
+
+define "Patient waken due to pain": false
+
+define "Pain with exertion": false
+
+define "Pain at Rest": false
+
+
 //Requestor info
 define Requestor: 
 	singleton from (
