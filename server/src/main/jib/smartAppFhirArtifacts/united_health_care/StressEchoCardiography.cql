@@ -98,10 +98,11 @@ define BeneficiaryMedicareNumber:
   	Patient.identifier identifier
    	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
 // Practitioner info
-define Practitioner: 
-	singleton from (
-  		[Practitioner]practitioner
-    		where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".performer[0].actor.reference.value)
+define Practitioner: singleton from (
+  		[Practitioner]practitioner)
+	//singleton from (
+  	//	[Practitioner]practitioner
+    	//	where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".performer[0].actor.reference.value)
     
 define PractitionerNameObject: 
 	singleton from ("Practitioner".name)

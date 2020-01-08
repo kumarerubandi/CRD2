@@ -777,61 +777,7 @@
                                     }
                                 }
                             ],
-                            "relationship": [],
-                            "where": {
-                                "type": "Equal",
-                                "operand": [
-                                    {
-                                        "type": "Concatenate",
-                                        "operand": [
-                                            {
-                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                                "value": "Practitioner/",
-                                                "type": "Literal"
-                                            },
-                                            {
-                                                "path": "value",
-                                                "type": "Property",
-                                                "source": {
-                                                    "path": "id",
-                                                    "scope": "practitioner",
-                                                    "type": "Property"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "path": "value",
-                                        "type": "Property",
-                                        "source": {
-                                            "path": "reference",
-                                            "type": "Property",
-                                            "source": {
-                                                "path": "actor",
-                                                "type": "Property",
-                                                "source": {
-                                                    "type": "Indexer",
-                                                    "operand": [
-                                                        {
-                                                            "path": "performer",
-                                                            "type": "Property",
-                                                            "source": {
-                                                                "name": "StressEchocardiography",
-                                                                "type": "ExpressionRef"
-                                                            }
-                                                        },
-                                                        {
-                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
-                                                            "value": "0",
-                                                            "type": "Literal"
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                ]
-                            }
+                            "relationship": []
                         }
                     }
                 },
