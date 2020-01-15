@@ -164,16 +164,9 @@ define NonEmergentAmbulanceTransport:
     		
 define Today: Today()
 
-define FHIRQueries:
-	{'Procedure?code=A0426',
-	'Procedure?code=A0428',
-	'Practitioner/'+"Practitioner".id.value,
-	'Organization/'+"AmbulanceSupplier".id.value
-	}
-
 // Beneficiary info
 define BeneficiaryNameObject: 
-	singleton from (Patient.name name where name.use.value = 'official')
+	singleton from (Patient.name)
 
 define BeneficiaryName: 
 	PatientFirstName +' '+PatientMiddleInitial + ' '+ PatientLastName
@@ -196,11 +189,11 @@ define BeneficiaryMedicareNumber:
 
 // Practitioner info
 define Practitioner: 
-	singleton from (
-  		[Practitioner] practitioner where practitioner.id.value = '4526007')
 	//singleton from (
-  	//	[Practitioner] practitioner
-    	//	where ('Practitioner/' + practitioner.id.value) = "NonEmergentAmbulanceTransport".performer[0].actor.reference.value)
+  	//	[Practitioner] practitioner where practitioner.id.value = '4526007')
+	singleton from (
+  		[Practitioner] practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "NonEmergentAmbulanceTransport".performer[0].actor.reference.value)
     
 define PractitionerNameObject: 
 	singleton from ("Practitioner".name)
@@ -213,10 +206,16 @@ define PractitionerLastName: "PractitionerNameObject".family.value
 define PractitionerMiddleInitial: GetMiddleInitials("PractitionerNameObject")
 define PractitionerFirstName: "PractitionerNameObject".given[0].value
 
-define PractitionerTelephone: '(257) 563-7401'
-	//(singleton from (
-  	//	"Practitioner".identifier identifier
-    	//	where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value
+define PractitionerTelephone: 
+	(singleton from (
+  		"Practitioner".telecom tele
+    		where tele.system.value = 'phone' and tele.use.value='work')).value.value
+
+define PractitionerNPI: 
+	//'(257) 563-7401'
+	(singleton from (
+  		"Practitioner".identifier identifier
+    		where identifier.system.value = 'http://hl7.org/fhir/sid/us-npi')).value.value
     
 define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  
 
@@ -225,8 +224,9 @@ define PractitionerPTAN:
   		"Practitioner".identifier identifier
     		where identifier.type.coding[0].system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203' and identifier.type.coding[0].code.value = 'PRN')).value.value
 
-define PractitionerAddress: '1234 Blvd, Overland Park, KS, 66213'
-	//"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
+define PractitionerAddress: 
+	//'1234 Blvd, Overland Park, KS, 66213'
+	"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
 
 // Ambulance Supplier info
 
@@ -270,8 +270,8 @@ define TransportContraindicated: true
 
 define MedicallyRequired: true
 
-define Dialysis: true
-	//singleton from ([Procedure] c where c.code.coding[0].code.value= 'Z99.2')
+define Dialysis:
+	singleton from ([Procedure] c where c.code.coding[0].code.value= 'Z99.2')
 	
 define RadiationTherapy: 
 	singleton from ([Procedure] c where c.code.coding[0].code.value= '77470')
@@ -358,7 +358,7 @@ define MentalCondition:
 
 define RelevantDiagnoses: 
 	{
-	//if exists("Dialysis")  then 'Dialysis' else 'null',
+	if exists("Dialysis")  then 'Dialysis' else 'null',
 	if exists("RiskOfFalling") then 'Risk of falling off wheelchair or stretcher while in motion (not related to obesity)' else 'null',
 	if exists("WoundCareCondition")  then 'Wound care' else 'null',
 	if exists("RadiationTherapy")  then 'Radiation therapy' else 'null',
@@ -393,23 +393,26 @@ define LocationToObject:
 
 define LocationFromAddressObject: singleton from ("LocationFromObject".address)  
 
-define TransportFrom: 
-	"LocationFromAddressObject".line[0].value +', ' +"LocationFromAddressObject".city.value +', ' +"LocationFromAddressObject".state.value+', ' +"LocationFromAddressObject".postalCode.value
+define TransportFrom: '15208 West 119th Street, Olathe, KS, 66213'
+	//"LocationFromAddressObject".line[0].value +', ' +"LocationFromAddressObject".city.value +', ' +"LocationFromAddressObject".state.value+', ' +"LocationFromAddressObject".postalCode.value
 
 define LocationToAddressObject: singleton from ("LocationToObject".address)  
 
-define TransportTo: 
-	"LocationToAddressObject".line[0].value +', ' +"LocationToAddressObject".city.value +', ' +"LocationToAddressObject".state.value+', ' +"LocationToAddressObject".postalCode.value
+define TransportTo: '1234 Blvd, Overland Park, KS, 66213'
+	//"LocationToAddressObject".line[0].value +', ' +"LocationToAddressObject".city.value +', ' +"LocationToAddressObject".state.value+', ' +"LocationToAddressObject".postalCode.value
 
 define RoundTrip: false
+
+define "ExpeditedRequestBoolean":
+	true
+
+define NumofTransports: 2
 
 //Requestor info
 define Requestor: 
 	singleton from (
-  		[Practitioner] practitioner where practitioner.id.value = '4526007')
-	//singleton from (
-  	//	[Practitioner] p
-    	//	where p.identifier[0].value.value = '1932102951' and p.identifier[0].system.value='http://hl7.org.fhir/sid/us-npi')
+  		[Practitioner] practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "NonEmergentAmbulanceTransport".performer[0].actor.reference.value)
     		
 define RequestorNameObject: 
 	singleton from ("Requestor".name)
@@ -422,10 +425,11 @@ define RequestorLastName: "RequestorNameObject".family.value
 define RequestorMiddleInitial: GetMiddleInitials("RequestorNameObject")
 define RequestorFirstName: "RequestorNameObject".given[0].value
 
-define RequestorTelephone: '(257) 563-7401'
-	//(singleton from (
-  	//	"Requestor".telecom tele
-    	//	where tele.system.value = 'phone' and tele.use.value='work')).value.value
+define RequestorTelephone: 
+//'(257) 563-7401'
+	(singleton from (
+  		"Requestor".telecom tele
+    		where tele.system.value = 'phone' and tele.use.value='work')).value.value
 
 //define Typeofrequest: {'Initial'}
 

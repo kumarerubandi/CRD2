@@ -75,7 +75,6 @@ define "F2FEncounterCodes": { '99354', '99355', '99356', '99357' }
 define "HomeHealthCareCodes": { '385781007', 'G0151', 'G0152', 'G0153', 'G0155', 'G0156', 'G0157', 'G0158', 'G0159', 'G0160', 'G0161', 'G0162', 'G0299', 'G0300', 'G0493', 'G0494', 'G0495', 'G0496' }
 
 define HomeHealthCare:
-	//if exists([Procedure:"Home Health Care Codes"]) then [Procedure:"385781007"] else null in "Home Health Care Codes"
 	singleton from (
   		[Procedure] procedure
     		where procedure.code.coding[0].code.value in "HomeHealthCareCodes"
@@ -137,8 +136,9 @@ define BeneficiaryMedicareNumber:
 // Practitioner info
 define Practitioner: 
 	singleton from (
-  		[Practitioner] practitioner where practitioner.id.value = 'mettles-Practitioner-1')
-    		//where ('Practitioner/' + practitioner.id.value) = "HomeHealthCare".performer[0].actor.reference.value)
+  		[Practitioner] practitioner 
+	//where practitioner.id.value = 'mettles-Practitioner-1')
+    		where ('Practitioner/' + practitioner.id.value) = "HomeHealthCare".performer[0].actor.reference.value)
     
 define PractitionerNameObject: 
 	singleton from ("Practitioner".name)
@@ -236,10 +236,9 @@ define PreClaimReview: 'Pre-Claim Review'
 //Requestor info
 define Requestor: 
 	singleton from (
-  		[Practitioner] practitioner where practitioner.id.value = 'mettles-Practitioner-1')
-	//singleton from (
-  	//	[Practitioner] p
-    	//	where p.identifier[0].value.value = '1932102951' and p.identifier[0].system.value='http://hl7.org.fhir/sid/us-npi')
+  		[Practitioner] practitioner 
+	//where practitioner.id.value = 'mettles-Practitioner-1')
+    		where ('Practitioner/' + practitioner.id.value) = "HomeHealthCare".performer[0].actor.reference.value)
     		
 define RequestorNameObject: 
 	singleton from ("Requestor".name)

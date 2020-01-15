@@ -1,19 +1,5 @@
 {
     "library": {
-        "annotation": [
-            {
-                "startLine": 3,
-                "startChar": 1,
-                "endLine": 3,
-                "endChar": 54,
-                "message": "Could not load source for library FHIRHelpers, version 3.0.0.",
-                "errorType": "include",
-                "errorSeverity": "error",
-                "targetIncludeLibraryId": "FHIRHelpers",
-                "targetIncludeLibraryVersionId": "3.0.0",
-                "type": "CqlToElmError"
-            }
-        ],
         "identifier": {
             "id": "HomeHealthService"
         },
@@ -590,18 +576,53 @@
                                 "type": "Equal",
                                 "operand": [
                                     {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Practitioner/",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "id",
+                                                    "scope": "practitioner",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
                                         "path": "value",
                                         "type": "Property",
                                         "source": {
-                                            "path": "id",
-                                            "scope": "practitioner",
-                                            "type": "Property"
+                                            "path": "reference",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "actor",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "path": "performer",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "HomeHealthCare",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
                                         }
-                                    },
-                                    {
-                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                        "value": "mettles-Practitioner-1",
-                                        "type": "Literal"
                                     }
                                 ]
                             }
@@ -2905,18 +2926,53 @@
                                 "type": "Equal",
                                 "operand": [
                                     {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Practitioner/",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "id",
+                                                    "scope": "practitioner",
+                                                    "type": "Property"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
                                         "path": "value",
                                         "type": "Property",
                                         "source": {
-                                            "path": "id",
-                                            "scope": "practitioner",
-                                            "type": "Property"
+                                            "path": "reference",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "actor",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "path": "performer",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "HomeHealthCare",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
                                         }
-                                    },
-                                    {
-                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                        "value": "mettles-Practitioner-1",
-                                        "type": "Literal"
                                     }
                                 ]
                             }

@@ -539,7 +539,12 @@
                "linkId":"5.5",
                "text":"Is the request expedited?",
                "type":"boolean",
-               "required":true
+               "extension":[
+                  {
+                     "url":"http://hl7.org/fhir/StructureDefinition/cqif-calculatedValue",
+                     "valueString":"ExpeditedRequestBoolean"
+                  }
+               ]
             },
             {
                "linkId":"5.6",
@@ -658,7 +663,8 @@
                   {
                      "valueCoding":{
                         "code":"Dialysis"
-                     }
+                     },
+			"initialSelected":true
                   },
                   {
                      "valueCoding":{
