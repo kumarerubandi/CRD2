@@ -68,20 +68,26 @@ code "M79.603" : 'M79.603' from "ICD-10-CM"
 code "R68.84" : 'R68.84' from "ICD-10-CM"
 //Shortness of breath
 code "R06.02" : 'R06.02' from "ICD-10-CM"
+
 parameter "Measurement Period" Interval<DateTime>
+
 context Patient
+
 define "F2FEncounterCodes": { '99354', '99355', '99356', '99357' }
+
 define "StressEchocardiographyCodes": { '93350', '93351'}
+
 define StressEchocardiography:
 	singleton from (
   		[Procedure] procedure
     		where procedure.code.coding[0].code.value in "StressEchocardiographyCodes"
     		 )
     		
-define Today: Today()
+
 // Beneficiary info
 define BeneficiaryNameObject: 
 	singleton from (Patient.name)
+
 define BeneficiaryName: 
 	PatientFirstName +' '+PatientMiddleInitial + ' '+ PatientLastName
 	//PatientFirstName + ' '+ PatientLastName
@@ -91,18 +97,40 @@ define PatientMiddleInitial:
 	else ''
 	
 define PatientFirstName: "BeneficiaryNameObject".given[0].value
+
 define BeneficiaryGender: Patient.gender.value
+
 define BeneficiaryDateOfBirth: Patient.birthDate.value
+
 define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
    	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
+
+define BeneficiaryAddressObject: singleton from ("Patient".address address where address.use.value = 'home')  
+
+define BeneficiaryAddress:  
+	"BeneficiaryAddressObject".line[0].value +', ' +"BeneficiaryAddressObject".city.value +', ' +"BeneficiaryAddressObject".state.value+', ' +"BeneficiaryAddressObject".postalCode.value
+
+define BeneficiaryTelephone: 
+	if exists(
+  		Patient.telecom
+    		) 
+	then (singleton from (
+  		Patient.telecom tele
+    		where tele.system.value = 'phone')).value.value
+	else '(257) 453-1452'
+
 // Practitioner info
-define Practitioner: singleton from (
-  		[Practitioner]practitioner)
+define Practitioner: 
 	//singleton from (
-  	//	[Practitioner]practitioner
-    	//	where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".performer[0].actor.reference.value)
+  	//	[Practitioner]practitioner)
+	if "StressEchocardiography".performer[0] is null then singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".recorder.reference.value)
+	else singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".performer[0].actor.reference.value)
     
 define PractitionerNameObject: 
 	singleton from ("Practitioner".name)
@@ -110,9 +138,11 @@ define PractitionerNameObject:
 define PractitionerName: 
 	//PractitionerFirstName + ' '+ PractitionerMiddleInitial + ' '+ PractitionerLastName
 	PractitionerFirstName + ' '+ PractitionerLastName
+
 define PractitionerLastName: "PractitionerNameObject".family.value
 define PractitionerMiddleInitial: GetMiddleInitials("PractitionerNameObject")
 define PractitionerFirstName: "PractitionerNameObject".given[0].value
+
 define PractitionerNPI: 
 	(singleton from (
   		"Practitioner".identifier identifier
@@ -122,9 +152,20 @@ define PractitionerPTAN:
 	(singleton from (
   		"Practitioner".identifier identifier
     		where identifier.type.coding[0].system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203' and identifier.type.coding[0].code.value = 'PRN')).value.value
+
 define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  
+
 define PractitionerAddress:  
 	"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
+
+define PractitionerTelephone: 
+	if exists(
+  		Practitioner.telecom
+    		) 
+	then (singleton from (
+  		Practitioner.telecom tele
+    		where tele.system.value = 'phone')).value.value
+	else '(257) 678-5980'
 
 //Diagnosis/Procedure
 define "Chestpain on Exertion":
@@ -132,59 +173,41 @@ define "Chestpain on Exertion":
 		where P.code.coding[0].code ='R07.9')
 	then 'Chestpain on Exertion'
 	else ''
+
 define "Arthritis": 
 	if exists([Condition]P
 		where P.code.coding[0].code = 'M17.0')
 	then 'Arthritis'
 	else ''
+
 define "Electrocardiogram":
 	if exists([Procedure]P
 		where P.code.coding[0].code = '164847006') 
 	then 'Electrocardiogram'
 	else ''
-//Other info
-define "Chest Pain":
-	if exists([Condition]P
-		where P.code.coding[0].code = 'R07.9') 
-	then true
-	else false
-define "Arm Pain": 
-	if exists([Condition]P
-		where P.code.coding[0].code = 'M79.603')
-	then true
-	else false
-define "Jaw Pain":
-	if exists([Condition]P
-		where P.code.coding[0].code = 'R68.84') 
-	then true
-	else false
-define "Shortness of Breath":
-	if exists([Condition]P
-		where P.code.coding[0].code = 'R06.02')  
-	then true
-	else false
 
-define "Patient waken due to pain": false
-
-define "Pain with exertion": false
-
-define "Pain at Rest": false
+define ServicedDate: Today()
 
 //Requestor info
 define Requestor: 
-	singleton from (
-  		[Practitioner]practitioner)
-    		//where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".recorder.reference.value)
-    		
+	//singleton from (
+  	//	[Practitioner]practitioner)
+	if "StressEchocardiography".performer[0] is null then singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".recorder.reference.value)
+	else singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "StressEchocardiography".performer[0].actor.reference.value)
+
 define RequestorNameObject: 
 	singleton from ("Requestor".name)
 	
 define SubmitterName: 
-	//PractitionerFirstName + ' '+ PractitionerMiddleInitial + ' '+ PractitionerLastName
 	RequestorFirstName + ' '+ RequestorLastName
 define RequestorLastName: "RequestorNameObject".family.value
 define RequestorMiddleInitial: GetMiddleInitials("RequestorNameObject")
 define RequestorFirstName: "RequestorNameObject".given[0].value
+
 define SubmitterTelephone: 
 	if exists(
   		"Requestor".telecom
@@ -193,7 +216,47 @@ define SubmitterTelephone:
   		"Requestor".telecom tele
     		where tele.system.value = 'phone' and tele.use.value='work')).value.value
 	else '(257) 563-7401'
+
+define RequestorAddressObject: singleton from ("Requestor".address)  
+
+define RequestorIdentifier:
+	(singleton from (
+  	Requestor.identifier identifier
+   	 where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
+
+define RequestorAddress:  
+	"RequestorAddressObject".line[0].value +', ' +"RequestorAddressObject".city.value +', ' +"RequestorAddressObject".state.value+', ' +"RequestorAddressObject".postalCode.value
+
+//Insurer Information
+define InsurerInfo:
+	singleton from (
+  		[Organization]org
+    		where ('Organization/' + org.id.value) = Patient.managingOrganization.reference.value)
+
+define InsurerName:
+	InsurerInfo.name
+
+define InsurerAddressObject: singleton from ("InsurerInfo".address)  
+
+define InsurerIdentifier:
+	(singleton from (
+  	InsurerInfo.identifier identifier
+   	 where identifier.system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203')).value.value
+
+define InsurerAddress:  
+	"InsurerAddressObject".line[0].value +', ' +"InsurerAddressObject".city.value +', ' +"InsurerAddressObject".state.value+', ' +"InsurerAddressObject".postalCode.value
+
+define InsurerTelephone: 
+	if exists(
+  		InsurerInfo.telecom
+    		) 
+	then (singleton from (
+  		InsurerInfo.telecom tele
+    		where tele.system.value = 'phone')).value.value
+	else '(257) 561-0099'
+
 define function GetMiddleInitials(name FHIR.HumanName):
   Substring(Combine((name.given given return Substring(given.value,0,1)),', '),3)
+
 define function GetProcedure(ProcedureList List<Procedure>, ProcedureCode String):
   ProcedureList P where P.code.coding[0].code.value= ProcedureCode
