@@ -154,70 +154,14 @@ define BeneficiaryDateOfBirth: Patient.birthDate.value
 define BeneficiaryIdentificationNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
-
-
-
-define PatientCoverageResource: singleton from (
-  [Coverage] coverage
-    // pull coverage resource id from the device request insurance extension
-    where ('Coverage/' + coverage.id) = (("DeviceRequestResource".extension ext where ext.url = 'http://build.fhir.org/ig/HL7/davinci-crd/STU3/ext-insurance.html')[0].value.reference.value))
-define PatientMedicareId: "PatientCoverageResource".subscriberId.value
-
-// coverage requirement info
-define RelevantDiagnoses: {
-  if exists([Condition] P
-		where P.code.coding[0].code in "COPD_Codes") then 'COPD' else 'null',
-  if exists([Condition]  P
-		where P.code.coding[0].code in "Bronchiectasis_Codes") then 'Bronchiectasis' else 'null',
-  if exists([Condition] P
-		where P.code.coding[0].code in  "Diffuse_interstitial_lung_disease_Codes") then 'Diffuse Interstitial Lung Disease' else 'null',
-  if exists([Condition] P
-		where P.code.coding[0].code in "Cystic_fibrosis_Codes") then 'Cystic Fibrosis' else 'null',
-  if exists([Condition] P
-		where P.code.coding[0].code in  "Pulmonary_hypertension_Codes") then 'Pulmonary Hypertension' else 'null',
-  if exists([Condition] P
-		where P.code.coding[0].code in  "Hypoxemia_Codes") then 'Hypoxemia' else 'null'
-}
-
-
-define ArterialOxygenSaturation: 
-	if exists([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_Codes").value).value else null
-	
-
-define ArterialPartialPressureOfOxygen: 
-	if exists([Observation] P where P.code.coding[0].code in  "Arterial_partial_pressure_of_oxygen_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Arterial_partial_pressure_of_oxygen_Codes").value).value else null
-	
-
-define ArterialOxygenSaturationExercise:
-	 if exists([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_during_exercise_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Arterial_oxygen_saturation_during_exercise_Codes").value).value else null
-	
-
-define PatientMobile: not exists([Condition] P
-		where P.code.coding[0].code in "Immobilization_Codes")
-
-define HematocritThatIsGreaterThanThreshold: 
-	if exists([Observation] P where P.code.coding[0].code in  "Hematocrit_lab_test_Codes") then FHIRHelpers.ToQuantity(Last([Observation] P where P.code.coding[0].code in  "Hematocrit_lab_test_Codes").value).value else null
-	
-
-define PatientHasHematocritThatIsGreaterThanThreshold: exists("HematocritThatIsGreaterThanThreshold")
-
-// device request info
-
-//define DeviceRequestHcpcsCoding: singleton from (
-  //((cast "DeviceRequestResource".code as CodeableConcept).coding) coding
-    //where coding.system.value = 'https://hcpcs.codes/')
-
-//define DeviceRequestDescription: 'HCPCS ' + "DeviceRequestHcpcsCoding".code.value + ' - ' + "DeviceRequestHcpcsCoding".display.value
-
-//define DeviceRequestedIsPortable: "DeviceRequestHcpcsCoding".code.value in { 'E0433', 'E0434', 'E0444', 'EO431', 'K0738', 'E0443', 'E1392' }
-
-//define DeviceRequestedIsStationary: "DeviceRequestHcpcsCoding".code.value in { 'E0439', 'E0442', 'E0424', 'E0441', 'E1390', 'E1391' }
-
+   	 where identifier.system.value ='urn:oid:1.1.1.1.1.1')).value.value
+//'http://hl7.org/fhir/sid/us-medicare'
 // ordering provider info
 define Practitioner: 
-  [Practitioner] practitioner
-    where ('Practitioner/' + practitioner.id) = "DeviceRequestResource"[0].performer.reference.value
+	singleton from (
+  		[Practitioner]practitioner)
+  //[Practitioner] practitioner
+    //where ('Practitioner/' + practitioner.id) = "DeviceRequestResource"[0].performer.reference.value
 
 define PractitionerNameObject: 
 	singleton from ("Practitioner"[0].name)
@@ -233,45 +177,3 @@ define PractitionerNPI:
   		"Practitioner".identifier identifier
     		where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
     
-
-define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  
-define PractitionerAddress: 
-	"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
-
-
-////////////////////////////// Taken from CDS Connect Commons for FHIR, could replace with stu3 version of helper library
-define function ActiveOrRecurring(Cond Condition):
-  Cond C where C.clinicalStatus.value in {'active', 'relapse'}
-
-define function ObservationLookBack(ObsList List<Observation>, LookBack System.Quantity):
-  ObsList O
-    let LookBackInterval: Interval[Now() - LookBack, Now()]
-    where (cast O.effective as dateTime).value in LookBackInterval
-      or NullSafeToInterval(cast O.effective as Period) overlaps LookBackInterval
-      or O.issued in LookBackInterval
-
-define function NullSafeToInterval(Pd FHIR.Period):
-  if Pd is not null then Interval[Pd."start".value, Pd."end".value] else null
-
-define function Verified(ObsList List<Observation>):
-  ObsList O where O.status.value in {'final', 'amended'}
-
-define function WithUnit(ObsList List<Observation>, Unit String):
-  ObsList O where (cast O.value as Quantity).unit.value = Unit or (cast O.value as Quantity).code.value = Unit
-
-define function HighestObservation(ObsList List<Observation>):
-  Max(ObsList O return NullSafeToQuantity(cast O.value as Quantity))
-
-define function Confirmed(CondList List<Condition>):
-  CondList C where C.verificationStatus.value = 'confirmed'
-
-define function NullSafeToQuantity(Qty FHIR.Quantity):
-  if Qty is not null then
-    System.Quantity {
-      value: Qty.value.value,
-      unit: Coalesce(Qty.unit.value, Qty.code.value)
-    }
-  else null
-
-define function LowestObservation(ObsList List<Observation>):
-  Min(ObsList O return NullSafeToQuantity(cast O.value as Quantity))

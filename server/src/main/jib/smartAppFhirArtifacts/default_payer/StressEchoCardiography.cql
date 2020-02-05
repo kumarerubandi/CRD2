@@ -103,7 +103,8 @@ define BeneficiaryDateOfBirth: Patient.birthDate.value
 define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare' or identifier.system.value = 'urn:oid:1.1.1.1.1.1')).value.value
+   	 where identifier.system.value = 'urn:oid:1.1.1.1.1.1')).value.value
+//identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare'
 
 // Practitioner info
 define Practitioner: 

@@ -2,9 +2,9 @@
    "library": {
       "annotation": [
          {
-            "startLine": 114,
+            "startLine": 115,
             "startChar": 82,
-            "endLine": 114,
+            "endLine": 115,
             "endChar": 89,
             "message": "Member recorder not found for type FHIR.Procedure.",
             "errorType": "semantic",
@@ -12,9 +12,9 @@
             "type": "CqlToElmError"
          },
          {
-            "startLine": 163,
+            "startLine": 164,
             "startChar": 82,
-            "endLine": 163,
+            "endLine": 164,
             "endChar": 89,
             "message": "Member recorder not found for type FHIR.Procedure.",
             "errorType": "semantic",
@@ -734,45 +734,21 @@
                            ],
                            "relationship": [],
                            "where": {
-                              "type": "Or",
+                              "type": "Equal",
                               "operand": [
                                  {
-                                    "type": "Equal",
-                                    "operand": [
-                                       {
-                                          "path": "value",
-                                          "type": "Property",
-                                          "source": {
-                                             "path": "system",
-                                             "scope": "identifier",
-                                             "type": "Property"
-                                          }
-                                       },
-                                       {
-                                          "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                          "value": "http://hl7.org/fhir/sid/us-medicare",
-                                          "type": "Literal"
-                                       }
-                                    ]
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                       "path": "system",
+                                       "scope": "identifier",
+                                       "type": "Property"
+                                    }
                                  },
                                  {
-                                    "type": "Equal",
-                                    "operand": [
-                                       {
-                                          "path": "value",
-                                          "type": "Property",
-                                          "source": {
-                                             "path": "system",
-                                             "scope": "identifier",
-                                             "type": "Property"
-                                          }
-                                       },
-                                       {
-                                          "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                          "value": "urn:oid:1.1.1.1.1.1",
-                                          "type": "Literal"
-                                       }
-                                    ]
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "urn:oid:1.1.1.1.1.1",
+                                    "type": "Literal"
                                  }
                               ]
                            }

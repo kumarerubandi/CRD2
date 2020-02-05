@@ -79,8 +79,11 @@ code "R68.84" : 'R68.84' from "ICD-10-CM"
 code "R06.02" : 'R06.02' from "ICD-10-CM"
 //Chest pain, unspecified
 code "R07.9" : 'R07.9' from "ICD-10-CM"
+
 parameter "Measurement Period" Interval<DateTime>
+
 context Patient
+
 define "F2FEncounterCodes": { '99354', '99355', '99356', '99357' }
 define "StressEchocardiographyCodes": { '93350', '93351'}
 define "CatheterizationCodes": { '93452', '93453', '93454', '93455', '93456', '93457', '93458', '93459', '93460', '93461'}
@@ -108,7 +111,8 @@ define BeneficiaryDateOfBirth: Patient.birthDate.value
 define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare' or identifier.system.value = 'urn:oid:1.1.1.1.1.1')).value.value
+   	 where identifier.system.value ='urn:oid:1.1.1.1.1.1')).value.value
+//'http://hl7.org/fhir/sid/us-medicare'
 
 // Practitioner info
 define Practitioner: 
