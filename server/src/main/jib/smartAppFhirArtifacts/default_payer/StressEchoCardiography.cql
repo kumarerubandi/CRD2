@@ -98,28 +98,12 @@ define PatientMiddleInitial:
 	
 define PatientFirstName: "BeneficiaryNameObject".given[0].value
 
-define BeneficiaryGender: Patient.gender.value
-
 define BeneficiaryDateOfBirth: Patient.birthDate.value
 
 define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
-
-define BeneficiaryAddressObject: singleton from ("Patient".address address where address.use.value = 'home')  
-
-define BeneficiaryAddress:  
-	"BeneficiaryAddressObject".line[0].value +', ' +"BeneficiaryAddressObject".city.value +', ' +"BeneficiaryAddressObject".state.value+', ' +"BeneficiaryAddressObject".postalCode.value
-
-define BeneficiaryTelephone: 
-	if exists(
-  		Patient.telecom
-    		) 
-	then (singleton from (
-  		Patient.telecom tele
-    		where tele.system.value = 'phone')).value.value
-	else '(257) 453-1452'
+   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare' or identifier.system.value = 'urn:oid:1.1.1.1.1.1')).value.value
 
 // Practitioner info
 define Practitioner: 
@@ -146,26 +130,8 @@ define PractitionerFirstName: "PractitionerNameObject".given[0].value
 define PractitionerNPI: 
 	(singleton from (
   		"Practitioner".identifier identifier
-    		where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
-    
-define PractitionerPTAN:
-	(singleton from (
-  		"Practitioner".identifier identifier
-    		where identifier.type.coding[0].system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203' and identifier.type.coding[0].code.value = 'PRN')).value.value
+    		where (identifier.system.value = 'http://hl7.org.fhir/sid/us-npi'))).value.value
 
-define PractitionerAddressObject: singleton from ("Practitioner".address address where address.use.value = 'home')  
-
-define PractitionerAddress:  
-	"PractitionerAddressObject".line[0].value +', ' +"PractitionerAddressObject".city.value +', ' +"PractitionerAddressObject".state.value+', ' +"PractitionerAddressObject".postalCode.value
-
-define PractitionerTelephone: 
-	if exists(
-  		Practitioner.telecom
-    		) 
-	then (singleton from (
-  		Practitioner.telecom tele
-    		where tele.system.value = 'phone')).value.value
-	else '(257) 678-5980'
 
 //Diagnosis/Procedure
 define "Chestpain on Exertion":
@@ -214,46 +180,9 @@ define SubmitterTelephone:
     		) 
 	then (singleton from (
   		"Requestor".telecom tele
-    		where tele.system.value = 'phone' and tele.use.value='work')).value.value
+    		where tele.system.value = 'phone')).value.value
 	else '(257) 563-7401'
 
-define RequestorAddressObject: singleton from ("Requestor".address)  
-
-define RequestorIdentifier:
-	(singleton from (
-  	Requestor.identifier identifier
-   	 where identifier.system.value = 'http://hl7.org.fhir/sid/us-npi')).value.value
-
-define RequestorAddress:  
-	"RequestorAddressObject".line[0].value +', ' +"RequestorAddressObject".city.value +', ' +"RequestorAddressObject".state.value+', ' +"RequestorAddressObject".postalCode.value
-
-//Insurer Information
-define InsurerInfo:
-	singleton from (
-  		[Organization]org
-    		where ('Organization/' + org.id.value) = Patient.managingOrganization.reference.value)
-
-define InsurerName:
-	InsurerInfo.name
-
-define InsurerAddressObject: singleton from ("InsurerInfo".address)  
-
-define InsurerIdentifier:
-	(singleton from (
-  	InsurerInfo.identifier identifier
-   	 where identifier.system.value = 'http://terminology.hl7.org/CodeSystem/v2-0203')).value.value
-
-define InsurerAddress:  
-	"InsurerAddressObject".line[0].value +', ' +"InsurerAddressObject".city.value +', ' +"InsurerAddressObject".state.value+', ' +"InsurerAddressObject".postalCode.value
-
-define InsurerTelephone: 
-	if exists(
-  		InsurerInfo.telecom
-    		) 
-	then (singleton from (
-  		InsurerInfo.telecom tele
-    		where tele.system.value = 'phone')).value.value
-	else '(257) 561-0099'
 
 define function GetMiddleInitials(name FHIR.HumanName):
   Substring(Combine((name.given given return Substring(given.value,0,1)),', '),3)

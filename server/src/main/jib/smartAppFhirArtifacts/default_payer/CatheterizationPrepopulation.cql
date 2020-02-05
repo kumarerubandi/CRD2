@@ -108,11 +108,17 @@ define BeneficiaryDateOfBirth: Patient.birthDate.value
 define BeneficiaryMedicareNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare')).value.value
+   	 where identifier.system.value = 'http://hl7.org/fhir/sid/us-medicare' or identifier.system.value = 'urn:oid:1.1.1.1.1.1')).value.value
+
 // Practitioner info
 define Practitioner: 
-	singleton from (
-  		[Practitioner] practitioner
+	//singleton from (
+  	//	[Practitioner]practitioner)
+	if "Catheterization".performer[0] is null then singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "Catheterization".recorder.reference.value)
+	else singleton from (
+  		[Practitioner]practitioner
     		where ('Practitioner/' + practitioner.id.value) = "Catheterization".performer[0].actor.reference.value)
     
 define PractitionerNameObject: 
@@ -190,10 +196,15 @@ define "Pain at Rest": false
 
 //Requestor info
 define Requestor: 
-	singleton from (
-  		[Practitioner] p
-    		where p.identifier[0].value.value = '1932102951' and p.identifier[0].system.value='http://hl7.org.fhir/sid/us-npi')
-    		
+	//singleton from (
+  	//	[Practitioner]practitioner)
+	if "Catheterization".performer[0] is null then singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "Catheterization".recorder.reference.value)
+	else singleton from (
+  		[Practitioner]practitioner
+    		where ('Practitioner/' + practitioner.id.value) = "Catheterization".performer[0].actor.reference.value)
+
 define RequestorNameObject: 
 	singleton from ("Requestor".name)
 	
@@ -206,7 +217,7 @@ define RequestorFirstName: "RequestorNameObject".given[0].value
 define SubmitterTelephone: 
 	(singleton from (
   		"Requestor".telecom tele
-    		where tele.system.value = 'phone' and tele.use.value='work')).value.value
+    		where tele.system.value = 'phone')).value.value
 define function GetMiddleInitials(name FHIR.HumanName):
   Substring(Combine((name.given given return Substring(given.value,0,1)),', '),3)
 define function GetProcedure(ProcedureList List<Procedure>, ProcedureCode String):
