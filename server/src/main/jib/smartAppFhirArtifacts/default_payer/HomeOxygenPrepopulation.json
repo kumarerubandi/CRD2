@@ -1,0 +1,3784 @@
+{
+    "library": {
+        "identifier": {
+            "id": "OxygenTherapy"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                },
+                {
+                    "localIdentifier": "FHIR",
+                    "uri": "http://hl7.org/fhir",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "includes": {
+            "def": [
+                {
+                    "localIdentifier": "FHIRHelpers",
+                    "path": "FHIRHelpers",
+                    "version": "3.0.0"
+                }
+            ]
+        },
+        "codeSystems": {
+            "def": [
+                {
+                    "name": "ICD-10-CM",
+                    "id": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "LOINC",
+                    "id": "http://loinc.org",
+                    "accessLevel": "Public"
+                },
+                {
+                    "name": "SNOMED-CT",
+                    "id": "http://snomed.info/sct",
+                    "accessLevel": "Public"
+                }
+            ]
+        },
+        "codes": {
+            "def": [
+                {
+                    "name": "J44",
+                    "id": "J44",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J44.0",
+                    "id": "J44.0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J44.1",
+                    "id": "J44.1",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J44.9",
+                    "id": "J44.9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J47",
+                    "id": "J47",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J47.0",
+                    "id": "J47.0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J47.1",
+                    "id": "J47.1",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J47.9",
+                    "id": "J47.9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84",
+                    "id": "J84",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.0",
+                    "id": "J84.0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.01",
+                    "id": "J84.01",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.02",
+                    "id": "J84.02",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.03",
+                    "id": "J84.03",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.09",
+                    "id": "J84.09",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.1",
+                    "id": "J84.1",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.10",
+                    "id": "J84.10",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.11",
+                    "id": "J84.11",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.111",
+                    "id": "J84.111",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.112",
+                    "id": "J84.112",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.113",
+                    "id": "J84.113",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.114",
+                    "id": "J84.114",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.115",
+                    "id": "J84.115",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.116",
+                    "id": "J84.116",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.117",
+                    "id": "J84.117",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.17",
+                    "id": "J84.17",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.2",
+                    "id": "J84.2",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.8",
+                    "id": "J84.8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.81",
+                    "id": "J84.81",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.82",
+                    "id": "J84.82",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.83",
+                    "id": "J84.83",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.84",
+                    "id": "J84.84",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.841",
+                    "id": "J84.841",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.842",
+                    "id": "J84.842",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.843",
+                    "id": "J84.843",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.848",
+                    "id": "J84.848",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.89",
+                    "id": "J84.89",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "J84.9",
+                    "id": "J84.9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84",
+                    "id": "E84",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84.0",
+                    "id": "E84.0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84.1",
+                    "id": "E84.1",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84.11",
+                    "id": "E84.11",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84.19",
+                    "id": "E84.19",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84.8",
+                    "id": "E84.8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "E84.9",
+                    "id": "E84.9",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "I27.0",
+                    "id": "I27.0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "I27.2",
+                    "id": "I27.2",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "R09.02",
+                    "id": "R09.02",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "ICD-10-CM"
+                    }
+                },
+                {
+                    "name": "59408-5",
+                    "id": "59408-5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "2703-7",
+                    "id": "2703-7",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "89276-0",
+                    "id": "89276-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "20570-8",
+                    "id": "20570-8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "31100-1",
+                    "id": "31100-1",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "32354-3",
+                    "id": "32354-3",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "41654-5",
+                    "id": "41654-5",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "41655-2",
+                    "id": "41655-2",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "4544-3",
+                    "id": "4544-3",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "4545-0",
+                    "id": "4545-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "71829-6",
+                    "id": "71829-6",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "71830-4",
+                    "id": "71830-4",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "71832-0",
+                    "id": "71832-0",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "71833-8",
+                    "id": "71833-8",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "LOINC"
+                    }
+                },
+                {
+                    "name": "102491009",
+                    "id": "102491009",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "129857008",
+                    "id": "129857008",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "129859006",
+                    "id": "129859006",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "160685001",
+                    "id": "160685001",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "371632003",
+                    "id": "371632003",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                },
+                {
+                    "name": "8510008",
+                    "id": "8510008",
+                    "accessLevel": "Public",
+                    "codeSystem": {
+                        "name": "SNOMED-CT"
+                    }
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "COPD_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J44",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J44.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J44.1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J44.9",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Bronchiectasis_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J47",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J47.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J47.1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J47.9",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Diffuse_interstitial_lung_disease_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.01",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.02",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.03",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.09",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.10",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.11",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.111",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.112",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.113",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.114",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.115",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.116",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.117",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.17",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.2",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.8",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.81",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.82",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.83",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.84",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.841",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.842",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.843",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.848",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.89",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "J84.9",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Cystic_fibrosis_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84.1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84.11",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84.19",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84.8",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "E84.9",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Pulmonary_hypertension_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "I27.0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "I27.2",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Hypoxemia_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "R09.02",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Arterial_oxygen_saturation_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "59408-5",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Arterial_partial_pressure_of_oxygen_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "2703-7",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Arterial_oxygen_saturation_during_exercise_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "89276-0",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Hematocrit_lab_test_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "20570-8",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "31100-1",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "32354-3",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "41654-5",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "41655-2",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "4544-3",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "4545-0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "71829-6",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "71830-4",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "71832-0",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "71833-8",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Immobilization_Codes",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "102491009",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "129857008",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "129859006",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "160685001",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "371632003",
+                                "type": "Literal"
+                            },
+                            {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "8510008",
+                                "type": "Literal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Patient",
+                    "context": "Patient",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "dataType": "{http://hl7.org/fhir}Patient",
+                            "type": "Retrieve"
+                        }
+                    }
+                },
+                {
+                    "name": "DeviceRequestResource",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "dataType": "{http://hl7.org/fhir}DeviceRequest",
+                        "type": "Retrieve"
+                    }
+                },
+                {
+                    "name": "GetMiddleInitials",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Substring",
+                        "stringToSub": {
+                            "type": "Combine",
+                            "source": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "given",
+                                        "expression": {
+                                            "path": "given",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "name",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "return": {
+                                    "expression": {
+                                        "type": "Substring",
+                                        "stringToSub": {
+                                            "path": "value",
+                                            "scope": "given",
+                                            "type": "Property"
+                                        },
+                                        "startIndex": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "0",
+                                            "type": "Literal"
+                                        },
+                                        "length": {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                            "value": "1",
+                                            "type": "Literal"
+                                        }
+                                    }
+                                }
+                            },
+                            "separator": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": ", ",
+                                "type": "Literal"
+                            }
+                        },
+                        "startIndex": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "3",
+                            "type": "Literal"
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "name",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}HumanName",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Today",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Today"
+                    }
+                },
+                {
+                    "name": "BeneficiaryNameObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "path": "name",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PatientFirstName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "type": "Indexer",
+                            "operand": [
+                                {
+                                    "path": "given",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "BeneficiaryNameObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "PatientMiddleInitial",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Greater",
+                                "operand": [
+                                    {
+                                        "type": "Length",
+                                        "operand": {
+                                            "path": "given",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "BeneficiaryNameObject",
+                                                "type": "ExpressionRef"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "1",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        },
+                        "then": {
+                            "name": "GetMiddleInitials",
+                            "type": "FunctionRef",
+                            "operand": [
+                                {
+                                    "name": "BeneficiaryNameObject",
+                                    "type": "ExpressionRef"
+                                }
+                            ]
+                        },
+                        "else": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                            "value": "",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "PatientLastName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "family",
+                            "type": "Property",
+                            "source": {
+                                "name": "BeneficiaryNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "BeneficiaryName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "name": "PatientFirstName",
+                                                        "type": "ExpressionRef"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": " ",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "PatientMiddleInitial",
+                                                "type": "ExpressionRef"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": " ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "PatientLastName",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "BeneficiaryGender",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "gender",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "BeneficiaryDateOfBirth",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "birthDate",
+                            "type": "Property",
+                            "source": {
+                                "name": "Patient",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "BeneficiaryIdentificationNumber",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "path": "identifier",
+                                                "type": "Property",
+                                                "source": {
+                                                    "name": "Patient",
+                                                    "type": "ExpressionRef"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "scope": "identifier",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org/fhir/sid/us-medicare",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PatientCoverageResource",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "coverage",
+                                    "expression": {
+                                        "dataType": "{http://hl7.org/fhir}Coverage",
+                                        "type": "Retrieve"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "Coverage/",
+                                                "type": "Literal"
+                                            },
+                                            {
+                                                "name": "ToString",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "path": "id",
+                                                        "scope": "coverage",
+                                                        "type": "Property"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "reference",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "type": "Indexer",
+                                                    "operand": [
+                                                        {
+                                                            "type": "Query",
+                                                            "source": [
+                                                                {
+                                                                    "alias": "ext",
+                                                                    "expression": {
+                                                                        "type": "Flatten",
+                                                                        "operand": {
+                                                                            "type": "Query",
+                                                                            "source": [
+                                                                                {
+                                                                                    "alias": "$this",
+                                                                                    "expression": {
+                                                                                        "name": "DeviceRequestResource",
+                                                                                        "type": "ExpressionRef"
+                                                                                    }
+                                                                                }
+                                                                            ],
+                                                                            "where": {
+                                                                                "type": "Not",
+                                                                                "operand": {
+                                                                                    "type": "IsNull",
+                                                                                    "operand": {
+                                                                                        "path": "extension",
+                                                                                        "type": "Property",
+                                                                                        "source": {
+                                                                                            "name": "$this",
+                                                                                            "type": "AliasRef"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "return": {
+                                                                                "expression": {
+                                                                                    "path": "extension",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "name": "$this",
+                                                                                        "type": "AliasRef"
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "relationship": [],
+                                                            "where": {
+                                                                "type": "Equal",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "url",
+                                                                        "scope": "ext",
+                                                                        "type": "Property"
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                        "value": "http://build.fhir.org/ig/HL7/davinci-crd/STU3/ext-insurance.html",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                            "value": "0",
+                                                            "type": "Literal"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PatientMedicareId",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "subscriberId",
+                            "type": "Property",
+                            "source": {
+                                "name": "PatientCoverageResource",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "RelevantDiagnoses",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "List",
+                        "element": [
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type": "As",
+                                    "operand": {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "P",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "In",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToString",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "code",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "P",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "COPD_Codes",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "COPD",
+                                    "type": "Literal"
+                                },
+                                "else": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "null",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type": "As",
+                                    "operand": {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "P",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "In",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToString",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "code",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "P",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "Bronchiectasis_Codes",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Bronchiectasis",
+                                    "type": "Literal"
+                                },
+                                "else": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "null",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type": "As",
+                                    "operand": {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "P",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "In",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToString",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "code",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "P",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "Diffuse_interstitial_lung_disease_Codes",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Diffuse Interstitial Lung Disease",
+                                    "type": "Literal"
+                                },
+                                "else": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "null",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type": "As",
+                                    "operand": {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "P",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "In",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToString",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "code",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "P",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "Cystic_fibrosis_Codes",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Cystic Fibrosis",
+                                    "type": "Literal"
+                                },
+                                "else": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "null",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type": "As",
+                                    "operand": {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "P",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "In",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToString",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "code",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "P",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "Pulmonary_hypertension_Codes",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Pulmonary Hypertension",
+                                    "type": "Literal"
+                                },
+                                "else": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "null",
+                                    "type": "Literal"
+                                }
+                            },
+                            {
+                                "type": "If",
+                                "condition": {
+                                    "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type": "As",
+                                    "operand": {
+                                        "type": "Exists",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "P",
+                                                    "expression": {
+                                                        "dataType": "{http://hl7.org/fhir}Condition",
+                                                        "type": "Retrieve"
+                                                    }
+                                                }
+                                            ],
+                                            "relationship": [],
+                                            "where": {
+                                                "type": "In",
+                                                "operand": [
+                                                    {
+                                                        "name": "ToString",
+                                                        "libraryName": "FHIRHelpers",
+                                                        "type": "FunctionRef",
+                                                        "operand": [
+                                                            {
+                                                                "path": "code",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "type": "Indexer",
+                                                                    "operand": [
+                                                                        {
+                                                                            "path": "coding",
+                                                                            "type": "Property",
+                                                                            "source": {
+                                                                                "path": "code",
+                                                                                "scope": "P",
+                                                                                "type": "Property"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                            "value": "0",
+                                                                            "type": "Literal"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "name": "Hypoxemia_Codes",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "then": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "Hypoxemia",
+                                    "type": "Literal"
+                                },
+                                "else": {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "null",
+                                    "type": "Literal"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "ArterialOxygenSaturation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "P",
+                                            "expression": {
+                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                "type": "Retrieve"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "In",
+                                        "operand": [
+                                            {
+                                                "name": "ToString",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "path": "code",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "type": "Indexer",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "coding",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "code",
+                                                                        "scope": "P",
+                                                                        "type": "Property"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                    "value": "0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Arterial_oxygen_saturation_Codes",
+                                                "type": "ExpressionRef"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "name": "ToQuantity",
+                                "libraryName": "FHIRHelpers",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "asType": "{http://hl7.org/fhir}Quantity",
+                                        "type": "As",
+                                        "operand": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Last",
+                                                "source": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "P",
+                                                            "expression": {
+                                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                                "type": "Retrieve"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToString",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "code",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "coding",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "code",
+                                                                                        "scope": "P",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "Arterial_oxygen_saturation_Codes",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ArterialPartialPressureOfOxygen",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "P",
+                                            "expression": {
+                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                "type": "Retrieve"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "In",
+                                        "operand": [
+                                            {
+                                                "name": "ToString",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "path": "code",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "type": "Indexer",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "coding",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "code",
+                                                                        "scope": "P",
+                                                                        "type": "Property"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                    "value": "0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Arterial_partial_pressure_of_oxygen_Codes",
+                                                "type": "ExpressionRef"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "name": "ToQuantity",
+                                "libraryName": "FHIRHelpers",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "asType": "{http://hl7.org/fhir}Quantity",
+                                        "type": "As",
+                                        "operand": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Last",
+                                                "source": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "P",
+                                                            "expression": {
+                                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                                "type": "Retrieve"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToString",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "code",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "coding",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "code",
+                                                                                        "scope": "P",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "Arterial_partial_pressure_of_oxygen_Codes",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "ArterialOxygenSaturationExercise",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "P",
+                                            "expression": {
+                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                "type": "Retrieve"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "In",
+                                        "operand": [
+                                            {
+                                                "name": "ToString",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "path": "code",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "type": "Indexer",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "coding",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "code",
+                                                                        "scope": "P",
+                                                                        "type": "Property"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                    "value": "0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Arterial_oxygen_saturation_during_exercise_Codes",
+                                                "type": "ExpressionRef"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "name": "ToQuantity",
+                                "libraryName": "FHIRHelpers",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "asType": "{http://hl7.org/fhir}Quantity",
+                                        "type": "As",
+                                        "operand": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Last",
+                                                "source": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "P",
+                                                            "expression": {
+                                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                                "type": "Retrieve"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToString",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "code",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "coding",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "code",
+                                                                                        "scope": "P",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "Arterial_oxygen_saturation_during_exercise_Codes",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PatientMobile",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Not",
+                        "operand": {
+                            "type": "Exists",
+                            "operand": {
+                                "type": "Query",
+                                "source": [
+                                    {
+                                        "alias": "P",
+                                        "expression": {
+                                            "dataType": "{http://hl7.org/fhir}Condition",
+                                            "type": "Retrieve"
+                                        }
+                                    }
+                                ],
+                                "relationship": [],
+                                "where": {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "name": "ToString",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "code",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "type": "Indexer",
+                                                        "operand": [
+                                                            {
+                                                                "path": "coding",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "code",
+                                                                    "scope": "P",
+                                                                    "type": "Property"
+                                                                }
+                                                            },
+                                                            {
+                                                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                "value": "0",
+                                                                "type": "Literal"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Immobilization_Codes",
+                                            "type": "ExpressionRef"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "HematocritThatIsGreaterThanThreshold",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Exists",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "P",
+                                            "expression": {
+                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                "type": "Retrieve"
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "In",
+                                        "operand": [
+                                            {
+                                                "name": "ToString",
+                                                "libraryName": "FHIRHelpers",
+                                                "type": "FunctionRef",
+                                                "operand": [
+                                                    {
+                                                        "path": "code",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "type": "Indexer",
+                                                            "operand": [
+                                                                {
+                                                                    "path": "coding",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "path": "code",
+                                                                        "scope": "P",
+                                                                        "type": "Property"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                    "value": "0",
+                                                                    "type": "Literal"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "name": "Hematocrit_lab_test_Codes",
+                                                "type": "ExpressionRef"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "name": "ToQuantity",
+                                "libraryName": "FHIRHelpers",
+                                "type": "FunctionRef",
+                                "operand": [
+                                    {
+                                        "asType": "{http://hl7.org/fhir}Quantity",
+                                        "type": "As",
+                                        "operand": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Last",
+                                                "source": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "P",
+                                                            "expression": {
+                                                                "dataType": "{http://hl7.org/fhir}Observation",
+                                                                "type": "Retrieve"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "relationship": [],
+                                                    "where": {
+                                                        "type": "In",
+                                                        "operand": [
+                                                            {
+                                                                "name": "ToString",
+                                                                "libraryName": "FHIRHelpers",
+                                                                "type": "FunctionRef",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "code",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "coding",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "path": "code",
+                                                                                        "scope": "P",
+                                                                                        "type": "Property"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "name": "Hematocrit_lab_test_Codes",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Decimal",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PatientHasHematocritThatIsGreaterThanThreshold",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Exists",
+                        "operand": {
+                            "type": "ToList",
+                            "operand": {
+                                "name": "HematocritThatIsGreaterThanThreshold",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Practitioner",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "practitioner",
+                                "expression": {
+                                    "dataType": "{http://hl7.org/fhir}Practitioner",
+                                    "type": "Retrieve"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "type": "Concatenate",
+                                    "operand": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "Practitioner/",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "name": "ToString",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "id",
+                                                    "scope": "practitioner",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "reference",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "performer",
+                                            "type": "Property",
+                                            "source": {
+                                                "type": "Indexer",
+                                                "operand": [
+                                                    {
+                                                        "name": "DeviceRequestResource",
+                                                        "type": "ExpressionRef"
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                        "value": "0",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerNameObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "path": "name",
+                            "type": "Property",
+                            "source": {
+                                "type": "Indexer",
+                                "operand": [
+                                    {
+                                        "name": "Practitioner",
+                                        "type": "ExpressionRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                        "value": "0",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerFirstName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "type": "Indexer",
+                            "operand": [
+                                {
+                                    "path": "given",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "PractitionerNameObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value": "0",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerLastName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "family",
+                            "type": "Property",
+                            "source": {
+                                "name": "PractitionerNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerName",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "name": "PractitionerFirstName",
+                                        "type": "ExpressionRef"
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": " ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "PractitionerLastName",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PractitionerMiddleInitial",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "GetMiddleInitials",
+                        "type": "FunctionRef",
+                        "operand": [
+                            {
+                                "name": "PractitionerNameObject",
+                                "type": "ExpressionRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "PractitionerNPI",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "path": "value",
+                        "type": "Property",
+                        "source": {
+                            "path": "value",
+                            "type": "Property",
+                            "source": {
+                                "type": "SingletonFrom",
+                                "operand": {
+                                    "type": "Query",
+                                    "source": [
+                                        {
+                                            "alias": "identifier",
+                                            "expression": {
+                                                "type": "Flatten",
+                                                "operand": {
+                                                    "type": "Query",
+                                                    "source": [
+                                                        {
+                                                            "alias": "$this",
+                                                            "expression": {
+                                                                "name": "Practitioner",
+                                                                "type": "ExpressionRef"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "where": {
+                                                        "type": "Not",
+                                                        "operand": {
+                                                            "type": "IsNull",
+                                                            "operand": {
+                                                                "path": "identifier",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "name": "$this",
+                                                                    "type": "AliasRef"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "return": {
+                                                        "expression": {
+                                                            "path": "identifier",
+                                                            "type": "Property",
+                                                            "source": {
+                                                                "name": "$this",
+                                                                "type": "AliasRef"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "relationship": [],
+                                    "where": {
+                                        "type": "Equal",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "system",
+                                                    "scope": "identifier",
+                                                    "type": "Property"
+                                                }
+                                            },
+                                            {
+                                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                "value": "http://hl7.org.fhir/sid/us-npi",
+                                                "type": "Literal"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerAddressObject",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "SingletonFrom",
+                        "operand": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "address",
+                                    "expression": {
+                                        "type": "Flatten",
+                                        "operand": {
+                                            "type": "Query",
+                                            "source": [
+                                                {
+                                                    "alias": "$this",
+                                                    "expression": {
+                                                        "name": "Practitioner",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                }
+                                            ],
+                                            "where": {
+                                                "type": "Not",
+                                                "operand": {
+                                                    "type": "IsNull",
+                                                    "operand": {
+                                                        "path": "address",
+                                                        "type": "Property",
+                                                        "source": {
+                                                            "name": "$this",
+                                                            "type": "AliasRef"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "return": {
+                                                "expression": {
+                                                    "path": "address",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "$this",
+                                                        "type": "AliasRef"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "where": {
+                                "type": "Equal",
+                                "operand": [
+                                    {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "use",
+                                            "scope": "address",
+                                            "type": "Property"
+                                        }
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": "home",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "PractitionerAddress",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Concatenate",
+                        "operand": [
+                            {
+                                "type": "Concatenate",
+                                "operand": [
+                                    {
+                                        "type": "Concatenate",
+                                        "operand": [
+                                            {
+                                                "type": "Concatenate",
+                                                "operand": [
+                                                    {
+                                                        "type": "Concatenate",
+                                                        "operand": [
+                                                            {
+                                                                "type": "Concatenate",
+                                                                "operand": [
+                                                                    {
+                                                                        "path": "value",
+                                                                        "type": "Property",
+                                                                        "source": {
+                                                                            "type": "Indexer",
+                                                                            "operand": [
+                                                                                {
+                                                                                    "path": "line",
+                                                                                    "type": "Property",
+                                                                                    "source": {
+                                                                                        "name": "PractitionerAddressObject",
+                                                                                        "type": "ExpressionRef"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                                                                    "value": "0",
+                                                                                    "type": "Literal"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                                        "value": ", ",
+                                                                        "type": "Literal"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "path": "value",
+                                                                "type": "Property",
+                                                                "source": {
+                                                                    "path": "city",
+                                                                    "type": "Property",
+                                                                    "source": {
+                                                                        "name": "PractitionerAddressObject",
+                                                                        "type": "ExpressionRef"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                                        "value": ", ",
+                                                        "type": "Literal"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "state",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "PractitionerAddressObject",
+                                                        "type": "ExpressionRef"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                        "value": ", ",
+                                        "type": "Literal"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "postalCode",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "PractitionerAddressObject",
+                                        "type": "ExpressionRef"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "ActiveOrRecurring",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "name": "Cond",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "clinicalStatus",
+                                        "scope": "C",
+                                        "type": "Property"
+                                    }
+                                },
+                                {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "active",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "relapse",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "Cond",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Condition",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "NullSafeToInterval",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Not",
+                                "operand": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "name": "Pd",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "lowClosed": true,
+                            "highClosed": true,
+                            "type": "Interval",
+                            "low": {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "start",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Pd",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            },
+                            "high": {
+                                "path": "value",
+                                "type": "Property",
+                                "source": {
+                                    "path": "end",
+                                    "type": "Property",
+                                    "source": {
+                                        "name": "Pd",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        },
+                        "else": {
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            },
+                            "asTypeSpecifier": {
+                                "type": "IntervalTypeSpecifier",
+                                "pointType": {
+                                    "name": "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "Pd",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Period",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ObservationLookBack",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "name": "ObsList",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "let": [
+                            {
+                                "identifier": "LookBackInterval",
+                                "expression": {
+                                    "lowClosed": true,
+                                    "highClosed": true,
+                                    "type": "Interval",
+                                    "low": {
+                                        "type": "Subtract",
+                                        "operand": [
+                                            {
+                                                "type": "Now"
+                                            },
+                                            {
+                                                "name": "LookBack",
+                                                "type": "OperandRef"
+                                            }
+                                        ]
+                                    },
+                                    "high": {
+                                        "type": "Now"
+                                    }
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "Or",
+                                    "operand": [
+                                        {
+                                            "type": "In",
+                                            "operand": [
+                                                {
+                                                    "path": "value",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "strict": true,
+                                                        "type": "As",
+                                                        "operand": {
+                                                            "path": "effective",
+                                                            "scope": "O",
+                                                            "type": "Property"
+                                                        },
+                                                        "asTypeSpecifier": {
+                                                            "name": "{http://hl7.org/fhir}dateTime",
+                                                            "type": "NamedTypeSpecifier"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "LookBackInterval",
+                                                    "type": "QueryLetRef"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Overlaps",
+                                            "operand": [
+                                                {
+                                                    "name": "NullSafeToInterval",
+                                                    "type": "FunctionRef",
+                                                    "operand": [
+                                                        {
+                                                            "strict": true,
+                                                            "type": "As",
+                                                            "operand": {
+                                                                "path": "effective",
+                                                                "scope": "O",
+                                                                "type": "Property"
+                                                            },
+                                                            "asTypeSpecifier": {
+                                                                "name": "{http://hl7.org/fhir}Period",
+                                                                "type": "NamedTypeSpecifier"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "LookBackInterval",
+                                                    "type": "QueryLetRef"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "In",
+                                    "operand": [
+                                        {
+                                            "name": "ToDateTime",
+                                            "libraryName": "FHIRHelpers",
+                                            "type": "FunctionRef",
+                                            "operand": [
+                                                {
+                                                    "path": "issued",
+                                                    "scope": "O",
+                                                    "type": "Property"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "LookBackInterval",
+                                            "type": "QueryLetRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "ObsList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Observation",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "LookBack",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}Quantity",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Verified",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "name": "ObsList",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "In",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "status",
+                                        "scope": "O",
+                                        "type": "Property"
+                                    }
+                                },
+                                {
+                                    "type": "List",
+                                    "element": [
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "final",
+                                            "type": "Literal"
+                                        },
+                                        {
+                                            "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                            "value": "amended",
+                                            "type": "Literal"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "ObsList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Observation",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "WithUnit",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "O",
+                                "expression": {
+                                    "name": "ObsList",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Or",
+                            "operand": [
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "unit",
+                                                "type": "Property",
+                                                "source": {
+                                                    "strict": true,
+                                                    "type": "As",
+                                                    "operand": {
+                                                        "path": "value",
+                                                        "scope": "O",
+                                                        "type": "Property"
+                                                    },
+                                                    "asTypeSpecifier": {
+                                                        "name": "{http://hl7.org/fhir}Quantity",
+                                                        "type": "NamedTypeSpecifier"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "Unit",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Equal",
+                                    "operand": [
+                                        {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "path": "code",
+                                                "type": "Property",
+                                                "source": {
+                                                    "strict": true,
+                                                    "type": "As",
+                                                    "operand": {
+                                                        "path": "value",
+                                                        "scope": "O",
+                                                        "type": "Property"
+                                                    },
+                                                    "asTypeSpecifier": {
+                                                        "name": "{http://hl7.org/fhir}Quantity",
+                                                        "type": "NamedTypeSpecifier"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "Unit",
+                                            "type": "OperandRef"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "ObsList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Observation",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        },
+                        {
+                            "name": "Unit",
+                            "operandTypeSpecifier": {
+                                "name": "{urn:hl7-org:elm-types:r1}String",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "NullSafeToQuantity",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "If",
+                        "condition": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Boolean",
+                            "type": "As",
+                            "operand": {
+                                "type": "Not",
+                                "operand": {
+                                    "type": "IsNull",
+                                    "operand": {
+                                        "name": "Qty",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            }
+                        },
+                        "then": {
+                            "classType": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "Instance",
+                            "element": [
+                                {
+                                    "name": "value",
+                                    "value": {
+                                        "path": "value",
+                                        "type": "Property",
+                                        "source": {
+                                            "path": "value",
+                                            "type": "Property",
+                                            "source": {
+                                                "name": "Qty",
+                                                "type": "OperandRef"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "unit",
+                                    "value": {
+                                        "type": "Coalesce",
+                                        "operand": [
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "unit",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "Qty",
+                                                        "type": "OperandRef"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "path": "value",
+                                                "type": "Property",
+                                                "source": {
+                                                    "path": "code",
+                                                    "type": "Property",
+                                                    "source": {
+                                                        "name": "Qty",
+                                                        "type": "OperandRef"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "else": {
+                            "asType": "{urn:hl7-org:elm-types:r1}Quantity",
+                            "type": "As",
+                            "operand": {
+                                "type": "Null"
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "Qty",
+                            "operandTypeSpecifier": {
+                                "name": "{http://hl7.org/fhir}Quantity",
+                                "type": "NamedTypeSpecifier"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "HighestObservation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Max",
+                        "source": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "O",
+                                    "expression": {
+                                        "name": "ObsList",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "return": {
+                                "expression": {
+                                    "name": "NullSafeToQuantity",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "strict": true,
+                                            "type": "As",
+                                            "operand": {
+                                                "path": "value",
+                                                "scope": "O",
+                                                "type": "Property"
+                                            },
+                                            "asTypeSpecifier": {
+                                                "name": "{http://hl7.org/fhir}Quantity",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "ObsList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Observation",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Confirmed",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Query",
+                        "source": [
+                            {
+                                "alias": "C",
+                                "expression": {
+                                    "name": "CondList",
+                                    "type": "OperandRef"
+                                }
+                            }
+                        ],
+                        "relationship": [],
+                        "where": {
+                            "type": "Equal",
+                            "operand": [
+                                {
+                                    "path": "value",
+                                    "type": "Property",
+                                    "source": {
+                                        "path": "verificationStatus",
+                                        "scope": "C",
+                                        "type": "Property"
+                                    }
+                                },
+                                {
+                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                    "value": "confirmed",
+                                    "type": "Literal"
+                                }
+                            ]
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "CondList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Condition",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LowestObservation",
+                    "context": "Patient",
+                    "accessLevel": "Public",
+                    "type": "FunctionDef",
+                    "expression": {
+                        "type": "Min",
+                        "source": {
+                            "type": "Query",
+                            "source": [
+                                {
+                                    "alias": "O",
+                                    "expression": {
+                                        "name": "ObsList",
+                                        "type": "OperandRef"
+                                    }
+                                }
+                            ],
+                            "relationship": [],
+                            "return": {
+                                "expression": {
+                                    "name": "NullSafeToQuantity",
+                                    "type": "FunctionRef",
+                                    "operand": [
+                                        {
+                                            "strict": true,
+                                            "type": "As",
+                                            "operand": {
+                                                "path": "value",
+                                                "scope": "O",
+                                                "type": "Property"
+                                            },
+                                            "asTypeSpecifier": {
+                                                "name": "{http://hl7.org/fhir}Quantity",
+                                                "type": "NamedTypeSpecifier"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "operand": [
+                        {
+                            "name": "ObsList",
+                            "operandTypeSpecifier": {
+                                "type": "ListTypeSpecifier",
+                                "elementType": {
+                                    "name": "{http://hl7.org/fhir}Observation",
+                                    "type": "NamedTypeSpecifier"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
