@@ -151,10 +151,10 @@ define BeneficiaryGender: Patient.gender.value
 
 define BeneficiaryDateOfBirth: Patient.birthDate.value
 
-define BeneficiaryIdentificationNumber:
-	(singleton from (
-  	Patient.identifier identifier
-   	 where identifier.system.value ='urn:oid:1.1.1.1.1.1' or identifier.system.value ='http://hl7.org/fhir/sid/us-medicare')).value.value
+define BeneficiaryIdentificationNumber: Patient.identifier[0].value.value
+	//(singleton from (
+  	//Patient.identifier identifier
+   	 //where identifier.system.value ='urn:oid:1.1.1.1.1.1' or identifier.system.value ='http://hl7.org/fhir/sid/us-medicare')).value.value
 
 // ordering provider info
 define Practitioner: 
