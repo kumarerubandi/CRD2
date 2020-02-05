@@ -2,9 +2,9 @@
    "library": {
       "annotation": [
          {
-            "startLine": 123,
+            "startLine": 122,
             "startChar": 75,
-            "endLine": 123,
+            "endLine": 122,
             "endChar": 82,
             "message": "Member recorder not found for type FHIR.Procedure.",
             "errorType": "semantic",
@@ -12,9 +12,9 @@
             "type": "CqlToElmError"
          },
          {
-            "startLine": 207,
+            "startLine": 206,
             "startChar": 75,
-            "endLine": 207,
+            "endLine": 206,
             "endChar": 82,
             "message": "Member recorder not found for type FHIR.Procedure.",
             "errorType": "semantic",
@@ -879,7 +879,7 @@
                }
             },
             {
-               "name": "BeneficiaryMedicareNumber",
+               "name": "BeneficiaryIdentificationNumber",
                "context": "Patient",
                "accessLevel": "Public",
                "expression": {
@@ -907,21 +907,45 @@
                            ],
                            "relationship": [],
                            "where": {
-                              "type": "Equal",
+                              "type": "Or",
                               "operand": [
                                  {
-                                    "path": "value",
-                                    "type": "Property",
-                                    "source": {
-                                       "path": "system",
-                                       "scope": "identifier",
-                                       "type": "Property"
-                                    }
+                                    "type": "Equal",
+                                    "operand": [
+                                       {
+                                          "path": "value",
+                                          "type": "Property",
+                                          "source": {
+                                             "path": "system",
+                                             "scope": "identifier",
+                                             "type": "Property"
+                                          }
+                                       },
+                                       {
+                                          "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                          "value": "urn:oid:1.1.1.1.1.1",
+                                          "type": "Literal"
+                                       }
+                                    ]
                                  },
                                  {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                    "value": "urn:oid:1.1.1.1.1.1",
-                                    "type": "Literal"
+                                    "type": "Equal",
+                                    "operand": [
+                                       {
+                                          "path": "value",
+                                          "type": "Property",
+                                          "source": {
+                                             "path": "system",
+                                             "scope": "identifier",
+                                             "type": "Property"
+                                          }
+                                       },
+                                       {
+                                          "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                          "value": "http://hl7.org/fhir/sid/us-medicare",
+                                          "type": "Literal"
+                                       }
+                                    ]
                                  }
                               ]
                            }

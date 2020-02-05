@@ -108,11 +108,10 @@ define PatientMiddleInitial:
 define PatientFirstName: "BeneficiaryNameObject".given[0].value
 define BeneficiaryGender: Patient.gender.value
 define BeneficiaryDateOfBirth: Patient.birthDate.value
-define BeneficiaryMedicareNumber:
+define BeneficiaryIdentificationNumber:
 	(singleton from (
   	Patient.identifier identifier
-   	 where identifier.system.value ='urn:oid:1.1.1.1.1.1')).value.value
-//'http://hl7.org/fhir/sid/us-medicare'
+   	 where identifier.system.value ='urn:oid:1.1.1.1.1.1' or identifier.system.value ='http://hl7.org/fhir/sid/us-medicare')).value.value
 
 // Practitioner info
 define Practitioner: 

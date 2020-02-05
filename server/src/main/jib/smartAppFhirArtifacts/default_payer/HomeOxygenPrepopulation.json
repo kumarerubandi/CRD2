@@ -1349,21 +1349,45 @@
                            ],
                            "relationship": [],
                            "where": {
-                              "type": "Equal",
+                              "type": "Or",
                               "operand": [
                                  {
-                                    "path": "value",
-                                    "type": "Property",
-                                    "source": {
-                                       "path": "system",
-                                       "scope": "identifier",
-                                       "type": "Property"
-                                    }
+                                    "type": "Equal",
+                                    "operand": [
+                                       {
+                                          "path": "value",
+                                          "type": "Property",
+                                          "source": {
+                                             "path": "system",
+                                             "scope": "identifier",
+                                             "type": "Property"
+                                          }
+                                       },
+                                       {
+                                          "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                          "value": "urn:oid:1.1.1.1.1.1",
+                                          "type": "Literal"
+                                       }
+                                    ]
                                  },
                                  {
-                                    "valueType": "{urn:hl7-org:elm-types:r1}String",
-                                    "value": "urn:oid:1.1.1.1.1.1",
-                                    "type": "Literal"
+                                    "type": "Equal",
+                                    "operand": [
+                                       {
+                                          "path": "value",
+                                          "type": "Property",
+                                          "source": {
+                                             "path": "system",
+                                             "scope": "identifier",
+                                             "type": "Property"
+                                          }
+                                       },
+                                       {
+                                          "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                          "value": "http://hl7.org/fhir/sid/us-medicare",
+                                          "type": "Literal"
+                                       }
+                                    ]
                                  }
                               ]
                            }
